@@ -12,6 +12,18 @@ header p {
     margin: 0;
 }
 
+#menu-button a{
+    font-size: 2em;
+    color: #ffffff;
+    float:right;
+    padding-right: 10px;
+    text-decoration: none;
+}
+
+#menu-logo{
+    float:left;
+}
+
 main{
     background-color: #737373;
     height: 700px;
@@ -28,7 +40,10 @@ footer{
     position: absolute;
     bottom: 0;
     width:100%;
+    text-align: center;
+    font-size: 2em;
 }
+
 
 footer p {
     text-align: center;
