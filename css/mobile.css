@@ -1,0 +1,35 @@
+body{
+    background-color: #737373;
+}
+header{
+    background-color: #105cb6;
+    opacity: 50;
+    height: 200px;
+}
+
+header p {
+    padding-top: 10px;
+    margin: 0;
+}
+
+main{
+    background-color: #737373;
+    height: 700px;
+}
+main p {
+    padding-top: 10px;
+    margin: 0;
+}
+
+footer{
+    background-color: #cccccc;
+    opacity: 50;
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    width:100%;
+}
+
+footer p {
+    text-align: center;
+}
