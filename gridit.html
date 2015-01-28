@@ -1,61 +1,85 @@
 <!DOCTYPE html>
 <html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+    <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+    <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+    <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-    <link rel="stylesheet" href="css/normalize.css">
-    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,300italic,400italic' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/mobile.css">
-    <link rel="stylesheet" href="css/main.css">
-    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
-</head>
+        <link rel="stylesheet" href="css/normalize.css">
+        <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,300italic,400italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/mobile.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="js/vendor/jquery-1.10.2.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#nav-mobile").html($("#nav-main").html());
+                $("#nav-trigger span").click(function () {
+                    if ($("nav#nav-mobile ul").hasClass("expanded")) {
+                        $("nav#nav-mobile ul.expanded").removeClass("expanded").slideUp(250);
+                        //$(this).removeClass("open");
+                    } else {
+                        $("nav#nav-mobile ul").addClass("expanded").slideDown(250);
+                        //$(this).addClass("open");
+                    }
+                });
+            });
+        </script>
+    </head>
 
-<body>
-    <header>
-        <div id ="menu-logo-wrapper">
-            <!--<div id ="menu-logo"><img src="img/9cb7aede06c7f8a5981b0e98a514de1f8523500d1d775c65c09d2ac09bdb9cc9.jpg"></div>-->
+    <body>
+        <header>
+            <div id ="menu-logo-wrapper">
+                <!--<div id ="menu-logo"><img src="img/9cb7aede06c7f8a5981b0e98a514de1f8523500d1d775c65c09d2ac09bdb9cc9.jpg"></div>-->
 
-            <div id ="meny-logo"><img src="img/logo_kropp.png"> <h1><small><span class="light">Photographer</span></small><br><span class="bold">Andreas Karlsson</span></h1></div>
-        </div>
-        <div id ="menu-button">
-            <a href="#"><!--ASCII för menyknapp--><!--&#9776;-->
-                <!--Font Awesome navicon--><i class="fa fa-bars"></i></a>
-        </div>
-
-    </header>
-    <figure> </figure>
-    <main>
-               <div class="main-wrapper">
-            <h2>
-                <span class="thin row-1">Fantastic</span><br>
-                <span class="bold row-2">Landscape</span>
-                <span class="italic thin row-2">&amp; </span>
-                <span class="light row-2">Street</span><br>
-                <span class="light row-3">Photography</span>
-            </h2>
-            <p class="light">I am dedicated to taking fine personal photographies from northern Europe. Click to browse the collection and purchase your personal favourite</p>
-
-            <div class="button">
-                <p><span class="bold">Buy Prints</span></p>
+                <div id ="meny-logo"><img src="img/logo_kropp.png"> <h1><small><span class="light">Photographer</span></small><br><span class="bold">Andreas Karlsson</span></h1></div>
             </div>
 
-        </div>
+            <nav id="nav-main">
+                <ul>
+                    <li><a href="">Home</a></li>
+                    <li><a href="">Buy prints</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+            </nav>
+            <div id="nav-trigger">
+                <span>&#9776</span>
+            </div>
+            <nav id="nav-mobile"></nav>
+            
+        </header>
+        <figure> </figure>
+        <main>
+            <div class="main-wrapper">
+                <h2>
+                    <span class="thin row-1">Fantastic</span><br>
+                    <span class="bold row-2">Landscape</span>
+                    <span class="italic thin row-2">&amp; </span>
+                    <span class="light row-2">Street</span><br>
+                    <span class="light row-3">Photography</span>
+                </h2>
+                <p class="light">I am dedicated to taking fine personal photographies from northern Europe. Click to browse the collection and purchase your personal favourite</p>
 
-    </main>
+                <div class="button">
+                    <p><span class="bold">Buy Prints</span></p>
+                </div>
 
-   <!-- <footer>
-        <i class="fa fa-facebook"></i>
-        <i class="fa fa-instagram"></i></footer>-->
-</body>
+            </div>
+
+        </main>
+
+        <!-- <footer>
+             <i class="fa fa-facebook"></i>
+             <i class="fa fa-instagram"></i></footer>-->
+    </body>
 </html>
