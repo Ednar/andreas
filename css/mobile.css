@@ -1,16 +1,33 @@
 body{
-    background-color: #737373;
-}
-header{
-    background-color: #105cb6;
-    opacity: 50;
-    height: 200px;
+    background-color: #fff;
+    font-size: 16px;
 }
 
-header p {
-    padding-top: 10px;
-    margin: 0;
+p{font-size: 1.2em;}
+
+header{
+    background-color: #000;
+    opacity: 50;
+    padding-bottom: 12%;
+   /* height: 100px;*/
 }
+
+    header p {
+        padding-top: 10px;
+        margin: 0;
+    }
+
+figure{
+    background-image: url("../img/grafitti.png") ;
+    background-size: cover;
+    max-height: 300px;
+    min-height: 200px;
+
+}
+
+    figure img{
+        max-height: 500px;
+    }
 
 #menu-button a{
     font-size: 2em;
@@ -20,17 +37,88 @@ header p {
     text-decoration: none;
 }
 
-#menu-logo{
+#menu-logo-wrapper{
+    width: 70%;
     float:left;
 }
 
-main{
-    background-color: #737373;
-    height: 700px;
+#menu-logo{
+    float:left;
+
+    margin-right: 10px;
 }
-main p {
+#menu-logo img{
+    height:45px;
     padding-top: 10px;
-    margin: 0;
+    float: left;
+}
+
+#menu-logo-text{
+    float: left;
+    line-height: 14px;
+}
+
+#menu-logo-text h1{
+    line-height: 14px
+}
+#menu-logo-text span{
+    line-height: 14px;
+    color:navy;
+}
+
+
+main{
+    background-color: #fff;
+    padding: 0 5%;
+}
+    main p {
+        padding-top: 0px;
+        margin: 0;
+    }
+
+    main h2{
+        font-size: 2em;
+        line-height: 0.9em;
+    }
+
+        main h2 .row-2{
+            font-size: 1.4em;
+            line-height: 0.9em;
+        }
+
+        main h2 .row-3{
+            font-size: 0.8em;
+            line-height: 0.2em;
+        }
+
+
+.main-cart{
+    background-color: #ffc82e;
+    width: 75%;
+    margin: 0 12.5%;
+    text-align: center;
+}
+
+.main-cart i {
+    font-size: 2em;
+    margin-right: 10px;
+}
+
+.button{
+
+    background-color: #000;
+    text-align: center;
+    widght:70%;
+    margin: 5% 0%;
+}
+.button p{
+    display: block;
+    width: 100%;
+    padding: 15px 0px;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0 auto;
+
 }
 
 footer{
