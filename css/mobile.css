@@ -215,7 +215,8 @@ nav#nav-mobile ul {
     position: absolute;
     left: 0;
     right: 0;
-    top:45px;
+    //top:45px;
+    top: 49px;
     margin-left: 0px;
     padding-left:0px!important;
     margin-right: auto;
@@ -241,10 +242,20 @@ nav#nav-mobile a:hover {
     -moz-opacity: 0.8;
     color: #fff; }
 
-/* =Nav-button
+/* Nav-button
 -------------------------------------------------------------- */
 
-#nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
+#nav-toggle span { 
+    position: absolute;
+    padding: 0px;
+    right: 40px; top: 30px;
+    height: 5px;
+    width: 35px;
+}
+
+#nav-toggle span, 
+#nav-toggle span:before,
+#nav-toggle span:after {
     cursor: pointer;
     border-radius: 1px;
     height: 5px;
@@ -259,6 +270,32 @@ nav#nav-mobile a:hover {
 }
 #nav-toggle span:after {
     bottom: -10px; 
+}
+
+#nav-toggle span:hover {
+    background-color: #fff;
+}
+
+.nav-toggle-a {
+    display: block;
+    height: 40px;
+    width: 50px;
+}
+
+#nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
+    transition: all 500ms ease-in-out;
+}
+#nav-toggle.active span {
+    background-color: transparent;
+}
+#nav-toggle.active span:before, #nav-toggle.active span:after {
+    top: 0px;
+}
+#nav-toggle.active span:before {
+    transform: rotate(45deg);
+}
+#nav-toggle.active span:after {
+    transform: rotate(-45deg);
 }
 
 /* =Media Queries
