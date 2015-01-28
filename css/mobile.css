@@ -22,16 +22,15 @@ header{
     }
 
 figure{
-    background-image: url("../img/bilar.png") ;
+    background-image: url("../img/bilar.png");
     background-size: cover;
-
+    background-repeat:no-repeat;
+    background-position: center center;
     height: 60vh;
 
 }
 
-    figure img{
-        max-height: 500px;
-    }
+    figure img{max-height: 500px;}
 
 #menu-button {
     position:relative;
@@ -40,12 +39,12 @@ figure{
 
 }
 
-#menu-button a{
-    font-size: 2em;
-    color: #ffffff;
-    float:right;
-    padding: 5%;
-    text-decoration: none;
+    #menu-button a{
+        font-size: 2em;
+        color: #ffffff;
+        float:right;
+        padding: 5%;
+        text-decoration: none;
 }
 
 #menu-logo-wrapper{
@@ -59,21 +58,21 @@ figure{
     float:left;
     margin-right: 10px;
 }
-#menu-logo img{
-    width: 70px;
-    margin: 5% 2% 5% 5%;
-    float: left;
-}
+    #menu-logo img{
+        width: 70px;
+        margin: 5% 2% 5% 5%;
+        float: left;
+    }
 
 
-#menu-logo h1{
-    line-height: 0.8em;
-    font-size:1.2em;
-    min-width:300px;
-}
-#menu-logo span{
-    line-height: 14px;
-}
+    #menu-logo h1{
+        line-height: 0.8em;
+        font-size:1.2em;
+        min-width:300px;
+    }
+    #menu-logo span{
+        line-height: 14px;
+    }
 
 
 main{
@@ -108,10 +107,10 @@ main{
     text-align: center;
 }
 
-.main-cart i {
-    font-size: 2em;
-    margin-right: 10px;
-}
+    .main-cart i {
+        font-size: 2em;
+        margin-right: 10px;
+    }
 
 .button{
 
@@ -120,15 +119,15 @@ main{
     widght:70%;
     margin: 5% 0%;
 }
-.button p{
-    display: block;
-    width: 100%;
-    padding: 15px 0px;
-    text-transform: uppercase;
-    color: #fff;
-    margin: 0 auto;
+    .button p{
+        display: block;
+        width: 100%;
+        padding: 15px 0px;
+        text-transform: uppercase;
+        color: #fff;
+        margin: 0 auto;
 
-}
+    }
 
 footer{
     background-color: #cccccc;
@@ -142,9 +141,9 @@ footer{
 }
 
 
-footer p {
-    text-align: center;
-}
+    footer p {
+        text-align: center;
+    }
 
 /* =Nav
 -------------------------------------------------------------- */

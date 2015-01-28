@@ -319,3 +319,30 @@ html, body {
         page-break-after: avoid;
     }
 }
+
+    /*========================================================================================
+        First Breakpoint at 1024px min width
+    ========================================================================================*/
+
+@media only screen and (min-width: 1024px) {
+
+    figure{
+        height: 100vh;
+    }
+    main{
+        width: 100%;
+        float: left;
+    }
+
+    main .main-wrapper{
+        float:left;
+        width: 45%;
+    }
+
+    .button{
+        float: left;
+        margin-left: 40px;
+        width:45%;
+    }
+
+}
