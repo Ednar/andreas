@@ -7,19 +7,19 @@ p{font-size: 1.2em;}
 
 header{
     max-height: 100px;
-   /* height: 100px;*/
+    /* height: 100px;*/
 }
 
-    header p {
-        padding-top: 10px;
-        margin: 0;
-    }
+header p {
+    padding-top: 10px;
+    margin: 0;
+}
 
-    header h1{
-        line-height: 0.8em;
-        color:#fff;
+header h1{
+    line-height: 0.8em;
+    color:#fff;
 
-    }
+}
 
 figure{
     background-image: url("../img/grafitti.png") ;
@@ -29,9 +29,9 @@ figure{
 
 }
 
-    figure img{
-        max-height: 500px;
-    }
+figure img{
+    max-height: 500px;
+}
 
 #menu-button {
     position:relative;
@@ -80,25 +80,25 @@ main{
     background-color: #fff;
     padding: 0 5%;
 }
-    main p {
-        padding-top: 0px;
-        margin: 0;
-    }
+main p {
+    padding-top: 0px;
+    margin: 0;
+}
 
-    main h2{
-        font-size: 2em;
-        line-height: 0.9em;
-    }
+main h2{
+    font-size: 2em;
+    line-height: 0.9em;
+}
 
-        main h2 .row-2{
-            font-size: 1.4em;
-            line-height: 0.9em;
-        }
+main h2 .row-2{
+    font-size: 1.4em;
+    line-height: 0.9em;
+}
 
-        main h2 .row-3{
-            font-size: 0.8em;
-            line-height: 0.2em;
-        }
+main h2 .row-3{
+    font-size: 0.8em;
+    line-height: 0.2em;
+}
 
 
 .main-cart{
@@ -149,107 +149,127 @@ footer p {
 /* =Nav
 -------------------------------------------------------------- */
 #nav-trigger {
-  display: none;
-  text-align: center;
+    display: none;
+    text-align: center;
     float:right;
 }
-  #nav-trigger span {
+#nav-trigger span {
     display: inline-block;
     padding: 10px 15px;
-      font-size: 1.6em;
+    font-size: 1.6em;
     background-color: rgba(0, 0, 0, 0);
     -moz-opacity: 0.8;
     color: white;
     cursor: pointer;
     text-transform: uppercase; }
-    /* #nav-trigger span:after {
-      display: inline-block;
-      margin-left: 10px;
-      width: 20px;
-      height: 10px;
-      content: "";
-      border-left: solid 10px transparent;
-      border-top: solid 10px #fff;
-      border-right: solid 10px transparent; } */
-    #nav-trigger span:hover {
-      background-color: rgba(0, 0, 0, 0.8);
+/* #nav-trigger span:after {
+  display: inline-block;
+  margin-left: 10px;
+  width: 20px;
+  height: 10px;
+  content: "";
+  border-left: solid 10px transparent;
+  border-top: solid 10px #fff;
+  border-right: solid 10px transparent; } */
+#nav-trigger span:hover {
+    background-color: rgba(0, 0, 0, 0.8);
     -moz-opacity: 0.8; }
-    #nav-trigger span.open:after {
-      border-left: solid 10px transparent;
-      border-top: none;
-      border-bottom: solid 10px #fff;
-      border-right: solid 10px transparent; }
+#nav-trigger span.open:after {
+    border-left: solid 10px transparent;
+    border-top: none;
+    border-bottom: solid 10px #fff;
+    border-right: solid 10px transparent; }
 
 nav {
-  margin-bottom: 30px; }
+    margin-bottom: 30px; }
 
 nav#nav-main {
-  background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.8);
     -moz-opacity: 0.8;
-  padding: 10px 0; }
-  nav#nav-main ul {
+    padding: 10px 0; }
+nav#nav-main ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     text-align: center; }
-  nav#nav-main li {
+nav#nav-main li {
     display: inline-block;
     border-right: solid 1px #cc0028;
     padding: 0 5px; }
-    nav#nav-main li:last-child {
-      border-right: none; }
-  nav#nav-main a {
+nav#nav-main li:last-child {
+    border-right: none; }
+nav#nav-main a {
     display: block;
     color: white;
     padding: 10px 30px; }
-    nav#nav-main a:hover {
-      background-color: #e6002d;
-      color: #fff; }
+nav#nav-main a:hover {
+    background-color: #e6002d;
+    color: #fff; }
 
 nav#nav-mobile {
-  position: relative;
-  display: none; }
-  nav#nav-mobile ul {
+    position: relative;
+    display: none; }
+nav#nav-mobile ul {
     display: none;
     list-style-type: none;
     position: absolute;
     left: 0;
     right: 0;
-      top:45px;
+    top:45px;
     margin-left: 0px;
-      padding-left:0px!important;
+    padding-left:0px!important;
     margin-right: auto;
     text-align: right;
     background-color: rgba(25, 25, 25, 1);
     -moz-opacity: 1; }
-  nav#nav-mobile li {
+nav#nav-mobile li {
     display: block;
     padding: 0px 0;
     margin: 0 0px;
-      width:100%;
+    width:100%;
     border-bottom: solid 1px #333; }
-    nav#nav-mobile li:last-child {
-      border-bottom: none; }
-  nav#nav-mobile a {
+nav#nav-mobile li:last-child {
+    border-bottom: none; }
+nav#nav-mobile a {
     display: block;
     color: white;
     padding: 10px 30px;
     text-decoration: none;
-  }
-    nav#nav-mobile a:hover {
-      background-color: rgba(0, 0, 0, 0.8);
+}
+nav#nav-mobile a:hover {
+    background-color: rgba(0, 0, 0, 0.8);
     -moz-opacity: 0.8;
-      color: #fff; }
+    color: #fff; }
+
+/* =Nav-button
+-------------------------------------------------------------- */
+
+#nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
+    cursor: pointer;
+    border-radius: 1px;
+    height: 5px;
+    width: 35px;
+    background: white;
+    position: absolute;
+    display: block;
+    content: '';
+}
+#nav-toggle span:before {
+    top: -10px;
+}
+#nav-toggle span:after {
+    bottom: -10px; 
+}
 
 /* =Media Queries
 -------------------------------------------------------------- */
 @media all and (max-width: 900px) {
-  #nav-trigger {
-    display: block; }
+    #nav-trigger {
+        display: block; }
 
-  nav#nav-main {
-    display: none; }
+    nav#nav-main {
+        display: none; }
 
-  nav#nav-mobile {
-    display: block; }
+    nav#nav-mobile {
+        display: block; }
 }
