@@ -6,9 +6,6 @@ body{
 p{font-size: 1.2em;}
 
 header{
-    background-color: #000;
-    opacity: 50;
-    height: 18%;
     max-height: 100px;
    /* height: 100px;*/
 }
@@ -27,14 +24,21 @@ header{
 figure{
     background-image: url("../img/grafitti.png") ;
     background-size: cover;
-    max-height: 400px;
-    min-height: 300px;
+    max-height: 600px;
+    min-height: 400px;
 
 }
 
     figure img{
         max-height: 500px;
     }
+
+#menu-button {
+    position:relative;
+    top:15px;
+    right:5%;
+
+}
 
 #menu-button a{
     font-size: 2em;
@@ -47,8 +51,7 @@ figure{
 #menu-logo-wrapper{
     background-color: rgba(0, 0, 0, 0.8);
     -moz-opacity: 0.8;
-    width: 80%;
-    max-width: 400px;
+    width: 100%;
     float:left;
 }
 
@@ -57,18 +60,19 @@ figure{
     margin-right: 10px;
 }
 #menu-logo img{
-    width: 20px;
-    padding-top: 10px;
+    width: 70px;
+    margin: 5% 2% 5% 5%;
+    float: left;
 }
 
 
-#menu-logo-text h1{
-    line-height: 14px
-    font-size:1.2em;
+#menu-logo h1{
+    line-height:0.8em;
+    font-size:1.3em;
+    min-width: 400px;
 }
-#menu-logo-text span{
+#menu-logo span{
     line-height: 14px;
-    color:navy;
 }
 
 
