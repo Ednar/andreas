@@ -24,8 +24,8 @@ header{
 figure{
     background-image: url("../img/grafitti.png") ;
     background-size: cover;
-    max-height: 600px;
-    min-height: 400px;
+
+    height: 60vh;
 
 }
 
@@ -66,9 +66,10 @@ figure{
 }
 
 
-#menu-logo-text h1{
-    line-height: 14px
+#menu-logo h1{
+    line-height: 0.8em;
     font-size:1.2em;
+    min-width:300px;
 }
 #menu-logo span{
     line-height: 14px;
@@ -149,11 +150,14 @@ footer p {
 -------------------------------------------------------------- */
 #nav-trigger {
   display: none;
-  text-align: center; }
+  text-align: center;
+    float:right;
+}
   #nav-trigger span {
     display: inline-block;
-    padding: 10px 30px;
-    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px 15px;
+      font-size: 1.6em;
+    background-color: rgba(0, 0, 0, 0);
     -moz-opacity: 0.8;
     color: white;
     cursor: pointer;
@@ -211,22 +215,27 @@ nav#nav-mobile {
     position: absolute;
     left: 0;
     right: 0;
-    margin-left: auto;
+      top:45px;
+    margin-left: 0px;
+      padding-left:0px!important;
     margin-right: auto;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.8);
-    -moz-opacity: 0.8; }
+    text-align: right;
+    background-color: rgba(25, 25, 25, 1);
+    -moz-opacity: 1; }
   nav#nav-mobile li {
     display: block;
-    padding: 5px 0;
-    margin: 0 5px;
-    border-bottom: solid 1px #cc0028; }
+    padding: 0px 0;
+    margin: 0 0px;
+      width:100%;
+    border-bottom: solid 1px #333; }
     nav#nav-mobile li:last-child {
       border-bottom: none; }
   nav#nav-mobile a {
     display: block;
     color: white;
-    padding: 10px 30px; }
+    padding: 10px 30px;
+    text-decoration: none;
+  }
     nav#nav-mobile a:hover {
       background-color: rgba(0, 0, 0, 0.8);
     -moz-opacity: 0.8;
