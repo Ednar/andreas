@@ -22,8 +22,7 @@
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
         <script src="js/vendor/jquery-1.10.2.min.js"></script>
         <script src="js/jquery.superslides.js" type="text/javascript" charset="utf-8"></script>
-
-
+        <script src="js/jquery.touchSwipe.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="js/vendor/prefixfree.min.js"></script>
         <script> //för att skjuta in och ut nav-meny på mobil
             $(document).ready(function () {
@@ -103,18 +102,47 @@
                 <a href="#" class="prev"><img src="img/arrow_left.png"></a>
             </nav>
         </div>
-        <script src="js/vendor/jquery-1.10.2.min.js"></script>
+
         <script src="js/jquery.superslides.js" type="text/javascript" charset="utf-8"></script>
+
         <script>
+
             $(function() {
                 $('#slides').superslides({
                     hashchange: true,
                     animation:'fade',
                     animation_speed: 'slow',
-                    inherit_height_from: '.slides-wrapper'
+                    inherit_height_from: '.slides-wrapper',
+                    scrollable:true
+
                 });
+
             });
+
+            $("#slides").touchwipe({
+                swipeLeft: function() {
+
+                    $('.next').trigger('click');
+
+                },
+                swipeRight: function() {
+                    $('.prev').trigger('click');
+                },
+                min_move_x: 20,
+                min_move_y: 20,
+                preventDefaultEvents: true
+            });
+
+
+
         </script>
+
+        <script>
+
+
+
+        </script>
+
     </div>
 
 
