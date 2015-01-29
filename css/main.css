@@ -360,6 +360,11 @@ section {
 
 @media only screen and (min-width: 1024px) {
 
+    .slides-pagination {
+        bottom:100px !important;
+
+    }
+
     figure{
         height: 100vh;
     }

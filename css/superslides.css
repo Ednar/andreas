@@ -48,7 +48,7 @@
 .slides-pagination {
   position: absolute;
   z-index: 3;
-  bottom: 100px;
+  bottom: 20px;
   text-align: center;
   width: 100%;
 }
