@@ -18,8 +18,12 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/mobile.css">
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/superslides.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
         <script src="js/vendor/jquery-1.10.2.min.js"></script>
+        <script src="js/jquery.superslides.js" type="text/javascript" charset="utf-8"></script>
+
+
         <script src="js/vendor/prefixfree.min.js"></script>
         <script> //för att skjuta in och ut nav-meny på mobil
             $(document).ready(function () {
@@ -51,52 +55,92 @@
     </head>
 
     <body>
-    <div class="wrapper">
-        <header>
-            <div id ="menu-logo-wrapper">
-                <!--<div id ="menu-logo"><img src="img/9cb7aede06c7f8a5981b0e98a514de1f8523500d1d775c65c09d2ac09bdb9cc9.jpg"></div>-->
 
-                <div id ="menu-logo">
-                    <img src="img/logo_kropp.png" />
-                    <h1>
-                        <small>
-                            <span class="thin">Photographer</span>
-                        </small><br>
-                        <span class="bold">Andreas Karlsson</span>
-                    </h1>
+
+
+    <div class="slides-wrapper" style="height:60vh">
+
+
+
+        <div id ="slides">
+
+            <header style="z-index:99; position:relative; width:100%">
+                <div id ="menu-logo-wrapper">
+                    <!--<div id ="menu-logo"><img src="img/9cb7aede06c7f8a5981b0e98a514de1f8523500d1d775c65c09d2ac09bdb9cc9.jpg"></div>-->
+
+                    <div id ="menu-logo">
+                        <img src="img/logo_kropp.png" />
+                        <h1>
+                            <small>
+                                <span class="thin">Photographer</span>
+                            </small><br>
+                            <span class="bold">Andreas Karlsson</span>
+                        </h1>
+                    </div>
+                    <nav id="nav-main">
+                        <ul>
+                            <li><a href="">Home</a></li>
+                            <li><a href="">Buy prints</a></li>
+                            <li><a href="">About</a></li>
+                            <li><a href="">Contact</a></li>
+                        </ul>
+                    </nav>
+                    <div id="nav-trigger">
+                        <a id="nav-toggle" href="#"><span></span></a>
+                    </div>
+                    <nav id="nav-mobile"></nav>
                 </div>
-                <nav id="nav-main">
-                    <ul>
-                        <li><a href="">Home</a></li>
-                        <li><a href="">Buy prints</a></li>
-                        <li><a href="">About</a></li>
-                        <li><a href="">Contact</a></li>
-                    </ul>
-                </nav>
-                <div id="nav-trigger">
-                    <a id="nav-toggle" href="#"><span></span></a>
-                </div>
-                <nav id="nav-mobile"></nav>
+
+            </header>
+            <div class ="slides-container">
+                <img src="img/newyork.jpg">
+                <img src="img/graffiti.jpg">
+                <img src="img/roads.jpg">
+
             </div>
+            <nav class="slides-navigation">
+                <a href="#" class="next"><img src="img/arrow_right.png"></a>
+                <a href="#" class="prev"><img src="img/arrow_left.png"></a>
+            </nav>
+        </div>
+        <script src="js/vendor/jquery-1.10.2.min.js"></script>
+        <script src="js/jquery.superslides.js" type="text/javascript" charset="utf-8"></script>
+        <script>
+            $(function() {
+                $('#slides').superslides({
+                    hashchange: true,
+                    animation:'fade',
+                    animation_speed: 'slow',
+                    inherit_height_from: '.slides-wrapper'
+                });
+            });
+        </script>
+    </div>
 
-        </header>
-        <figure> </figure>
+
+
+
+    <div class="wrapper">
+
+
+
+
+
         <main>
             <div class="main-wrapper">
-                <h2>
-                    <span class="thin row-1">Fantastic</span><br>
-                    <span class="bold row-2">Landscape</span>
-                    <span class="italic thin row-2">&amp; </span>
-                    <span class="light row-2">Street</span><br>
-                    <span class="light row-3">Photography</span>
-                </h2>
-                <p class="light">I am dedicated to taking fine personal photographies from northern Europe. Click to browse the collection and purchase your personal favourite</p>
+               <div><h2>
+                        <span class="thin row-1">Fantastic</span><br>
+                        <span class="bold row-2">Landscape</span>
+                        <span class="italic thin row-2">&amp; </span>
+                        <span class="light row-2">Street</span><br>
+                        <span class="light row-3">Photography</span>
+                    </h2>
+                    <p class="light">I am dedicated to taking fine personal photographies from northern Europe. Click to browse the collection and purchase your personal favourite</p>
                 </div>
-                <div class="button">
-                    <p><span class="bold">Buy Prints</span></p>
-                </div>
-
-                <section class="soft-contrast">
+                    <div class="button">
+                        <p><span class="bold">Buy Prints</span></p>
+                    </div>
+                <section class="soft-contrast about-me">
                     <div class="about">
                         <h2 class="thin">About me</h2>
                         <p>Not until my hockey carreer had come to an end, did I make up my mind.
@@ -110,17 +154,10 @@
                             independent prints, as well as contributed in an exhibition. Furthermore,
                             I have been hired as photographer for a variety of events and private occasions.</p>
                     </div>
-
                 </section>
-
             </div>
-
-
-
-
         </main>
         <div id="form-main">
-
             <div id="form-div">
                 <form class="form" id="form1">
                     <h2 class="thin">Contact me</h2>
@@ -141,10 +178,7 @@
                     </div>
                 </form>
             </div>
-<!--
-         <footer>
-            </footer>
-//-->
         </div>
+    </div> //END main-wrapper
     </body>
 </html>
