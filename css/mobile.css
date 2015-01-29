@@ -82,6 +82,7 @@ figure img{
     }
     #menu-logo span{
         line-height: 14px;
+
     }
 
 
@@ -143,15 +144,20 @@ main h2 .row-3{
 
 
 footer{
-    background-color: #000;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0.8;
+    -moz-opacity: 0.8;
     opacity: 50;
-    height: 75px;
-    position: absolute;
-    bottom: -30px;
+    height: 85px;
+    position: relative;
+    bottom: 85px;
+    color:#737373;
     left:0px;
     width:100%;
     text-align: center;
-    font-size: 2em;
+    font-size: 0.6em;
+    z-index: 5;
+    overflow-x:hidden;
 }
 
 
@@ -160,8 +166,43 @@ footer{
 
 }
 
+footer {
+    display: none;
+}
+
+footer .social {
+    width:250px;
+    position: absolute;
+    top:15px;
+    right:0px;
+}
+
+
+
+footer .social img {
+    width:45px;
+    opacity: 0.7;
+    padding:0px 3%;
+}
+
+footer .social img:hover {
+    opacity:1;
+}
+
+footer .footer-logo {
+    float:left;
+    width:160px;
+    height:auto;
+    padding:1% 3%;
+}
+
 footer p {
-        text-align: center;
+    text-align: left;
+    max-width:60%;
+    font-family:Lato;
+    font-weight: 300;
+    margin-top:17px;
+    float:left;
     }
 
 /* =Nav
@@ -542,6 +583,8 @@ nav .fa {
         display:none !important;
     }
 
+
+
 }
 
 
@@ -555,6 +598,13 @@ nav .fa {
 @media all and (min-width:1000px) {
     .slides-wrapper {
         height:100vh;
+
+    }
+    footer {
+        display:inline-block!important;
+    }
+    #menu-logo-wrapper {
+        height:50px;
 
     }
 

@@ -48,11 +48,12 @@
 .slides-pagination {
   position: absolute;
   z-index: 3;
-  bottom: 0;
+  bottom: 100px;
   text-align: center;
   width: 100%;
 }
 .slides-pagination a {
+  font-size: 0.0em;
   border: 1px solid #aaaaaa;
   border-radius: 15px;
   width: 20px;
@@ -67,6 +68,15 @@
   margin: 10px;
   overflow: hidden;
   text-indent: -100%;
+  transition: 0.5s;
+}
+
+.slides-pagination a:hover {
+    background:#fff;
+    -moz-opacity: 0.8;
+  opacity: 0.8;
+    transition: 0.5s;
+
 }
 .slides-pagination a.current {
   background: #000;

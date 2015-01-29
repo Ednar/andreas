@@ -401,7 +401,38 @@ section {
         max-width: 600px;
         margin: 20px auto;
     }
+    #menu-logo .mobile-break {
+        display:none;
+    }
 
+    #menu-logo img {
+        margin:10px;
+    }
+
+    small {
+        font-size: 1em;
+
+    }
+
+    #menu-logo {
+        width:450px;
+        overflow:hidden;
+    }
+
+    #menu-logo h1 {
+        width:450px;
+        position:relative;
+        top:5px;
+    }
+
+    #nav-main {
+        padding-top:4px!important;
+    }
+
+    .cart {
+        padding-top:7px;
+        padding-bottom:7px;
+    }
 
 
 }
