@@ -350,18 +350,58 @@ section {
     }
     main{
         width: 100%;
-        float: left;
+        padding:0;
+
     }
 
     main .main-wrapper{
-        float:left;
-        width: 45%;
+        width: 100%;
+        max-width:1000px;
+        margin:0 auto;
     }
 
     .button{
         float: left;
-        margin-left: 40px;
+        margin: 0;
         width:45%;
     }
+
+    .button p {
+        padding:15px 0 !important;
+        margin: 0 auto!important;
+        text-align: center;
+    }
+
+    .buy-prints {
+        max-width:100%;
+        min-width:100%;
+    }
+
+    .buy-prints h2 {
+        max-width:50%;
+        float:left;
+    }
+
+    .buy-prints p {
+        max-width:40%;
+        float:left;
+        padding-left:10%;
+    }
+
+    .about {
+        min-width:100%;
+    }
+
+    .about p {
+        min-width:100%;
+        padding-top:0;
+    }
+    
+    #form-div p, .submit, h2{
+        max-width: 600px;
+        margin: 20px auto;
+    }
+
+
 
 }

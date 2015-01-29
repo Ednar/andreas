@@ -1,8 +1,16 @@
 #slides {
   position: relative;
+
 }
+
+#slides div {
+
+}
+
+
 #slides .slides-container {
   display: none;
+
 }
 #slides .scrollable {
   *zoom: 1;

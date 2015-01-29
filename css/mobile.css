@@ -88,10 +88,12 @@ figure img{
 main{
     background-color: #fff;
     padding: 0 5%;
+
 }
 main p {
     padding-top: 5%;
     margin: 0;
+    max-width:500px;
 }
 
 main h2{
@@ -126,7 +128,7 @@ main h2 .row-3{
 
     background-color: #000;
     text-align: center;
-    widght:70%;
+    max-width:500px;
     margin: 5% 0%;
 }
     .button p{
@@ -138,6 +140,7 @@ main h2 .row-3{
         margin: 0 auto;
 
     }
+
 
 footer{
     background-color: #000;
@@ -152,7 +155,12 @@ footer{
 }
 
 
-    footer p {
+.slides-wrapper {
+    height:60vh;
+
+}
+
+footer p {
         text-align: center;
     }
 
@@ -172,15 +180,7 @@ footer{
     color: white;
     cursor: pointer;
     text-transform: uppercase; }
-/* #nav-trigger span:after {
-  display: inline-block;
-  margin-left: 10px;
-  width: 20px;
-  height: 10px;
-  content: "";
-  border-left: solid 10px transparent;
-  border-top: solid 10px #fff;
-  border-right: solid 10px transparent; } */
+
 #nav-trigger span:hover {
     background-color: rgba(0, 0, 0, 0.8);
     -moz-opacity: 0.8; }
@@ -191,12 +191,17 @@ footer{
     border-right: solid 10px transparent; }
 
 nav {
-    margin-bottom: 30px; }
+    margin-bottom: 0px;
+    font-family:Lato;
+    font-weight:300;
+}
 
 nav#nav-main {
-    background-color: rgba(0, 0, 0, 0.8);
-    -moz-opacity: 0.8;
-    padding: 10px 0; }
+    background-color: rgba(0, 0, 0, 0);
+    -moz-opacity: 0;
+    padding: 10px 0;
+    float:left;
+}
 nav#nav-main ul {
     list-style-type: none;
     margin: 0;
@@ -204,19 +209,25 @@ nav#nav-main ul {
     text-align: center; }
 nav#nav-main li {
     display: inline-block;
-    border-right: solid 1px #cc0028;
     padding: 0 5px; }
 nav#nav-main li:last-child {
     border-right: none; }
 nav#nav-main a {
     display: block;
     color: white;
-    padding: 10px 30px; }
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size:1em;
+    font-family:Lato;
+    font-weight: 300;
+}
 nav#nav-main a:hover {
-    background-color: #e6002d;
-    color: #fff; }
+    background-color: #fff;
+    color: #000; }
 
 nav#nav-mobile {
+    z-index:99999;
+    overflow: visible;
     position: relative;
     display: none; }
 nav#nav-mobile ul {
@@ -237,14 +248,15 @@ nav#nav-mobile ul {
     padding: 0px 0;
     margin: 0 0px;
     width:100%;
-    border-bottom: solid 1px #333; }
+    border-bottom: solid 1px #222222; }
 nav#nav-mobile li:last-child {
     border-bottom: none; }
 nav#nav-mobile a {
     display: block;
-    color: white;
+    color: #999999;
     padding: 10px 30px;
     text-decoration: none;
+    font-size:1.1em;
 }
 nav#nav-mobile a:hover {
     background-color: rgba(0, 0, 0, 0.8);
@@ -455,16 +467,95 @@ input:focus, textarea:focus {
     background-color:white;
 }
 
+.mobile-only {
+    display:none !important;
+}
+
+.cart {
+    display:inline-block !important;
+    position: absolute;
+    right:0px;
+    top:0px;
+    color:#000;
+    opacity:0.7;
+    padding:15px;
+    background-color: #ddd;
+    font-size:30px;
+    width:40px;
+    text-align:center;
+    margin:0 auto;
+    height:36px;
+    transition: 0.3s;
+}
+
+.cart:hover {
+    background-color: #000;
+    transition: 0.3s;
+    color:#fff;
+
+}
+
+.buy-prints {
+    float:left;
+    max-width:500px;
+}
+
+.about {
+    float:left;
+    max-width:500px;
+}
+
+nav .fa {
+    display: none;
+}
 
 /* =Media Queries
 -------------------------------------------------------------- */
-@media all and (max-width: 900px) {
+@media all and (max-width: 850px) {
     #nav-trigger {
         display: block; }
 
     nav#nav-main {
-        display: none; }
+        display: none;
+    }
 
     nav#nav-mobile {
         display: block; }
+
+
+    nav#nav-mobile .fa {
+        display:inline-block;!important;
+        padding-left:15px;
+        color:#fff;
+
+    }
+
+    .mobile-only {
+        display:inline-block!important;
+    }
+
+    .next, .prev {
+        display:none !important;
+    }
+
+    .cart {
+        display:none !important;
+    }
+
+}
+
+
+@media all and (min-width:900px) {
+
+
+
+
+}
+
+@media all and (min-width:1000px) {
+    .slides-wrapper {
+        height:100vh;
+
+    }
+
 }
