@@ -372,17 +372,20 @@ nav#nav-mobile a:hover {
     width:100%;
     float:left;
     padding-top:0px;
+    background-color:rgba(72,72,72,0.4);
 }
 
 #form-div {
-    background-color:rgba(72,72,72,0.4);
+
     padding:1% 5% 5% 5%;
     margin:3% 0% 0% 0%;
     width:100%;
-    float: left;
+    max-width:580px;
+
     -moz-border-radius: 7px;
     -webkit-border-radius: 7px;
     box-sizing: border-box;
+    margin:0 auto;
 }
 
 .feedback-input {
@@ -595,9 +598,27 @@ nav .fa {
 }
 
 @media all and (min-width: 700px) {
+
+    main {
+        padding:0px;
+
+    }
+
     .main-wrapper {
         float:none;
         margin:0 auto;
+        width:100%;
+
+    }
+
+    .buy-prints {
+        float:none;
+        margin:0 auto;
+        width: 800px !important;
+    }
+    .about {
+        float:none;
+        margin: 0 auto;
 
     }
 
@@ -610,7 +631,17 @@ nav .fa {
 
 }
 
-@media all and (min-width:1000px) {
+@media all and (min-width:1024px) {
+
+    .buy-prints {
+        float:left;
+
+    }
+    .about {
+        float:left;
+
+    }
+
     .slides-wrapper {
         height:100vh;
 
