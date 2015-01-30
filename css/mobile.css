@@ -88,7 +88,8 @@ figure img{
 
 main{
     background-color: #fff;
-    padding: 0 5%;
+
+
 
 }
 main p {
@@ -130,18 +131,24 @@ main h2 .row-3{
     background-color: #000;
     text-align: center;
     max-width:500px;
-    margin: 5% 0%;
+
+    margin: 5% auto;
 }
     .button p{
         display: block;
-        width: 100%;
+        width: 95%;
         padding: 15px 0px;
         text-transform: uppercase;
         color: #fff;
         margin: 0 auto;
-
+    }
+    
+    .button span{
     }
 
+    .intro-text{
+
+    }
 
 footer{
     background: rgba(0, 0, 0, 0.6);
@@ -545,13 +552,18 @@ input:focus, textarea:focus {
     }
 
 .buy-prints {
-    float:left;
     max-width:500px;
 }
 
 .about {
-    float:left;
+
     max-width:500px;
+    margin: 0 auto;
+}
+
+.about-me{
+    float:none;
+
 }
 
 nav .fa {
@@ -560,6 +572,38 @@ nav .fa {
 
 /* =Media Queries
 -------------------------------------------------------------- */
+
+
+@media all and (min-width: 700px) {
+
+    main {
+        padding:0px;
+
+
+    }
+
+    .main-wrapper {
+        float:none;
+        margin:0 auto;
+        width:100%;
+
+
+    }
+
+    .buy-prints {
+        float:none;
+        margin:0 auto;
+    }
+    .about {
+        float:none;
+        margin: 0 auto;
+
+    }
+
+
+
+}
+
 @media all and (max-width: 850px) {
     #nav-trigger {
         display: block; }
@@ -595,37 +639,17 @@ nav .fa {
         display: none!important;
     }
 
-
-
-
-
-
-}
-
-@media all and (min-width: 700px) {
-
-    main {
-        padding:0px;
-
-    }
-
-    .main-wrapper {
-        float:none;
-        margin:0 auto;
-        width:100%;
-
-    }
-
-    .buy-prints {
-        float:none;
-        margin:0 auto;
-        width: 800px !important;
-    }
-    .about {
-        float:none;
+    .buy-prints{
         margin: 0 auto;
-
     }
+
+    .left{
+        float:none;
+    }
+
+
+
+
 
 }
 
@@ -639,9 +663,15 @@ nav .fa {
 @media all and (min-width:1024px) {
 
     .buy-prints {
+        /*margin: 0 0!important;*/
         float:left;
 
     }
+
+    .intro-text{
+        padding:0;
+    }
+
     .about {
         float:left;
 
@@ -653,6 +683,9 @@ nav .fa {
     }
     footer {
         display:inline-block!important;
+    }
+    .left{
+        float:left!important;
     }
 
 

@@ -122,8 +122,8 @@ h6 {font-size: 0.8em;}
 html, body {
     width: 100%;
     height:100%;
-    margin:0px;
-    padding:0px;
+    margin:0;
+    padding:0;
     overflow-x: hidden;
 }
 
@@ -136,18 +136,18 @@ main {
 }
 
 h2, h3 {
-    margin-bottom:0px;
+    margin-bottom:0;
 
 }
 
 section {
     padding:5% 5%;
-    margin: 5% 0%;
+    margin: 5% 0;
 }
 
     section h2 {
         margin:0;
-        padding: 0% 0% 5% 0%;
+        padding: 0 0 5% 0;
     }
 
 .next, .prev{
@@ -182,7 +182,7 @@ section {
     text-align: center;
     font-size:0.9em;
     color:#a7a7a7;
-    padding:2% 0% 3% 1%;
+    padding:2% 0 3% 1%;
 }
 a {
     text-decoration: none;
@@ -193,6 +193,7 @@ a {
 #footer-info p small {
     color:#666;
 }
+
 
 
 
@@ -296,6 +297,7 @@ a {
 .clearfix {
     *zoom: 1;
 }
+
 
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.
@@ -436,7 +438,7 @@ a {
 
     .buy-prints p {
         max-width:40%;
-        float:left;
+        /*float:left;*/
         padding-left:10%;
     }
 
@@ -484,7 +486,7 @@ a {
     .cart {
         padding-top:7px;
         padding-bottom:7px;
-        padding-left:0px;
+        padding-left:0;
         padding-right:15px;
         display:inline-block;
         height:42px;
@@ -501,7 +503,8 @@ a {
 
         .cart img {
             margin-left:15px;
-            
+
+
         }
 
 
