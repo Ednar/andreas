@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="css/superslides.css">
 </head>
 <body>
+<p>Jag är en P. JAg är över</p>
+<div class="slides-wrapper" style="height:60vh">
+
 <div id ="slides">
     <div class ="slides-container">
         <img src="img/newyork.jpg">
@@ -25,10 +28,14 @@
         $('#slides').superslides({
             hashchange: true,
             animation:'fade',
-            animation_speed: 'slow'
+            animation_speed: 'slow',
+            inherit_height_from: '.slides-wrapper'
         });
     });
 </script>
+</div>
+<p>Hej jag är under</p>
+
 
 </body>
 </html>

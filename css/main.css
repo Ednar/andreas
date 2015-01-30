@@ -127,6 +127,10 @@ html, body {
     overflow-x: hidden;
 }
 
+main {
+    width:100%;
+}
+
 .soft-contrast {
     background-color: #eae8de;
 }
@@ -145,6 +149,21 @@ section {
         margin:0;
         padding: 0% 0% 5% 0%;
     }
+
+.next, .prev{
+    padding: 0 1%;
+    opacity: 0.5;
+    -moz-opacity: 0.5;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+}
+.next:hover, .prev:hover{
+
+    opacity: 1;
+    -moz-opacity: 1;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+}
 
 
 
@@ -345,23 +364,126 @@ section {
 
 @media only screen and (min-width: 1024px) {
 
+    .slides-pagination {
+        bottom:100px !important;
+
+    }
+
     figure{
         height: 100vh;
     }
     main{
         width: 100%;
-        float: left;
+        padding:0;
+
     }
 
     main .main-wrapper{
-        float:left;
-        width: 45%;
+        width: 100%;
+        max-width:1000px;
+        margin:0 auto;
     }
 
     .button{
         float: left;
-        margin-left: 40px;
+        margin: 0;
         width:45%;
+    }
+
+    .button p {
+        padding:15px 0 !important;
+        margin: 0 auto!important;
+        text-align: center;
+    }
+
+    .buy-prints {
+        max-width:100%;
+        min-width:100%;
+    }
+
+    .buy-prints h2 {
+        max-width:50%;
+        float:left;
+    }
+
+    .buy-prints p {
+        max-width:40%;
+        float:left;
+        padding-left:10%;
+    }
+
+    .about {
+        min-width:100%;
+    }
+
+    .about p {
+        min-width:100%;
+        padding-top:0;
+    }
+    
+    #form-div p, .submit, h2{
+        max-width: 600px;
+        margin: 20px auto;
+    }
+    #menu-logo .mobile-break {
+        display:none;
+    }
+
+    #menu-logo img {
+        margin:10px;
+    }
+
+    small {
+        font-size: 1em;
+
+    }
+
+    #menu-logo {
+        width:450px;
+        overflow:hidden;
+    }
+
+    #menu-logo h1 {
+        width:450px;
+        position:relative;
+        top:5px;
+    }
+
+    #nav-main {
+        padding-top:4px!important;
+    }
+
+    .cart {
+        padding-top:7px;
+        padding-bottom:7px;
+        padding-left:0px;
+        padding-right:15px;
+        display:inline-block;
+        height:42px;
+        text-align:right;
+    }
+        .cart p {
+            font-family: Lato;
+            font-weight: 300;
+            font-size: 1em;
+            color:#fff;
+            padding-top:7px;
+        }
+
+        .cart img {
+            margin-left:5px;
+        }
+
+
+}
+
+@media all and (min-width: 1100px) {
+    .cart span {
+        display: inline-block!important;
+    }
+
+    .cart {
+        width:120px;
     }
 
 }

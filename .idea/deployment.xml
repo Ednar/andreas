@@ -1,15 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" uploadOnCheckin="99d15142-4d25-4b04-9bd7-aa70f04b8325">
-    <serverData>
-      <paths name="IK1005">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/andreas" local="$PROJECT_DIR$" web="/andreas" />
-          </mappings>
-        </serverdata>
-      </paths>
-    </serverData>
-    <option name="myUploadOnCheckinName" value="IK1005" />
-  </component>
+  <component name="PublishConfigData" persistUploadOnCheckin="false" />
 </project>
