@@ -161,6 +161,12 @@ section {
     -webkit-transition: 0.5s;
 }
 
+a{
+    text-decoration: none;
+    border: none;
+    color:#000;
+
+}
 
 
 
