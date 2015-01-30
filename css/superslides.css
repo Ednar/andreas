@@ -37,9 +37,12 @@
 .slides-navigation a {
   position: absolute;
   display: block;
+  outline: 0!important;
 }
+
 .slides-navigation a.prev {
   left: 0;
+
 }
 .slides-navigation a.next {
   right: 0;
@@ -82,4 +85,8 @@
   background: #000;
   -moz-opacity: 0.6;
   opacity: 0.6;
+}
+
+.slides-pagination a:visited{
+  border: 1px solid #aaaaaa;
 }

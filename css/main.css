@@ -165,6 +165,12 @@ section {
     -webkit-transition: 0.5s;
 }
 
+a{
+    text-decoration: none;
+    border: none;
+    color:#000;
+
+}
 
 
 
@@ -474,6 +480,20 @@ section {
             margin-left:5px;
         }
 
+
+    footer img{
+        max-width: 15%;
+    }
+
+    footer p{
+        text-align: justify;
+        max-width: 55%;
+        
+    }
+
+    .social{
+        max-width:30% ;
+    }
 
 }
 
