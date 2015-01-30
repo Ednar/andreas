@@ -517,24 +517,24 @@ input:focus, textarea:focus {
     position: absolute;
     right:0px;
     top:0px;
-    color:#000;
-    opacity:0.7;
-    padding:15px;
-    background-color: #ddd;
-    font-size:30px;
-    width:40px;
-    text-align:center;
-    margin:0 auto;
-    height:36px;
-    transition: 0.3s;
-}
-
-.cart:hover {
-    background-color: #000;
-    transition: 0.3s;
     color:#fff;
-
+    padding:6px 15px;
+    width:40px;
+    margin:0 auto;
+    height:54px;
+    transition: 0.3s;
 }
+
+    .cart:hover {
+        background-color: darkcyan;
+        transition: 0.3s;
+        color:#000;
+
+    }
+
+    .cart span {
+        display:none!important;
+    }
 
 .buy-prints {
     float:left;
@@ -583,10 +583,25 @@ nav .fa {
         display:none !important;
     }
 
+    .cart span {
+        display: none!important;
+    }
+
+
+
+
 
 
 }
 
+@media all and (min-width: 700px) {
+    .main-wrapper {
+        float:none;
+        margin:0 auto;
+
+    }
+
+}
 
 @media all and (min-width:900px) {
 
@@ -603,9 +618,6 @@ nav .fa {
     footer {
         display:inline-block!important;
     }
-    #menu-logo-wrapper {
-        height:50px;
 
-    }
 
 }

@@ -452,7 +452,34 @@ section {
     .cart {
         padding-top:7px;
         padding-bottom:7px;
+        padding-left:0px;
+        padding-right:15px;
+        display:inline-block;
+        height:42px;
+        text-align:right;
+    }
+        .cart p {
+            font-family: Lato;
+            font-weight: 300;
+            font-size: 1em;
+            color:#fff;
+            padding-top:7px;
+        }
+
+        .cart img {
+            margin-left:5px;
+        }
+
+
+}
+
+@media all and (min-width: 1100px) {
+    .cart span {
+        display: inline-block!important;
     }
 
+    .cart {
+        width:120px;
+    }
 
 }
