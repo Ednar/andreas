@@ -165,11 +165,25 @@ section {
     -webkit-transition: 0.5s;
 }
 
+
+}
+#footer-info .fa {
+    padding-left:5px;
+    padding-right:5px;
+}
+#footer-info p {
+    text-align: center;
+    font-size:0.9em;
+    color:#a7a7a7;
+    padding:2% 0% 3% 1%;
+}
 a{
     text-decoration: none;
     border: none;
     color:#000;
 
+#footer-info p small {
+    color:#666;
 }
 
 
@@ -431,7 +445,7 @@ a{
         max-width: 600px;
         margin: 20px auto;
     }
-    #menu-logo .mobile-break {
+    .mobile-break {
         display:none;
     }
 
