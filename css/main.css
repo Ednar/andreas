@@ -496,10 +496,12 @@ a {
             font-size: 1em;
             color:#fff;
             padding-top:7px;
+
         }
 
         .cart img {
-            margin-left:5px;
+            margin-left:15px;
+            
         }
 
 
@@ -510,7 +512,7 @@ a {
     footer p{
         text-align: justify;
         max-width: 55%;
-        
+
     }
 
     .social{
