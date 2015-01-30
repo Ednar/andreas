@@ -22,7 +22,6 @@
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
         <script src="js/vendor/jquery-1.10.2.min.js"></script>
         <script src="js/vendor/prefixfree.min.js"></script>
-
         <script> //för att skjuta in och ut nav-meny på mobil
             $(document).ready(function () {
                 $("#nav-mobile").html($("#nav-main").html());
@@ -77,9 +76,11 @@
                             <li class="mobile-only"><a href="">Checkout<i class="fa fa-angle-double-right"></i></a></li>
                         </ul>
                     </nav>
+                    
                     <div id="nav-trigger">
-                        <a id="nav-toggle" href="#"><span></span></a>
+                        <a id="nav-toggle" class="nav-toggle-a" href="#"><div><span></span></div></a>
                     </div>
+                    
                     <nav id="nav-mobile"></nav>
                 </div>
                 <a href="">
