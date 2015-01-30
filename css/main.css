@@ -167,6 +167,34 @@ section {
 
 
 
+#footer-info {
+    float:left;
+    background:#000;
+    padding:1%;
+    width:100%;
+
+}
+#footer-info .fa {
+    padding-left:5px;
+    padding-right:5px;
+}
+#footer-info p {
+    text-align: center;
+    font-size:0.9em;
+    color:#a7a7a7;
+    padding:2% 0% 3% 1%;
+}
+a {
+    text-decoration: none;
+    border: none;
+    color: #000;
+}
+
+#footer-info p small {
+    color:#666;
+}
+
+
 
 /* ==========================================================================
    Helper classes
@@ -425,7 +453,7 @@ section {
         max-width: 600px;
         margin: 20px auto;
     }
-    #menu-logo .mobile-break {
+    .mobile-break {
         display:none;
     }
 
@@ -474,6 +502,20 @@ section {
             margin-left:5px;
         }
 
+
+    footer img{
+        max-width: 15%;
+    }
+
+    footer p{
+        text-align: justify;
+        max-width: 55%;
+        
+    }
+
+    .social{
+        max-width:30% ;
+    }
 
 }
 
