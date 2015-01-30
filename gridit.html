@@ -84,7 +84,7 @@
                 </div>
                 <a href="">
                 <aside class="cart">
-                    <i class="fa fa-shopping-cart"></i>
+                    <p><span>Checkout</span><img src="img/cart_small.png"></p>
                 </aside>
                 </a>
 
@@ -114,26 +114,6 @@
 
 
         </script>
-        <script>
-            Modernizr.load([{
-            test: Modernizr.touch,
-            yep: 'js/jquery.hammer.js',
-            complete: function () {
-
-            if (Modernizr.touch) {
-
-            $('#slides').hammer().on('swipeleft', function () {
-            $(this).superslides('animate', 'next');
-            });
-
-            $('#slides').hammer().on('swiperight', function () {
-            $(this).superslides('animate', 'prev');
-            });
-
-            }
-            }
-
-            }]);</script>
         <footer>
             <img class="footer-logo" src="img/digimarc.png">
             <p>
