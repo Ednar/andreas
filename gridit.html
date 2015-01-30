@@ -104,7 +104,7 @@
             <div class ="slides-container">
                 <img src="img/newyork.jpg">
                 <img src="img/graffiti.jpg">
-                <img src="img/roads.jpg">
+                <img src="img/ocean.jpg">
 
             </div>
             <nav class="slides-navigation">
@@ -117,11 +117,10 @@
         <script>
             $(function() {
                 $('#slides').superslides({
-                    hashchange: true,
+                    hashchange: false,
                     animation:'fade',
                     animation_speed: 1000,
-                    inherit_height_from: '.slides-wrapper',
-                    play:5000
+                    inherit_height_from: '.slides-wrapper'
                 });
             });
         </script>
