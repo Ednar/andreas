@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+    <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+    <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+    <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+    <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Photographer Anderas Karlsson</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,300italic,400italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/mobile.css">
+        <link rel="stylesheet" href="css/old-main.css">
+        <link rel="stylesheet" href="css/superslides.css">
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="js/vendor/jquery-1.10.2.min.js"></script>
+        <script src="js/vendor/prefixfree.min.js"></script>
+        <script> //för att skjuta in och ut nav-meny på mobil
+            $(document).ready(function () {
+                $("#nav-mobile").html($("#nav-main").html());
+                $("#nav-toggle").click(function () {
+                    if ($("nav#nav-mobile ul").hasClass("expanded")) {
+                        $("nav#nav-mobile ul.expanded").removeClass("expanded").slideUp(250);
+                        //$(this).removeClass("open");
+                    } else {
+                        $("nav#nav-mobile ul").addClass("expanded").slideDown(250);
+                        //$(this).addClass("open");
+                    }
+                });
+            });
+        </script>
+        <script> // för att animera hamburgaren vid klick/pet
+            
+            $(function() {
+                $("#nav-toggle").click(function() {
+                    $("#nav-toggle").toggleClass("active")
+                });
+            });
+        </script>
+    </head>
+
+    <body>
+
+    <div class="slides-wrapper">
+
+        <div id ="slides">
+
+            <header style="z-index:99; position:relative; width:100%">
+                <div id ="menu-logo-wrapper">
+
+                    <div id ="menu-logo">
+                        <img src="img/logo_kropp.png" />
+                        <h1>
+                            <small>
+                                <span class="thin">Photographer</span>
+                                <span class="mobile-break"><br></span>
+                            </small>
+                            <span class="bold">Andreas Karlsson</span>
+                        </h1>
+                    </div>
+                    <nav id="nav-main">
+                        <ul>
+                            <li><a href="">Home<i class="fa fa-home"></i></a></li>
+                            <li><a href="">Buy prints<i class="fa fa-picture-o"></i></a></li>
+                            <li><a href="">About<i class="fa fa-user"></i></a></li>
+                            <li><a href="">Portfolio<i class="fa fa-external-link"></i></a></li>
+                            <li><a href="">Contact<i class="fa fa-comments"></i></a></li>
+                            <li class="mobile-only"><a href="">View Cart<i class="fa fa-shopping-cart"></i></a></li>
+                            <li class="mobile-only"><a href="">Checkout<i class="fa fa-angle-double-right"></i></a></li>
+                        </ul>
+                    </nav>
+                    
+                    <div id="nav-trigger">
+                        <a id="nav-toggle" class="nav-toggle-a" href="#"><div><span></span></div></a>
+                    </div>
+                    
+                    <nav id="nav-mobile"></nav>
+                </div>
+                <a href="">
+                <aside class="cart">
+                    <p><span>Checkout</span><img src="img/cart_small.png"></p>
+                </aside>
+                </a>
+
+            </header>
+            <div class ="slides-container">
+                <img src="img/newyork.jpg">
+                <img src="img/graffiti.jpg">
+                <img src="img/ocean.jpg">
+
+            </div>
+            <nav class="slides-navigation">
+                <a href="#" class="next"><img src="img/arrow_right.png"></a>
+                <a href="#" class="prev"><img src="img/arrow_left.png"></a>
+            </nav>
+        </div>
+
+        <script src="js/jquery.superslides.js" type="text/javascript" charset="utf-8"></script>
+        <script>
+            $(function() {
+                $('#slides').superslides({
+                    hashchange: false,
+                    animation:'fade',
+                    animation_speed: 1000,
+                    inherit_height_from: '.slides-wrapper'
+                });
+            });
+
+
+        </script>
+        <footer>
+            <img class="footer-logo" src="img/digimarc.png">
+            <p>
+                Images Digitally Watermarked by Digimarc | Images on the website have been digitally
+                     watermarked with ownership and usage information. Digimarc and the Digimarc logo
+                     are registered trademarks of Digimarc Corporation. The "Digimarc-Enabled" Web Button
+            is a trademark of Digimarc Corporation, used with permission.
+            </p>
+            <div class="social">
+                <a href=""><img src="img/social/500px.png"></a>
+                <a href=""><img src="img/social/fb.png"></a>
+                    <a href=""><img src="img/social/instagram.png"></a>
+            </div>
+
+        </footer>
+
+    </div>
+
+    <div class="wrapper">
+
+        <main>
+            <div class="main-wrapper">
+                <div class="buy-prints">
+                   <div class="intro-text"><h2>
+                            <span class="thin row-1">Fantastic</span><br>
+                            <span class="bold row-2">Landscape</span>
+                            <span class="italic thin row-2">&amp; </span>
+                            <span class="light row-2">Street</span><br>
+                            <span class="light row-3">Photography</span>
+                        </h2>
+                        <p class="light left">I am dedicated to taking fine personal photographies from northern Europe. Click to browse the collection and purchase your personal favourite</p>
+                    </div>
+                    <div class="button">
+                        <p><span class="bold">Buy Prints</span></p>
+                    </div>
+                </div>
+                <div class="about">
+                    <section class="soft-contrast about-me">
+
+                            <h2 class="thin">About me</h2>
+                            <p>Not until my hockey carreer had come to an end, did I make up my mind.
+                                I wanted to try something completely new. I searched deep within myself
+                                as well as around the world for the moment to seize next opportunity.
+                                <br>
+                                <br>
+                                My first aquaintance with a camera was truly love at first sight,
+                                and I knew I had found the tool I was looking for. Today, I can proudly
+                                present that my photographs have been sold as both cd covers and
+                                independent prints, as well as contributed in an exhibition. Furthermore,
+                                I have been hired as photographer for a variety of events and private occasions.</p>
+
+                    </section>
+                </div>
+            </div>
+        </main>
+        <div id="form-main">
+            <div id="form-div">
+                <form class="form" id="form1">
+                    <h2 class="thin">Contact me</h2>
+                    <p class="name">
+                        <input name="name" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Name" id="name" />
+                    </p>
+
+                    <p class="email">
+                        <input name="email" type="text" class="validate[required,custom[email]] feedback-input" id="email" placeholder="Email" />
+                    </p>
+
+                    <p class="text">
+                        <textarea name="text" class="validate[required,length[6,300]] feedback-input" id="comment" placeholder="Comment"></textarea>
+                    </p>
+                    <div class="submit">
+                        <input type="submit" value="SEND" id="submit-button"/>
+                        <div class="ease"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <div id="footer-info">
+        <p><i class="fa fa-copyright"></i> Andreas Karlsson, all rights reserved. <br>
+            <i class="fa fa-phone"> </i> +46 (0)73-930 86 62<span class="mobile-break"><br></span>
+            <i class="fa fa-envelope-o"></i> info@andreas-karlsson.net<br>
+            <br>
+            <small>Website by Sans Webbutveckling HB </small></p>
+    </div>
+
+    </body>
+</html>

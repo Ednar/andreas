@@ -1,4 +1,8 @@
 # Include your project-specific ignores in this file
 # Read about how to use .gitignore: https://help.github.com/articles/ignoring-files
+<<<<<<< HEAD
 nbproject/
 nbproject/project.properties/
+=======
+/nbproject/private/
+>>>>>>> 4981a022f13573db79c3c8865df88c835b028605
