@@ -17,12 +17,17 @@ class Controller {
         $this->twig = new Twig_Environment($this->loader);
     }
 
-    public function getAllPictures() {
+    public function getAllPrints() {
         $pictures = $this->model->getAllPictures();
         $template = $this->twig->loadTemplate('test.twig');
         $template->display(array(
            'pictures'=>$pictures
         ));
+    }
+
+    public function showStart() {
+        $template = $this->twig->loadTemplate('start.twig');
+        $template->display(array());
     }
 
 }

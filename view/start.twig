@@ -1,4 +1,6 @@
+{% extends "base.twig" %}
 
+{% block content %}
 
 <div class="intro-text"><h2>
         <span class="thin row-1">Fantastic</span><br>
@@ -41,7 +43,7 @@
     <script>
         $(function () {
             $('#slides').superslides({
-                hashchange: true,
+                hashchange: false,
                 animation: 'fade',
                 animation_speed: 'slow',
                 inherit_height_from: '.slides-wrapper'
@@ -50,3 +52,5 @@
     </script>
 
 </div>
+
+{% endblock %}

@@ -44,20 +44,22 @@
 <div id="main-wrapper">
     <header id="topHeader">
         <div id="menu-logo">
+            <a href="index.php">
             <img src="img/logo_kropp.png" alt="AK"/>
 
             <h1>
+
                 <small>
                     <span class="thin">Photographer</span>
                     <span class="mobile-break"><br></span>
                 </small>
                 <span class="bold">Andreas Karlsson</span>
-            </h1>
+               </h1> </a>
         </div>
         <nav id="nav-main">
             <ul>
-                <li><a href=""><i class="fa fa-home fa-fw"></i>Home</a></li>
-                <li><a href=""><i class="fa fa-picture-o fa-fw"></i>Buy prints</a></li>
+                <li><a href="index.php"><i class="fa fa-home fa-fw"></i>Home</a></li>
+                <li><a href="index.php?getAllPrints"><i class="fa fa-picture-o fa-fw"></i>Buy prints</a></li>
                 <li><a href=""><i class="fa fa-user fa-fw"></i>About</a></li>
                 <li><a href=""><i class="fa fa-external-link fa-fw"></i>Portfolio</a></li>
                 <li><a href=""><i class="fa fa-comments fa-fw"></i>Contact</a></li>
@@ -122,9 +124,9 @@
 
 </div>
 
-<div style="width:960px; position: absolute; top:10%; left:25%;">
+
     {% block content %}} {% endblock %}
-</div>
+
 </body>
 
 </html>

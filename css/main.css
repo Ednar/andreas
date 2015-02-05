@@ -207,6 +207,11 @@ html, body {
         padding:0px;
     }
 
+    #menu-logo a{
+        color: #ffffff;
+        text-decoration: none;
+    }
+
 header#topHeader {
     position:absolute;
     background-color: rgba(0,0,0,0.8);

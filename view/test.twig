@@ -1,7 +1,11 @@
 {% extends "base.twig" %}
 
+
 {% block content %}
-    {% for picture in pictures %}
-        <p>{{ picture.name }} : {{ picture.desc }}</p>
-    {% endfor %}
+    <div class="row">
+        {% for picture in pictures %}
+            {{ picture.name }}
+            {{ picture.desc }}
+        {% endfor %}
+    </div>
 {% endblock %}
