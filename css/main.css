@@ -278,6 +278,20 @@ header#topHeader {
     text-decoration: none;
 }
 
+main {
+    position: relative;
+    margin-top: 55px;
+    width: 85%;
+    float: left;
+}
+
+#left-cat-nav {
+    position: relative;
+    margin-top: 55px;
+    width: 15%;
+    float: left;
+}
+
 /* ============================================================================
     Responsive Hamburger Navigation
     =========================================================================*/
