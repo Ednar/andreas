@@ -18,7 +18,7 @@ class Controller {
     }
 
     public function getAllPrints() {
-        $pictures = $this->model->getAllPictures();
+        $pictures = $this->model->getAllPrints();
         $template = $this->twig->loadTemplate('test.twig');
         $template->display(array(
            'pictures'=>$pictures
