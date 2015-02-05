@@ -8,10 +8,11 @@
 
 interface TableGateway {
 
-    public function getAllPictures();
-    public function addPicture();
-    public function removePicture();
-    public function updatePicture();
-    public function getAllPicturesByCategory($category);
+    public function getAllPrints();
+    public function getPrint();
+    public function addPrint();
+    public function removePrint();
+    public function updatePrint();
+    public function getPrintsByCategory($category);
 
 }
