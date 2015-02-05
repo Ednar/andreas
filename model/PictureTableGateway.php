@@ -8,7 +8,11 @@ class PictureTableGateway implements TableGateway{
 
       }
 
-    public function getAllPictures() {
+       public function addPrint() {
+        
+    }
+
+    public function getAllPrints() {
         try {
             $url = 'mysql:host=localhost;dbname=andreas';
             $username = 'andreas';
@@ -24,25 +28,23 @@ class PictureTableGateway implements TableGateway{
             $pdocon = null;
             throw new Exception('Fel någonstans');
         }
+        
     }
 
-    public function addPicture()
-    {
-        // TODO: Implement addPicture() method.
+    public function getPrint() {
+        
     }
 
-    public function removePicture()
-    {
-        // TODO: Implement removePicture() method.
+    public function getPrintsByCategory($category) {
+        
     }
 
-    public function updatePicture()
-    {
-        // TODO: Implement updatePicture() method.
+    public function removePrint() {
+        
     }
 
-    public function getAllPicturesByCategory($category)
-    {
-        // TODO: Implement getAllPicturesByCategory() method.
+    public function updatePrint() {
+        
     }
+
 }
