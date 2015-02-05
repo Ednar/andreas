@@ -2,13 +2,13 @@
 
 include 'TableGateway.php';
 
-class PictureTableGateway implements TableGateway{
+class PictureTableGateway implements ITableGateway {
 
     function __construct() {
+        
+    }
 
-      }
-
-       public function addPrint() {
+    public function addPrint() {
         
     }
 
@@ -28,7 +28,6 @@ class PictureTableGateway implements TableGateway{
             $pdocon = null;
             throw new Exception('Fel någonstans');
         }
-        
     }
 
     public function getPrint() {
