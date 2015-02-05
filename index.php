@@ -35,7 +35,6 @@
 <![endif]-->
 
 <!-- Our content -->
-
 <header id="topHeader">
     <div id="menu-logo" >
         <img src="img/logo_kropp.png" alt="AK"/>
@@ -83,9 +82,30 @@
         </nav>
     </aside>
 </header>
+<div class="intro-text"><h2>
+        <span class="thin row-1">Fantastic</span><br>
+        <span class="bold row-2">Landscape</span>
+        <span class="italic thin row-2">&amp; </span>
+        <span class="light row-2">Street</span><br>
+        <span class="light row-3">Photography</span>
+    </h2>
+    <div class="btn">
+        Buy prints
+    </div>
+</div>
+
+<div class="watermark">
+    <img class="footer-logo" src="img/digimarc.png" alt="Digimarc logo">
+    <p>
+        Images Digitally Watermarked by Digimarc | Images on the website have been digitally
+        watermarked with ownership and usage information. Digimarc and the Digimarc logo
+        are registered trademarks of Digimarc Corporation. The "Digimarc-Enabled" Web Button
+        is a trademark of Digimarc Corporation, used with permission.
+    </p>
+
+</div>
 
     <div class="slides-wrapper">
-
         <div id ="slides">
             <div class ="slides-container">
                 <img src="img/newyork.jpg">
@@ -108,7 +128,9 @@
                 });
             });
         </script>
+
     </div>
+
 
 
     <script> //för att skjuta in och ut nav-meny på mobil
@@ -134,6 +156,16 @@
     });
 
 </script>
+
+<p>This is teh content</p>
+<p>This is teh content</p>
+<p>This is teh content</p><p>This is teh content</p>
+<p>This is teh content</p><p>This is teh content</p>
+<p>This is teh content</p>
+
+<p>This is teh content</p>
+
+
 
 </body>
 

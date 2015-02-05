@@ -173,7 +173,8 @@ html, body {
 
 .wrapper{
     width:100%;
-    position:relative;
+    position:absolute;
+    top:0px;
 
     -webkit-transition:all 1.0s ease-in-out;
     -moz-transition:all 1.0s ease-in-out;
@@ -194,7 +195,6 @@ html, body {
     top:5px;
 }
     #logo img, #menu-logo img {
-        position:relative;
         top:6px;
         height:35px;
         float:left;
@@ -212,10 +212,11 @@ html, body {
     }
 
 header#topHeader {
-    position:absolute;
+    position:fixed;
     background-color: rgba(0,0,0,0.8);
     width: 100%;
     height:55px;
+    top:0px;
     z-index:999;
 }
 
@@ -228,10 +229,53 @@ header#topHeader {
 }
 
 .slides-wrapper {
-    height:70vh;
-    height:70vm;
-    min-height: 300px;
+    height:100vh;
+}
+.watermark{
+    display: none;
+}
 
+.prev, .next {
+    display:none;
+}
+
+.intro-text{
+    position: fixed;
+    top:25%;
+    width:100%;
+    text-align:center;
+    z-index: 5;
+    color:#fff;
+}
+
+.btn {
+    margin:0 auto;
+    background: #3498db;
+    background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+    background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+    background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+    background-image: -o-linear-gradient(top, #3498db, #2980b9);
+    background-image: linear-gradient(to bottom, #3498db, #2980b9);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    font-family: Lato;
+    font-weight:300;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    max-width:200px;
+}
+
+.btn:hover {
+    background: #3cb0fd;
+    background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+    text-decoration: none;
 }
 
 /* ============================================================================
@@ -320,7 +364,8 @@ nav#nav-mobile ul {
     background-color: rgba(25, 25, 25, 1);
     -moz-opacity: 1; }
 nav#nav-mobile li {
-    display: block;
+    display: inline-block;
+    float:left;
     padding: 0px 0;
     margin: 0 0px;
     width:100%;
@@ -426,6 +471,7 @@ nav .fa {
 
     }
 }
+
 
 
 /* ==========================================================================
@@ -620,15 +666,29 @@ nav .fa {
 }
 
 /*========================================================================================
-    Breakpoint at 450px min width
+    Breakpoint at 430px min width
 ========================================================================================*/
 
-@media all and (min-width: 450px) {
+@media all and (min-width: 430px) {
     #logo h1 {
         display:inline-block;
     }
+
+    nav#nav-mobile li {
+        width: 50%;
+    }
 }
 
+/*========================================================================================
+    Breakpoint at 430px min width
+========================================================================================*/
+
+@media all and (min-width: 800px) {
+    nav#nav-mobile li {
+        width: 33%;
+    }
+
+}
 /*========================================================================================
     Breakpoint at 1024px min width
 ========================================================================================*/
@@ -676,4 +736,46 @@ nav .fa {
     nav#nav-toggle, #nav-trigger {
         display: none!important;
     }
+
+    .watermark{
+        display: inline-block;
+        position: absolute;
+        bottom:0px;
+        background-color: rgba(0,0,0,0.8);
+        z-index: 3;
+        width: 100%;
+    }
+
+    .watermark img{
+        max-width: 150px;
+        float: left;
+        margin: 15px;
+    }
+    .watermark p{
+        max-width: 80%;
+        float: left;
+        color: #555;
+        font-size: 0.7em;
+        margin-left: 15px;
+        margin-top: 15px;
+    }
+
+    .prev, .next {
+        display:inline-block;
+    }
+
+    .slides-pagination {
+        position: absolute;
+        bottom:75px !important;
+
+    }
+
+    .intro-text {
+        display: none;
+    }
+
+    #slides img {
+        opacity:1!important;
+    }
+
 }
