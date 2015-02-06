@@ -4,9 +4,6 @@ include 'TableGateway.php';
 
 class PictureTableGateway implements ITableGateway {
 
-    function __construct() {
-        
-    }
 
     public function insertPrint($name, $description, $price, $pictureURL) {
         $pdo = DBConncetion::connect();
