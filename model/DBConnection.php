@@ -1,9 +1,4 @@
 <?php
-/**
- * Description of DBConncetion
- *
- * @author noworries
- */
 
 include_once 'IConnectToDatabase.php';
 class DBConncetion implements IConnectToDatabase {
@@ -23,7 +18,6 @@ class DBConncetion implements IConnectToDatabase {
         } catch (PDOException $ex) {
             throw new Exception('Fel vid databasanslutning: ', $ex->getMessage());
         }
-        
     }
 
 }
