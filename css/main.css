@@ -191,13 +191,14 @@ html, body {
     top:5px;
 }
     #logo img, #menu-logo img {
-        top:6px;
+        display:none;
+        position: relative;
+        top:7px;
         height:35px;
         float:left;
     }
 
     #logo h1{
-        display:none;
         position:relative;
         left:10px;
         top:0px;
@@ -292,6 +293,97 @@ main {
     width: 15%;
     float: left;
 }
+
+footer {
+    width:100%;
+    box-sizing: border-box;
+    background-color: #222;
+    color:#c0c0c0;
+    font-size:1em;
+    font-weight:300;
+    float:left;
+    padding:2% 5%;
+    }
+
+    .terms, .socialMedia, .contact, .websiteInformation {
+        float:left;
+        width:100%;
+        margin-bottom:25px;
+    }
+
+    #footerContent {
+        margin:0 auto;
+        max-width:1024px;
+
+    }
+
+    footer span {
+        font-family: Lato;
+        font-size: 0.8em;
+        font-weight: 100!important;
+    }
+
+    footer h3 {
+        color:#fff;
+        font-weight:500;
+        text-transform: capitalize;
+        font-size: 1.2em!important;
+        margin:0px;
+        padding:2px 0;
+}
+
+/* ============================================================================
+    Print info
+    =========================================================================*/
+
+#infoWrapper {
+    background-color: #f0f0f0;
+    width:100%;
+    padding-top:120px;
+}
+
+#infoContent {
+    background-color: #f0f0f0;
+    width:25%;
+    height:0px;
+    padding-bottom: 25%;
+    float:left;
+}
+
+.printImage {
+    width:25%;
+    margin-bottom:50px;
+    float:left;
+}
+
+
+
+.printImage img {
+    max-height:400px;
+
+}
+
+.printInfo {
+    text-align: center;
+    width:20%;
+    float:left;
+}
+
+    .printInfo h2 {
+        margin:0 auto;
+        text-transform: none;
+        font-weight: 400 !important;
+    }
+
+    .printInfo p {
+        margin: 0 auto;
+        padding:20px;
+        font-weight: 300;
+    }
+
+.purchaseOption {}
+
+
 
 /* ============================================================================
     Responsive Hamburger Navigation
@@ -681,12 +773,13 @@ nav .fa {
 }
 
 /*========================================================================================
-    Breakpoint at 430px min width
+    Breakpoint at 450px min width
 ========================================================================================*/
 
-@media all and (min-width: 430px) {
-    #logo h1 {
-        display:inline-block;
+@media all and (min-width: 450px) {
+
+    #logo img, #menu-logo img {
+        display: inline-block;
     }
 
     nav#nav-mobile li {
@@ -695,7 +788,18 @@ nav .fa {
 }
 
 /*========================================================================================
-    Breakpoint at 430px min width
+    Breakpoint at 700px min width
+========================================================================================*/
+
+@media all and (min-width: 700px) {
+    .terms, .socialMedia, .contact, .websiteInformation {
+        width:50%;
+    }
+
+}
+
+/*========================================================================================
+    Breakpoint at 800px min width
 ========================================================================================*/
 
 @media all and (min-width: 800px) {
@@ -703,7 +807,10 @@ nav .fa {
         width: 33%;
     }
 
+
 }
+
+
 /*========================================================================================
     Breakpoint at 1024px min width
 ========================================================================================*/
@@ -791,6 +898,10 @@ nav .fa {
 
     #slides img {
         opacity:1!important;
+    }
+
+    .terms, .socialMedia, .contact, .websiteInformation {
+        width:25%;
     }
 
 }

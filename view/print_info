@@ -1,0 +1,23 @@
+{% extends "base.twig" %}
+
+
+{% block content %}
+
+    <div id="infoWrapper">
+
+        <div class="printImage">
+
+        </div>
+
+        <div id="#infoContent">
+        <div class="printInfo">
+
+        </div>
+        <div class="purchaseOptions">
+
+        </div>
+        </div>
+
+    </div>
+
+{% endblock %}
