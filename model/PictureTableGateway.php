@@ -2,49 +2,79 @@
 
 include 'TableGateway.php';
 
-class PictureTableGateway implements TableGateway{
+class PictureTableGateway implements ITableGateway {
 
     function __construct() {
-
-      }
-
-       public function addPrint() {
         
+    }
+
+    public function insertPrint($name, $description, $price, $pictureURL) {
+        $pdo = DBConncetion::connect();
+        $sql = 'INSERT into Print (name, description, price, pictureURL)'
+                . 'VALUES (:name, :description, :price, :pictureURL)';
+        $statement = $pdo->prepare($sql);
+        $statement->bindParam(':name', $name, PDO::PARAM_STR);
+        $statement->bindParam(':description', $description, PDO::PARAM_STR);
+        $statement->bindParam(':price', $price, PDO::PARAM_STR);
+        $statement->bindParam(':pictureURL', $pictureURL, PDO::PARAM_STR);
+        $statement->execute();
+        $pdo = NULL;
     }
 
     public function getAllPrints() {
-        try {
-            $url = 'mysql:host=localhost;dbname=andreas';
-            $username = 'andreas';
-            $password = 'andreas';
-            $pdocon = new PDO($url, $username, $password);
-            $pdoStatement = $pdocon->prepare('SELECT * from PICTURES');
-            $pdoStatement->execute();
-
-            $pictures = $pdoStatement->fetchAll();
-            $pdocon = null;
-            return $pictures;
-        } catch (PDOException $e) {
-            $pdocon = null;
-            throw new Exception('Fel någonstans');
-        }
-        
+        $pdo = DBConncetion::connect();
+        $sql = 'SELECT * FROM Print';
+        $statement = $pdo->prepare($sql);
+        $statement->execute();
+        $allPrints = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $pdo = NULL;
+        return $allPrints;
     }
 
-    public function getPrint() {
-        
+    public function getPrint($printID) {
+        $pdo = DBConncetion::connect();
+        $sql = 'SELECT * FROM Print WHERE printID = :printID';
+        $statement = $pdo->prepare($sql);
+        $statement->bindParam(':printID', $printID, PDO::PARAM_STR);
+        $statement->execute();
+        $print = $statement->fetch(PDO::FETCH_ASSOC);
+        $pdo = NULL;
+        return $print;
     }
 
     public function getPrintsByCategory($category) {
-        
+        $pdo = DBConncetion::connect();
+        $sql = 'SELECT * FROM Print WHERE Category_categoryID IN( '
+                . 'SELECT categoryID FROM Category WHERE name = :category)';
+        $statement = $pdo->prepare($sql);
+        $statement->bindParam(':category', $category, PDO::PARAM_STR);
+        $statement->execute();
+        $printsByCategory = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $pdo = NULL;
+        return $printsByCategory;
     }
 
-    public function removePrint() {
-        
+    public function deletePrint($printID) {
+        $pdo = DBConncetion::connect();
+        $sql = 'DELETE FROM Print WHERE printID = :printID';
+        $statement = $pdo->prepare($sql);
+        $statement->bindParam(':printID', $printID, PDO::PARAM_STR);
+        $statement->execute();
+        $pdo = NULL;
     }
 
-    public function updatePrint() {
-        
+    public function updatePrint($printID, $name, $description, $price, $pictureURL) {
+        $pdo = DBConncetion::connect();
+        $sql = 'UPDATE Print SET name = :name, description = :description, '
+                . 'price = :price, pictureURL = :pictureURL WHERE printID = :printID';
+        $statement = $pdo->prepare($sql);
+        $statement->bindParam(':name', $name, PDO::PARAM_STR);
+        $statement->bindParam(':description', $description, PDO::PARAM_STR);
+        $statement->bindParam(':price', $price, PDO::PARAM_STR);
+        $statement->bindParam(':pictureURL', $pictureURL, PDO::PARAM_STR);
+        $statement->bindParam(':printID', $printID, PDO::PARAM_STR);
+        $statement->execute();
+        $pdo = NULL;
     }
 
 }
