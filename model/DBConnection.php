@@ -2,22 +2,30 @@
 
 include_once 'IConnectToDatabase.php';
 class DBConncetion implements IConnectToDatabase {
-    private static $host = IConnectToDatabase::HOST;
-    private static $user = IConnectToDatabase::USER;
-    private static $passwd = IConnectToDatabase::PASSWD;
-    
-    public static function connect() {
+    private $host = IConnectToDatabase::HOST;
+    private $user = IConnectToDatabase::USER;
+    private $passwd = IConnectToDatabase::PASSWD;
+    private $pdo;
+
+    public function __construct() {
         try {
-            if(is_null(self::PDO)) {
-                self::$pdo = new PDO(self::$host, self::$user, self::$passwd);
-                return self::$pdo;
-            }
-            else {
-                return self::$pdo;
-            }
-        } catch (PDOException $ex) {
-            throw new Exception('Fel vid databasanslutning: ', $ex->getMessage());
+            $this->pdo = new PDO($this->host, $this->user, $this->passwd);
+        } catch (PDOException $e) {
+            throw new Exception('Fel vid databasanslutning');
         }
     }
 
+    public function connect() {
+        try {
+            if(is_null($this->pdo)) {
+                $this->pdo = new PDO($this->host, $this->user, $this->passwd);
+                return $this->pdo;
+            } else {
+                return $this->pdo;
+            }
+        }
+        catch (PDOException $ex) {
+            throw new Exception('Fel vid databasanslutning');
+        }
+    }
 }

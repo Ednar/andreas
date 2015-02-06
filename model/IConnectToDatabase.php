@@ -9,5 +9,5 @@ interface IConnectToDatabase {
     CONST USER = 'andreas';
     CONST PASSWD = 'andreas';
     
-    public static function connect();
+    public function connect();
 }

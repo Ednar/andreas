@@ -1,12 +1,22 @@
 <?php
 
 include 'ITableGateway.php';
+include 'DBConnection.php';
 
 class PictureTableGateway implements ITableGateway {
 
+    private $database;
+
+    public function __construct() {
+        try {
+            $this->database = new DBConncetion();
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
 
     public function insertPrint($name, $description, $price, $pictureURL) {
-        $pdo = DBConncetion::connect();
+        $pdo = $this->database->connect();
         $sql = 'INSERT into Print (name, description, price, pictureURL)'
                 . 'VALUES (:name, :description, :price, :pictureURL)';
         $statement = $pdo->prepare($sql);
@@ -19,7 +29,7 @@ class PictureTableGateway implements ITableGateway {
     }
 
     public function getAllPrints() {
-        $pdo = DBConncetion::connect();
+        $pdo = $this->database->connect();
         $sql = 'SELECT * FROM Print';
         $statement = $pdo->prepare($sql);
         $statement->execute();
@@ -29,7 +39,7 @@ class PictureTableGateway implements ITableGateway {
     }
 
     public function getPrint($printID) {
-        $pdo = DBConncetion::connect();
+        $pdo = $this->database->connect();
         $sql = 'SELECT * FROM Print WHERE printID = :printID';
         $statement = $pdo->prepare($sql);
         $statement->bindParam(':printID', $printID, PDO::PARAM_STR);
@@ -40,7 +50,7 @@ class PictureTableGateway implements ITableGateway {
     }
 
     public function getPrintsByCategory($category) {
-        $pdo = DBConncetion::connect();
+        $pdo = $this->database->connect();
         $sql = 'SELECT * FROM Print WHERE Category_categoryID IN( '
                 . 'SELECT categoryID FROM Category WHERE name = :category)';
         $statement = $pdo->prepare($sql);
@@ -52,7 +62,7 @@ class PictureTableGateway implements ITableGateway {
     }
 
     public function deletePrint($printID) {
-        $pdo = DBConncetion::connect();
+        $pdo = $this->database->connect();
         $sql = 'DELETE FROM Print WHERE printID = :printID';
         $statement = $pdo->prepare($sql);
         $statement->bindParam(':printID', $printID, PDO::PARAM_STR);
@@ -61,7 +71,7 @@ class PictureTableGateway implements ITableGateway {
     }
 
     public function updatePrint($printID, $name, $description, $price, $pictureURL) {
-        $pdo = DBConncetion::connect();
+        $pdo = $this->database->connect();
         $sql = 'UPDATE Print SET name = :name, description = :description, '
                 . 'price = :price, pictureURL = :pictureURL WHERE printID = :printID';
         $statement = $pdo->prepare($sql);
