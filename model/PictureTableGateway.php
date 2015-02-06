@@ -1,6 +1,6 @@
 <?php
 
-include 'TableGateway.php';
+include 'ITableGateway.php';
 
 class PictureTableGateway implements ITableGateway {
 
