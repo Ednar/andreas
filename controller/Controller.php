@@ -6,6 +6,7 @@ require_once 'model/ShoppingCart.php';
 require_once 'model/Product.php';
 session_start();
 
+
 class Controller {
 
     private $model;
@@ -51,28 +52,92 @@ class Controller {
 
     public function addToCart() {
         $this->savePrintInCart($_POST['printID']);
-        $template = $this->twig->loadTemplate('shopping_cart.twig');
-        $template->display(array(
-            'cart' => $this->shoppingCart
-        ));
+        $this->showCart();
     }
 
     private function savePrintInCart($printID) {
+        $this->getCartIfSet();
+        $print = $this->model->getPrint($printID);
+
+
+        // TODO fixa det här
+        $frames = $this->model->getAllFrames();
+        $print['frame'] = $frames[$_POST['frameID']];
+
+        $sizes = $this->model->getSizeForPrint($printID);
+        $print['size'] = $sizes[0][1];
+        echo $sizes[0][1];
+        echo $sizes[0][2];
+
+        $print['frameID'] = $_POST['frameID'];
+        $print['sizeID'] = $_POST['sizeID'];
+        $print['amount'] = 1;
+
+        $uniqueID = $printID.$print['frameID'].$print['sizeID'];
+        $uniqueID = trim($uniqueID);
+        if (isset($this->shoppingCart[$uniqueID])) {
+            $this->shoppingCart[$uniqueID]['amount']++;
+        } else {
+            $this->shoppingCart[$uniqueID] = $print;
+        }
+        $this->saveCartToSession();
+
+    }
+
+    private function getCartIfSet() {
         if (isset($_SESSION['shopping_cart'])) {
             $this->shoppingCart = $_SESSION['shopping_cart'];
         } else {
             $_SESSION['shopping_cart'] = $this->shoppingCart;
         }
-        $print = $this->model->getPrint($printID);
-        $print['frameID'] = $_POST['frameID'];
-        $print['sizeID'] = $_POST['sizeID'];
-        $uniqueID =  $printID . $print['frameID'] . $print['sizeID'];
-        if (isset($this->shoppingCart[$uniqueID])) {
-            echo 'Du lade till en till så du vet det';
-        } else {
-            $this->shoppingCart[$uniqueID] = $print;
-        }
+    }
+
+    private function saveCartToSession() {
         $_SESSION['shopping_cart'] = $this->shoppingCart;
     }
+
+    public function showCart() {
+        $this->getCartIfSet();
+        $sum = 0;
+        foreach ($this->shoppingCart as $row) {
+            $sum += $row['price'] * $row['amount'];
+        }
+        if (empty($this->shoppingCart)) {
+            $template = $this->twig->loadTemplate('empty_cart.twig');
+        } else {
+            $template = $this->twig->loadTemplate('shopping_cart.twig');
+        }
+        $template->display(array(
+            'cart' => $this->shoppingCart,
+            'sum' => $sum
+        ));
+    }
+
+    public function decreaseAmount($uniqueID) {
+        $this->getCartIfSet();
+        if (isset($this->shoppingCart[$uniqueID])) {
+            $this->shoppingCart[$uniqueID]['amount']--;
+            if ( $this->shoppingCart[$uniqueID]['amount'] <= 0) {
+                unset( $this->shoppingCart[$uniqueID]);
+            }
+        }
+        $this->saveCartToSession();
+        $this->showCart();
+    }
+
+    public function increaseAmount($uniqueID) {
+        $this->getCartIfSet();
+        if (isset($this->shoppingCart[$uniqueID])) {
+            $this->shoppingCart[$uniqueID]['amount']++;
+        }
+        $this->saveCartToSession();
+        $this->showCart();
+    }
+
+    public function nuke() {
+        session_unset();
+        session_destroy();
+    }
+
 
 }

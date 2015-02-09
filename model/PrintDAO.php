@@ -47,6 +47,8 @@ class PrintDAO implements ITableGateway {
     public function getPrint($printID) {
         $pdo = $this->database->connect();
         $sql = 'SELECT * FROM Print
+                LEFT JOIN picture
+                ON picture.pictureID = Print.pictureID
                 WHERE Print.printID = :printID'
         ;
         $statement = $pdo->prepare($sql);
