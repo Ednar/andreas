@@ -2,10 +2,10 @@
 
 
 {% block content %}
-    <div class="row">
+        <div class="main-content">
         {% for picture in pictures %}
             {{ picture.name }}
-            {{ picture.desc }}
+           <a href="index.php?printInfo/{{ picture.printID }}"><img src="img/{{ picture.url }}" alt="{{ picture.alt }}"></a>
         {% endfor %}
     </div>
 {% endblock %}

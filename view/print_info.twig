@@ -5,11 +5,11 @@
 
     <div id="infoWrapper">
         <div class="printInfo">
-            <h2 class="d-grid-2">Taxibilar mot evigheten</h2>
-
+            {{  print.height }}
+            <h2 class="d-grid-2">{{ print.name }}</h2>
+            <h3>{{ print.price|number_format(0) }} SEK</h3>
             <p class="printDesc d-grid-2">
-                Ljudnivån är för hög. Det kryllar av idioter.
-                Det stinker av urin och avgaser. Du är i new york och hatar det.
+                {{ print.description }}
             </p>
         </div>
 
@@ -18,7 +18,20 @@
             </div>
 
             <div class="purchaseOptions">
-
+                <form action="index.php?shopping_cart/{{ print }}" method="post">
+                    <input name="printID" type="hidden" value="{{ print.printID }}">
+                    <select name="frameID">
+                        {% for frame in frames %}
+                            <option value="{{ frame.frameID }}">{{ frame.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <select name="sizeID">
+                        {% for size in sizes %}
+                            <option value="{{ size.sizeID }} ">{{ size.height }}x{{ size.width }} </option>
+                        {% endfor %}
+                    </select>
+                    <button>Add to cart</button>
+                </form>
             </div>
 
     </div>

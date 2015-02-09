@@ -167,6 +167,12 @@ html, body {
 
 }
 
+.main-content {
+    width:1024px;
+    margin:0 auto;
+    padding-top:10%;
+}
+
 .wrapper{
     width:100%;
     position:absolute;
@@ -308,7 +314,7 @@ footer {
     .terms, .socialMedia, .contact, .websiteInformation {
         float:left;
         width:100%;
-        margin-bottom:25px;
+        margin-bottom:35px;
     }
 
     #footerContent {

@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" persistUploadOnCheckin="false" />
+  <component name="PublishConfigData" autoUpload="On explicit save action" serverName="jacksberry" persistUploadOnCheckin="false">
+    <serverData>
+      <paths name="jacksberry">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/var/www/html/andreasLOL" local="$PROJECT_DIR$" web="/andreasLOL" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ON_EXPLICIT_SAVE" />
+  </component>
 </project>

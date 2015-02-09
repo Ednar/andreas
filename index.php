@@ -8,7 +8,11 @@ $queries = explode('/', $_SERVER['QUERY_STRING']);
 
 $controller = new Controller();
 
-if ($queries[0] != 'getAllPrints') {
+if(!method_exists($controller, $queries[0])) {
     $controller->showStart();
-} else
-$controller->$queries[0]();
+} else if (isset($queries[1])) {
+    $controller->$queries[0]($queries[1]);
+} else {
+    $controller->$queries[0]();
+}
+

@@ -1,15 +1,16 @@
 <?php
 
-include 'ITableGateway.php';
-include 'DBConnection.php';
+include 'IDAO.php';
+include 'IConnectionManager.php';
+include 'MySQLConnectionManager.php';
 
-class PictureTableGateway implements ITableGateway {
+class PrintDAO implements ITableGateway {
 
     private $database;
 
     public function __construct() {
         try {
-            $this->database = new DBConncetion();
+            $this->database = new MySQLConnectionManager();
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -30,7 +31,12 @@ class PictureTableGateway implements ITableGateway {
 
     public function getAllPrints() {
         $pdo = $this->database->connect();
-        $sql = 'SELECT * FROM Print';
+        $sql = '
+            SELECT *
+            FROM Print
+            LEFT JOIN picture
+            ON picture.pictureID = Print.pictureID'
+        ;
         $statement = $pdo->prepare($sql);
         $statement->execute();
         $allPrints = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -40,13 +46,28 @@ class PictureTableGateway implements ITableGateway {
 
     public function getPrint($printID) {
         $pdo = $this->database->connect();
-        $sql = 'SELECT * FROM Print WHERE printID = :printID';
+        $sql = 'SELECT * FROM Print
+                WHERE Print.printID = :printID'
+        ;
         $statement = $pdo->prepare($sql);
         $statement->bindParam(':printID', $printID, PDO::PARAM_STR);
         $statement->execute();
-        $print = $statement->fetch(PDO::FETCH_ASSOC);
+        $print = $statement->fetch();
         $pdo = NULL;
         return $print;
+    }
+
+    public function getSizeForPrint($printID) {
+        $pdo = $this->database->connect();
+        $sql = 'SELECT * FROM Size LEFT JOIN PrintToSize ON Size.sizeID = PrintToSize.sizeID
+        WHERE PrintToSize.printID = :printID'
+        ;
+        $statement = $pdo->prepare($sql);
+        $statement->bindParam(':printID', $printID, PDO::PARAM_STR);
+        $statement->execute();
+        $sizes = $statement->fetchAll();
+        $pdo = NULL;
+        return $sizes;
     }
 
     public function getPrintsByCategory($category) {
@@ -56,7 +77,7 @@ class PictureTableGateway implements ITableGateway {
         $statement = $pdo->prepare($sql);
         $statement->bindParam(':category', $category, PDO::PARAM_STR);
         $statement->execute();
-        $printsByCategory = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $printsByCategory = $statement->fetchAll();
         $pdo = NULL;
         return $printsByCategory;
     }
@@ -82,6 +103,18 @@ class PictureTableGateway implements ITableGateway {
         $statement->bindParam(':printID', $printID, PDO::PARAM_STR);
         $statement->execute();
         $pdo = NULL;
+    }
+
+
+
+    public function getAllFrames() {
+        $pdo = $this->database->connect();
+        $sql = 'SELECT * FROM Frame';
+        $statement = $pdo->prepare($sql);
+        $statement->execute();
+        $frames = $statement->fetchAll();
+        $pdo = null;
+        return $frames;
     }
 
 }
