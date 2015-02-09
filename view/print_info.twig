@@ -18,7 +18,7 @@
             </div>
 
             <div class="purchaseOptions">
-                <form action="index.php?shopping_cart/{{ print }}" method="post">
+                <form action="index.php?addToCart" method="post">
                     <input name="printID" type="hidden" value="{{ print.printID }}">
                     <select name="frameID">
                         {% for frame in frames %}

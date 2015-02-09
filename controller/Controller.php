@@ -4,6 +4,7 @@ require_once 'twig/lib/Twig/Autoloader.php';
 require_once 'model/PrintDAO.php';
 require_once 'model/ShoppingCart.php';
 require_once 'model/Product.php';
+session_start();
 
 class Controller {
 
@@ -14,8 +15,8 @@ class Controller {
     private $shoppingCart;
 
     public function __construct() {
+        $this->shoppingCart = array();
         $this->model = new PrintDAO();
-        $this->shoppingCart = new ShoppingCart();
 
         Twig_Autoloader::register();
         $this->loader = new Twig_Loader_Filesystem('view');
@@ -38,27 +39,40 @@ class Controller {
 
     public function printInfo($printID) {
         $printInfo = $this->model->getPrint($printID);
-        $print = new Product($printInfo);
-        echo $this->print->getName();
         $frames = $this->model->getAllFrames();
         $sizes = $this->model->getSizeForPrint($printID);
         $template = $this->twig->loadTemplate('print_info.twig');
         $template->display(array(
-            $print,
             'print' => $printInfo,
             'frames' => $frames,
             'sizes' => $sizes
         ));
     }
 
-    public function shopping_cart($print) {
-        $print->setFrame($_POST['frameID']);
-        $print->setSize($_POST['sizeID']);
-        $this->shoppingCart->addProduct($print);
+    public function addToCart() {
+        $this->savePrintInCart($_POST['printID']);
         $template = $this->twig->loadTemplate('shopping_cart.twig');
         $template->display(array(
             'cart' => $this->shoppingCart
         ));
+    }
+
+    private function savePrintInCart($printID) {
+        if (isset($_SESSION['shopping_cart'])) {
+            $this->shoppingCart = $_SESSION['shopping_cart'];
+        } else {
+            $_SESSION['shopping_cart'] = $this->shoppingCart;
+        }
+        $print = $this->model->getPrint($printID);
+        $print['frameID'] = $_POST['frameID'];
+        $print['sizeID'] = $_POST['sizeID'];
+        $uniqueID =  $printID . $print['frameID'] . $print['sizeID'];
+        if (isset($this->shoppingCart[$uniqueID])) {
+            echo 'Du lade till en till så du vet det';
+        } else {
+            $this->shoppingCart[$uniqueID] = $print;
+        }
+        $_SESSION['shopping_cart'] = $this->shoppingCart;
     }
 
 }
