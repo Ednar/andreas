@@ -17,6 +17,7 @@ class Controller {
     public function __construct() {
         $this->shoppingCart = array();
         $this->model = new PrintDAO();
+        $this->shoppingCart = new ShoppingCart();
 
         Twig_Autoloader::register();
         $this->loader = new Twig_Loader_Filesystem('view');
