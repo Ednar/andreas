@@ -25,7 +25,8 @@
         <script> //för att skjuta in och ut nav-meny på mobil
             $(document).ready(function () {
                 $("#nav-mobile").html($("#nav-main").html());
-                $("#nav-trigger span").click(function () {
+                //$("#nav-trigger span").click(function () {
+                    $("#nav-toggle").click(function () {
                     if ($("nav#nav-mobile ul").hasClass("expanded")) {
                         $("nav#nav-mobile ul.expanded").removeClass("expanded").slideUp(250);
                         //$(this).removeClass("open");
