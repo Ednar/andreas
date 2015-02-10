@@ -3,9 +3,19 @@
 
 {% block content %}
         <div class="main-content">
+            <h2>Landscape</h2>
+            <p class="crumbs">
+                <a href="index.php?IndexController/showStart">Home</a>
+                >
+                <a href="index.php?ProductListController/getAllPrints">Buy Prints</a>
+                > Landscape
+            </p>
         {% for picture in pictures %}
-            {{ picture.name }}
-           <a href="index.php?printInfo/{{ picture.printID }}"><img src="img/{{ picture.url }}" alt="{{ picture.alt }}"></a>
+    <a href="index.php?PrintInfoController/printInfo/{{ picture.printID }}">
+            <div class="listing-print" style="background-image: url('img/{{ picture.url }}')">
+
+            </div>
+    </a>
         {% endfor %}
     </div>
 {% endblock %}
