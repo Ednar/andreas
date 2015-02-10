@@ -28,7 +28,7 @@ class Controller {
         $pictures = $this->model->getAllPrints();
         $template = $this->twig->loadTemplate('test.twig');
         $template->display(array(
-           'pictures'=>$pictures
+            'pictures'=>$pictures
         ));
     }
 
@@ -66,8 +66,6 @@ class Controller {
 
         $sizes = $this->model->getSizeForPrint($printID);
         $print['size'] = $sizes[0][1];
-        echo $sizes[0][1];
-        echo $sizes[0][2];
 
         $print['frameID'] = $_POST['frameID'];
         $print['sizeID'] = $_POST['sizeID'];

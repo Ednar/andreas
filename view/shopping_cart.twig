@@ -37,7 +37,7 @@
                     {{ print.sizeID }}
                 </div>
                 <div class="column">
-                    {{ size.frameID }}
+                    {{ print.frameID }}
                 </div>
                 <div class="column">
                     {{ print.price|number_format(0, ',', ' ') }} SEK
@@ -55,6 +55,5 @@
         {% endfor %}
             <h3>Sum: {{ sum|number_format(0, ',', ' ') }} SEK</h3>
         </div>
-        {for print.}
     </div>
 {% endblock %}
