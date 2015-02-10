@@ -5,7 +5,7 @@
         <div class="main-content">
         {% for picture in pictures %}
             {{ picture.name }}
-           <a href="index.php?printInfo/{{ picture.printID }}"><img src="img/{{ picture.url }}" alt="{{ picture.alt }}"></a>
+           <a href="index.php?PrintInfoController/printInfo/{{ picture.printID }}"><img src="img/{{ picture.url }}" alt="{{ picture.alt }}"></a>
         {% endfor %}
     </div>
 {% endblock %}
