@@ -6,7 +6,7 @@
  * Time: 11:51
  */
 
-interface ITableGateway {
+interface IDAO {
 
     public function getAllPrints();
     public function getPrint($printID);
