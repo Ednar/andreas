@@ -150,10 +150,18 @@ class Controller {
     
     public function getMediaLibrary() {
         $library = $this->model->getMediaLibrary();
-        $template = $this->twig->loadTemplate('admin/medialibrary.twig');
+        $template = $this->twig->loadTemplate('admin/library.twig');
         $template->display(array(
            'library'=>$library
         ));
+    }
+    
+    public function add_lib_item() {
+        $url = basename($_FILES["picture"]["name"]);
+        $alt = $_POST['alt'];
+        $this->model->insertPictureToLibrary($url, $alt);
+        $template = $this->twig->loadTemplate('admin/library.twig');
+        $template->display(array());
     }
 
 
