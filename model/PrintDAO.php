@@ -4,11 +4,13 @@ include 'IDAO.php';
 include 'IConnectionManager.php';
 include 'MySQLConnectionManager.php';
 
-class PrintDAO implements ITableGateway {
+class PrintDAO implements ITableGateway
+{
 
     private $database;
 
-    public function __construct() {
+    public function __construct()
+    {
         try {
             $this->database = new MySQLConnectionManager();
         } catch (Exception $e) {
@@ -16,10 +18,11 @@ class PrintDAO implements ITableGateway {
         }
     }
 
-    public function insertPrint($name, $description, $price, $pictureURL) {
+    public function insertPrint($name, $description, $price, $pictureURL)
+    {
         $pdo = $this->database->connect();
         $sql = 'INSERT into Print (name, description, price, pictureURL)'
-                . 'VALUES (:name, :description, :price, :pictureURL)';
+            . 'VALUES (:name, :description, :price, :pictureURL)';
         $statement = $pdo->prepare($sql);
         $statement->bindParam(':name', $name, PDO::PARAM_STR);
         $statement->bindParam(':description', $description, PDO::PARAM_STR);
@@ -29,14 +32,14 @@ class PrintDAO implements ITableGateway {
         $pdo = NULL;
     }
 
-    public function getAllPrints() {
+    public function getAllPrints()
+    {
         $pdo = $this->database->connect();
         $sql = '
             SELECT *
             FROM Print
             LEFT JOIN picture
-            ON picture.pictureID = Print.pictureID'
-        ;
+            ON picture.pictureID = Print.pictureID';
         $statement = $pdo->prepare($sql);
         $statement->execute();
         $allPrints = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -44,13 +47,13 @@ class PrintDAO implements ITableGateway {
         return $allPrints;
     }
 
-    public function getPrint($printID) {
+    public function getPrint($printID)
+    {
         $pdo = $this->database->connect();
         $sql = 'SELECT * FROM Print
                 LEFT JOIN picture
                 ON picture.pictureID = Print.pictureID
-                WHERE Print.printID = :printID'
-        ;
+                WHERE Print.printID = :printID';
         $statement = $pdo->prepare($sql);
         $statement->bindParam(':printID', $printID, PDO::PARAM_STR);
         $statement->execute();
@@ -59,11 +62,11 @@ class PrintDAO implements ITableGateway {
         return $print;
     }
 
-    public function getSizeForPrint($printID) {
+    public function getSizeForPrint($printID)
+    {
         $pdo = $this->database->connect();
         $sql = 'SELECT * FROM Size LEFT JOIN PrintToSize ON Size.sizeID = PrintToSize.sizeID
-        WHERE PrintToSize.printID = :printID'
-        ;
+        WHERE PrintToSize.printID = :printID';
         $statement = $pdo->prepare($sql);
         $statement->bindParam(':printID', $printID, PDO::PARAM_STR);
         $statement->execute();
@@ -72,10 +75,11 @@ class PrintDAO implements ITableGateway {
         return $sizes;
     }
 
-    public function getPrintsByCategory($category) {
+    public function getPrintsByCategory($category)
+    {
         $pdo = $this->database->connect();
         $sql = 'SELECT * FROM Print WHERE Category_categoryID IN( '
-                . 'SELECT categoryID FROM Category WHERE name = :category)';
+            . 'SELECT categoryID FROM Category WHERE name = :category)';
         $statement = $pdo->prepare($sql);
         $statement->bindParam(':category', $category, PDO::PARAM_STR);
         $statement->execute();
@@ -84,7 +88,8 @@ class PrintDAO implements ITableGateway {
         return $printsByCategory;
     }
 
-    public function deletePrint($printID) {
+    public function deletePrint($printID)
+    {
         $pdo = $this->database->connect();
         $sql = 'DELETE FROM Print WHERE printID = :printID';
         $statement = $pdo->prepare($sql);
@@ -93,10 +98,11 @@ class PrintDAO implements ITableGateway {
         $pdo = NULL;
     }
 
-    public function updatePrint($printID, $name, $description, $price, $pictureURL) {
+    public function updatePrint($printID, $name, $description, $price, $pictureURL)
+    {
         $pdo = $this->database->connect();
         $sql = 'UPDATE Print SET name = :name, description = :description, '
-                . 'price = :price, pictureURL = :pictureURL WHERE printID = :printID';
+            . 'price = :price, pictureURL = :pictureURL WHERE printID = :printID';
         $statement = $pdo->prepare($sql);
         $statement->bindParam(':name', $name, PDO::PARAM_STR);
         $statement->bindParam(':description', $description, PDO::PARAM_STR);
@@ -108,8 +114,8 @@ class PrintDAO implements ITableGateway {
     }
 
 
-
-    public function getAllFrames() {
+    public function getAllFrames()
+    {
         $pdo = $this->database->connect();
         $sql = 'SELECT * FROM Frame';
         $statement = $pdo->prepare($sql);
@@ -119,5 +125,15 @@ class PrintDAO implements ITableGateway {
         return $frames;
     }
 
+    public function getSize($sizeID){
+        $pdo = $this->database->connect();
+        $sql = 'SELECT * FROM Size WHERE sizeID = :sizeID';
+        $statement = $pdo->prepare($sql);
+        $statement->bindParam(':sizeID', $sizeID, PDO::PARAM_STR);
+        $statement->execute();
+        $sizeArray = $statement->fetchAll();
+        $pdo = null;
+        return $sizeArray;
+    }
 
 }

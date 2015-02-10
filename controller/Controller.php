@@ -65,8 +65,9 @@ class Controller {
         $print['frame'] = $frames[$_POST['frameID']];
 
         $sizes = $this->model->getSizeForPrint($printID);
-        $print['size'] = $sizes[0][1];
-
+        $print['height'] = $sizes[0][1];
+        echo print_r($sizes);
+        echo $_POST['frameID'];
         $print['frameID'] = $_POST['frameID'];
         $print['sizeID'] = $_POST['sizeID'];
         $print['amount'] = 1;
@@ -97,6 +98,7 @@ class Controller {
     public function showCart() {
         $this->getCartIfSet();
         $sum = 0;
+        echo print_r($this->shoppingCart);
         foreach ($this->shoppingCart as $row) {
             $sum += $row['price'] * $row['amount'];
         }
@@ -130,6 +132,11 @@ class Controller {
         }
         $this->saveCartToSession();
         $this->showCart();
+    }
+
+    public function getSize($sizeID){
+        $sizes = $this->model->getSize($sizeID);
+        echo print_r($sizes);
     }
 
     public function nuke() {
