@@ -143,6 +143,18 @@ class Controller {
         session_unset();
         session_destroy();
     }
+    
+    /*
+     * Media Library, yay
+     */
+    
+    public function getMediaLibrary() {
+        $library = $this->model->getMediaLibrary();
+        $template = $this->twig->loadTemplate('admin/medialibrary.twig');
+        $template->display(array(
+           'library'=>$library
+        ));
+    }
 
 
 }
