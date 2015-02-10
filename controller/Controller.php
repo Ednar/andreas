@@ -67,7 +67,7 @@ class Controller {
         $sizes = $this->model->getSizeForPrint($printID);
         $print['size'] = $sizes[0][1];
         foreach ($this->$sizes as $size){
-           echo $size[0];
+           echo $size;
             if ($size[0] = $printID)
                 echo $size[1];
                 echo $size[2];
