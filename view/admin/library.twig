@@ -1,0 +1,16 @@
+{% extends "base.twig" %}
+
+
+{% block content %}
+    
+    <div id="infoWrapper">
+
+    {% for libraryItem in library %}
+        <p>pictureID: {{ libraryItem.pictureID }}<br>
+        url: {{ libraryItem.url }}<br>
+        alt: {{ libraryItem.alt }}</p>
+    {% endfor %}
+
+    </div>
+    
+{% endblock %}
