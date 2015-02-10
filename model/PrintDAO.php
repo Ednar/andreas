@@ -4,7 +4,7 @@ include 'IDAO.php';
 include 'IConnectionManager.php';
 include 'MySQLConnectionManager.php';
 
-class PrintDAO implements ITableGateway {
+class PrintDAO implements IDAO {
 
     private $database;
 
