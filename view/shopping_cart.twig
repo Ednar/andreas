@@ -42,10 +42,10 @@
                     {{ print.price|number_format(0, ',', ' ') }} SEK
                 </div>
                 <div class="column">
-                    <a href="index.php?decreaseAmount/{{ print.printID }}{{ print.frameID }}{{ print.sizeID }}">
+                    <a href="index.php?ShoppingCartController/decreaseAmount/{{ print.printID }}{{ print.frameID }}{{ print.sizeID }}">
                     <i class="fa fa-minus-square-o"></i></a>
                     {{ print.amount }}
-                    <a href="index.php?increaseAmount/{{ print.printID }}{{ print.frameID }}{{ print.sizeID }}">
+                    <a href="index.php?ShoppingCartController/increaseAmount/{{ print.printID }}{{ print.frameID }}{{ print.sizeID }}">
                         <i class="fa fa-plus-square-o"></i>
                     </a>
                 </div>
