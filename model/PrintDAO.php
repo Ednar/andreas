@@ -139,6 +139,8 @@ class PrintDAO implements IDAO {
         $statement = $pdo->prepare($sql);
         $statement->bindParam(':url', $url, PDO::PARAM_STR);
         $statement->bindParam(':alt', $alt, PDO::PARAM_STR);
+        $target = "../img/";
+        move_uploaded_file($_FILES['url']['tmp_name'], $target . $url);
         $statement->execute();
         $pdo = NULL;
     }
