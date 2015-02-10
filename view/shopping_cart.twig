@@ -1,0 +1,58 @@
+{% extends "base.twig" %}
+
+
+{% block content %}
+    <div class="main-content">
+        <div id="shoppingCart">
+            <div class="cartHeader">
+                <div class="column">
+                    Image
+                </div>
+                <div class="column">
+                    Name
+                </div>
+                <div class="column">
+                    Size ID
+                </div>
+                <div class="column">
+                    Frame ID
+                </div>
+                <div class="column">
+                    Price
+                </div>
+                <div class="column">
+                    Quantity
+                </div>
+            </div>
+        {% for print in cart %}
+            <div class="cartRow">
+                <div class="column">
+                    <img src="img/{{ print.url }}">
+                </div>
+                <div class="column">
+                    {{ print.name }}
+                </div>
+                <div class="column">
+                    {{ print.sizeID }}
+                </div>
+                <div class="column">
+                    {{ print.frameID }}
+                </div>
+                <div class="column">
+                    {{ print.price|number_format(0, ',', ' ') }} SEK
+                </div>
+                <div class="column">
+                    <a href="index.php?decreaseAmount/{{ print.printID }}{{ print.frameID }}{{ print.sizeID }}">
+                    <i class="fa fa-minus-square-o"></i></a>
+                    {{ print.amount }}
+                    <a href="index.php?increaseAmount/{{ print.printID }}{{ print.frameID }}{{ print.sizeID }}">
+                        <i class="fa fa-plus-square-o"></i>
+                    </a>
+                </div>
+
+            </div>
+        {% endfor %}
+            <h3>Sum: {{ sum|number_format(0, ',', ' ') }} SEK</h3>
+        </div>
+    </div>
+{% endblock %}

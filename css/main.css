@@ -114,84 +114,502 @@ h6 {font-size: 0.8em;}
 .bold {font-weight: 900;}
 .italic{font-style: italic;}
 
+/* ==========================================================================
+   Grid styles
+   ========================================================================== */
+
+
+.row{
+    width:100%;
+    max-width:960px;
+    /* for desktop view */
+    margin:0 auto;
+    outline: 1px solid blue;
+    /* to visualize our element */
+
+}
+
+/* clearfix set against the row class  for conviance */
+.row:before,.row:after {content: " ";display: table;}
+.row:after {clear: both;}
+
+
+.grid{
+    height:20px;
+    /* to visualize */
+    float:left;
+    margin:1%;
+    outline:1px solid red;
+    /* to visualize */
+}
+
+.m-grid-1{width:23%;}
+.m-grid-2{width:48%;}
+.m-gird-3{width:73%;}
+.m-grid-4{width:98%;}
+
+@media (min-width:960px){
+    .d-grid-1{width:10.5%;}
+    .d-grid-2{width:23%;}
+    .d-grid-3{width:35.5%;}
+    .d-grid-4{width:48%;}
+    .d-grid-5{width:60.5%;}
+    .d-grid-6{width:73%;}
+    .d-grid-7{width:85.5%;}
+    .d-grid-8{width:98%;}
+}
 
 /* ==========================================================================
    Custom styles
    ========================================================================== */
 
 html, body {
+
+}
+
+.main-content {
+    width:1024px;
+    margin:0 auto;
+    padding-top:10%;
+}
+
+.wrapper{
+    width:100%;
+    position:absolute;
+    top:0px;
+
+    -webkit-transition:all 1.0s ease-in-out;
+    -moz-transition:all 1.0s ease-in-out;
+    -o-transition:all 1.0s ease-in-out;
+    transition:all 1.0s ease-in-out;
+}
+
+#logo-wrapper {
+    position:absolute;
+    left:50%;
+}
+
+#logo{
+    position: relative;
+    left:-50%;
+
+    color:#fff;
+    top:5px;
+}
+    #logo img, #menu-logo img {
+        display:none;
+        position: relative;
+        top:7px;
+        height:35px;
+        float:left;
+    }
+
+    #logo h1{
+        position:relative;
+        left:10px;
+        top:0px;
+        font-size:0.9em;
+        float:left;
+        margin:0px;
+        padding:0px;
+    }
+
+    #menu-logo a{
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+header#topHeader {
+    position:absolute;
+    background-color: rgba(0,0,0,0.8);
     width: 100%;
-    height:100%;
-    margin:0px;
-    padding:0px;
-    overflow-x: hidden;
+    height:55px;
+    top:0px;
+    z-index:999;
+}
+
+.right-tray {
+    text-align: right;
+    padding-top:12px;
+    padding-right:17px;
+    width:50px;
+    float:right;
+}
+
+.slides-wrapper {
+    height:100vh;
+}
+.watermark{
+    display: none;
+}
+
+.prev, .next {
+    display:none;
+}
+
+.intro-text{
+    position: absolute;
+    top:25%;
+    width:100%;
+    text-align:center;
+    z-index: 5;
+    color:#fff;
+}
+
+.btn {
+    margin:0 auto;
+    background: #3498db;
+    background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+    background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+    background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+    background-image: -o-linear-gradient(top, #3498db, #2980b9);
+    background-image: linear-gradient(to bottom, #3498db, #2980b9);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    font-family: Lato;
+    font-weight:300;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    max-width:200px;
+}
+
+.btn:hover {
+    background: #3cb0fd;
+    background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+    text-decoration: none;
 }
 
 main {
+    position: relative;
+    margin-top: 55px;
+    width: 85%;
+    float: left;
+}
+
+#left-cat-nav {
+    position: relative;
+    margin-top: 55px;
+    width: 15%;
+    float: left;
+}
+
+footer {
     width:100%;
-}
-
-.soft-contrast {
-    background-color: #eae8de;
-}
-
-h2, h3 {
-    margin-bottom:0px;
-
-}
-
-section {
-    padding:5% 5%;
-    margin: 5% 0%;
-}
-
-    section h2 {
-        margin:0;
-        padding: 0% 0% 5% 0%;
+    box-sizing: border-box;
+    background-color: #222;
+    color:#c0c0c0;
+    font-size:1em;
+    font-weight:300;
+    float:left;
+    padding:2% 5%;
     }
 
-.next, .prev{
-    padding: 0 1%;
-    opacity: 0.5;
-    -moz-opacity: 0.5;
-    transition: 0.5s;
-    -webkit-transition: 0.5s;
+    .terms, .socialMedia, .contact, .websiteInformation {
+        float:left;
+        width:100%;
+        margin-bottom:35px;
+    }
+
+    #footerContent {
+        margin:0 auto;
+        max-width:1024px;
+
+    }
+
+    footer span {
+        font-family: Lato;
+        font-size: 1em;
+        font-weight: 300!important;
+    }
+
+    footer h3 {
+        color:#fff;
+        font-weight:400;
+        text-transform: capitalize;
+        font-size: 1.3em!important;
+        margin:0px;
+        padding:0;
 }
-.next:hover, .prev:hover{
 
-    opacity: 1;
-    -moz-opacity: 1;
-    transition: 0.5s;
-    -webkit-transition: 0.5s;
-}
+/* ============================================================================
+    Shopping cart
+    =========================================================================*/
+
+    .cartRow {
+        display:table-row;
+        width:100%;
+    }
+
+    .cartHeader {
+        display:table-row;
+        width:100%;
+        font-weight:800;
+    }
+
+    .column {
+        white-space: nowrap;
+        display: table-cell;
+        padding-right:15px;
+    }
+
+        .column img {
+            width:65px;
+        }
 
 
 
-#footer-info {
-    float:left;
-    background:#000;
-    padding:1%;
+/* ============================================================================
+    Print info
+    =========================================================================*/
+
+#infoWrapper {
+    background-color: #f0f0f0;
     width:100%;
+    padding-top:120px;
+}
+
+#infoContent {
+    background-color: #f0f0f0;
+    width:25%;
+    height:0px;
+    padding-bottom: 25%;
+    float:left;
+}
+
+.printImage {
+    width:25%;
+    margin-bottom:50px;
+    float:left;
+}
+
+
+
+.printImage img {
+    max-height:400px;
 
 }
-#footer-info .fa {
-    padding-left:5px;
-    padding-right:5px;
-}
-#footer-info p {
+
+.printInfo {
     text-align: center;
-    font-size:0.9em;
-    color:#a7a7a7;
-    padding:2% 0% 3% 1%;
-}
-a {
-    text-decoration: none;
-    border: none;
-    color: #000;
+    width:20%;
+    float:left;
 }
 
-#footer-info p small {
-    color:#666;
+    .printInfo h2 {
+        margin:0 auto;
+        text-transform: none;
+        font-weight: 400 !important;
+    }
+
+    .printInfo p {
+        margin: 0 auto;
+        padding:20px;
+        font-weight: 300;
+    }
+
+.purchaseOption {}
+
+
+
+/* ============================================================================
+    Responsive Hamburger Navigation
+    =========================================================================*/
+
+#menu-logo {
+    display: none;
+}
+
+#nav-trigger {
+    display: block;
+    text-align: center;
+    float:left;
+}
+#nav-trigger span {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 1.6em;
+    background-color: rgba(0, 0, 0, 0);
+    -moz-opacity: 0.8;
+    color: white;
+    cursor: pointer;
+    text-transform: uppercase; }
+
+#nav-trigger span:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    -moz-opacity: 0.8; }
+#nav-trigger span.open:after {
+    border-left: solid 10px transparent;
+    border-top: none;
+    border-bottom: solid 10px #fff;
+    border-right: solid 10px transparent; }
+
+nav {
+    margin-bottom: 0px;
+    font-family:Lato;
+    font-weight:300;
+}
+
+nav#nav-main {
+    background-color: rgba(0, 0, 0, 0);
+    -moz-opacity: 0;
+    padding:0;
+    float:left;
+}
+nav#nav-main ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center; }
+nav#nav-main li {
+    display: inline-block;
+    padding: 0 5px; }
+nav#nav-main li:last-child {
+    border-right: none; }
+nav#nav-main a {
+    display: block;
+    color: white;
+    padding: 17px 15px;
+    text-decoration: none;
+    font-size:1em;
+    font-family:Lato;
+    font-weight: 300;
+}
+nav#nav-main a:hover {
+    background-color: #fff;
+    color: #000; }
+
+nav#nav-mobile {
+    z-index:99999;
+    overflow: visible;
+    position: relative;
+    display: none; }
+nav#nav-mobile ul {
+    display: none;
+    list-style-type: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top:39px;
+    margin-left: 0px;
+    padding-left:0px!important;
+    margin-right: auto;
+    text-align: left;
+    background-color: rgba(25, 25, 25, 1);
+    -moz-opacity: 1; }
+nav#nav-mobile li {
+    display: inline-block;
+    float:left;
+    padding: 0px 0;
+    margin: 0 0px;
+    width:100%;
+    border-bottom: solid 1px #222222; }
+nav#nav-mobile li:last-child {
+    border-bottom: none; }
+nav#nav-mobile a {
+    display: block;
+    color: #999999;
+    padding: 10px 30px;
+    text-decoration: none;
+    font-size:1.1em;
+}
+nav#nav-mobile a:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    -moz-opacity: 0.8;
+    color: #fff; }
+
+/* Nav-button
+-------------------------------------------------------------- */
+
+#nav-toggle span {
+    position: relative;
+    padding: 0px;
+    display: block;
+    left: 10px; top: 10px;
+    height: 5px;
+    width: 35px;
+}
+
+.nav-toggle-a {
+    position: absolute;
+    left: 15px; top: 15px;
+    width: 50px;
+    height: 30px;
+    padding: 0px;
+}
+
+#nav-toggle span,
+#nav-toggle span:before,
+#nav-toggle span:after {
+    cursor: pointer;
+    border-radius: 1px;
+    height: 5px;
+    width: 35px;
+    background: white;
+    position: absolute;
+    display: block;
+    content: '';
+}
+#nav-toggle span:before {
+    top: -10px;
+}
+#nav-toggle span:after {
+    bottom: -10px;
+}
+
+#nav-toggle span:hover {
+    background-color: #fff;
+}
+
+#nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
+    transition: all 500ms ease-in-out;
+    -webkit-transition: all 500ms ease-in-out;
+}
+#nav-toggle.active span {
+    background-color: transparent;
+}
+#nav-toggle.active span:before, #nav-toggle.active span:after {
+    top: 0px;
+}
+#nav-toggle.active span:before {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+#nav-toggle.active span:after {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+
+nav .fa {
+    display: none;
+}
+
+@media all and (max-width: 1024px) {
+
+    #nav-trigger {
+        display: block;
+    }
+
+    nav#nav-main {
+        display: none;
+    }
+
+    nav#nav-mobile {
+        display: block;
+    }
+
+    nav#nav-mobile .fa {
+        display: inline-block !important;
+        padding-right: 15px;
+        color: #fff;
+
+    }
 }
 
 
@@ -297,6 +715,7 @@ a {
     *zoom: 1;
 }
 
+
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.
    These examples override the primary ('mobile first') styles.
@@ -308,9 +727,9 @@ a {
 }
 
 @media print,
-       (-o-min-device-pixel-ratio: 5/4),
-       (-webkit-min-device-pixel-ratio: 1.25),
-       (min-resolution: 120dpi) {
+(-o-min-device-pixel-ratio: 5/4),
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 120dpi) {
     /* Style adjustments for high resolution devices */
 }
 
@@ -386,146 +805,136 @@ a {
     }
 }
 
-    /*========================================================================================
-        First Breakpoint at 1024px min width
-    ========================================================================================*/
+/*========================================================================================
+    Breakpoint at 450px min width
+========================================================================================*/
 
-@media only screen and (min-width: 1024px) {
+@media all and (min-width: 450px) {
 
-    .slides-pagination {
-        bottom:100px !important;
-
+    #logo img, #menu-logo img {
+        display: inline-block;
     }
 
-    figure{
-        height: 100vh;
+    nav#nav-mobile li {
+        width: 50%;
     }
-    main{
-        width: 100%;
-        padding:0;
+}
 
-    }
+/*========================================================================================
+    Breakpoint at 700px min width
+========================================================================================*/
 
-    main .main-wrapper{
-        width: 100%;
-        max-width:1000px;
-        margin:0 auto;
-    }
-
-    .button{
-        float: left;
-        margin: 0;
-        width:45%;
-    }
-
-    .button p {
-        padding:15px 0 !important;
-        margin: 0 auto!important;
-        text-align: center;
-    }
-
-    .buy-prints {
-        max-width:100%;
-        min-width:100%;
-    }
-
-    .buy-prints h2 {
-        max-width:50%;
-        float:left;
-    }
-
-    .buy-prints p {
-        max-width:40%;
-        float:left;
-        padding-left:10%;
-    }
-
-    .about {
-        min-width:100%;
-    }
-
-    .about p {
-        min-width:100%;
-        padding-top:0;
-    }
-    
-    #form-div p, .submit, h2{
-        max-width: 600px;
-        margin: 20px auto;
-    }
-    .mobile-break {
-        display:none;
-    }
-
-    #menu-logo img {
-        margin:10px;
-    }
-
-    small {
-        font-size: 1em;
-
-    }
-
-    #menu-logo {
-        width:450px;
-        overflow:hidden;
-    }
-
-    #menu-logo h1 {
-        width:450px;
-        position:relative;
-        top:5px;
-    }
-
-    #nav-main {
-        padding-top:4px!important;
-    }
-
-    .cart {
-        padding-top:7px;
-        padding-bottom:7px;
-        padding-left:0px;
-        padding-right:15px;
-        display:inline-block;
-        height:42px;
-        text-align:right;
-    }
-        .cart p {
-            font-family: Lato;
-            font-weight: 300;
-            font-size: 1em;
-            color:#fff;
-            padding-top:7px;
-        }
-
-        .cart img {
-            margin-left:5px;
-        }
-
-
-    footer img{
-        max-width: 15%;
-    }
-
-    footer p{
-        text-align: justify;
-        max-width: 55%;
-        
-    }
-
-    .social{
-        max-width:30% ;
+@media all and (min-width: 700px) {
+    .terms, .socialMedia, .contact, .websiteInformation {
+        width:50%;
     }
 
 }
 
-@media all and (min-width: 1100px) {
-    .cart span {
-        display: inline-block!important;
+/*========================================================================================
+    Breakpoint at 800px min width
+========================================================================================*/
+
+@media all and (min-width: 800px) {
+    nav#nav-mobile li {
+        width: 33%;
     }
 
-    .cart {
-        width:120px;
+
+}
+
+
+/*========================================================================================
+    Breakpoint at 1024px min width
+========================================================================================*/
+
+@media all and (min-width: 1024px) {
+
+    .slides-wrapper {
+        height:100vh;
+    }
+
+    #menu-logo {
+        display: inline-block;
+        float:left;
+        position: relative;
+        left:15px;
+        top:5px;
+    }
+    #menu-logo h1 {
+        display: inline-block;
+        color:#fff;
+        font-size:1.2em;
+        margin:0;
+        position: relative;
+        top:10px;
+        left:10px;
+        margin-right: 30px;
+    }
+
+    .mobile-break {
+        display: none;
+    }
+    small {
+        font-size: inherit;
+    }
+
+    .mobile-only {
+        display: none!important;
+    }
+
+    #logo-wrapper {
+        display:none;
+
+    }
+
+    nav#nav-toggle, #nav-trigger {
+        display: none!important;
+    }
+
+    .watermark{
+        display: inline-block;
+        position: absolute;
+        bottom:0px;
+        background-color: rgba(0,0,0,0.8);
+        z-index: 3;
+        width: 100%;
+    }
+
+    .watermark img{
+        max-width: 150px;
+        float: left;
+        margin: 15px;
+    }
+    .watermark p{
+        max-width: 80%;
+        float: left;
+        color: #555;
+        font-size: 0.7em;
+        margin-left: 15px;
+        margin-top: 15px;
+    }
+
+    .prev, .next {
+        display:inline-block;
+    }
+
+    .slides-pagination {
+        position: absolute;
+        bottom:75px !important;
+
+    }
+
+    .intro-text {
+        display: none;
+    }
+
+    #slides img {
+        opacity:1!important;
+    }
+
+    .terms, .socialMedia, .contact, .websiteInformation {
+        width:25%;
     }
 
 }

@@ -1,10 +1,13 @@
 #slides {
   position: relative;
+  background: #000;
+  max-height: 100vh;
+
 
 }
 
-#slides div {
-
+#slides img {
+   opacity:0.6;
 }
 
 
@@ -36,7 +39,6 @@
 }
 .slides-navigation a {
   position: absolute;
-  display: block;
   outline: 0!important;
 }
 
@@ -90,3 +92,4 @@
 .slides-pagination a:visited{
   border: 1px solid #aaaaaa;
 }
+

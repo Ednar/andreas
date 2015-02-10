@@ -1,0 +1,39 @@
+{% extends "base.twig" %}
+
+
+{% block content %}
+
+    <div id="infoWrapper">
+        <div class="printInfo">
+            {{  print.height }}
+            <h2 class="d-grid-2">{{ print.name }}</h2>
+            <h3>{{ print.price|number_format(0) }} SEK</h3>
+            <p class="printDesc d-grid-2">
+                {{ print.description }}
+            </p>
+        </div>
+
+            <div class="printImage">
+                <img src="img/newyork.jpg">
+            </div>
+
+            <div class="purchaseOptions">
+                <form action="index.php?addToCart" method="post">
+                    <input name="printID" type="hidden" value="{{ print.printID }}">
+                    <select name="frameID">
+                        {% for frame in frames %}
+                            <option value="{{ frame.frameID }}">{{ frame.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <select name="sizeID">
+                        {% for size in sizes %}
+                            <option value="{{ size.sizeID }}">{{ size.height }}x{{ size.width }} </option>
+                        {% endfor %}
+                    </select>
+                    <button>Add to cart</button>
+                </form>
+            </div>
+
+    </div>
+
+{% endblock %}

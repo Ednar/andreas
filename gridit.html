@@ -17,7 +17,7 @@
         <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,300italic,400italic' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/mobile.css">
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/old-main.css">
         <link rel="stylesheet" href="css/superslides.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
         <script src="js/vendor/jquery-1.10.2.min.js"></script>
@@ -25,7 +25,7 @@
         <script> //för att skjuta in och ut nav-meny på mobil
             $(document).ready(function () {
                 $("#nav-mobile").html($("#nav-main").html());
-                $("#nav-trigger span").click(function () {
+                $("#nav-toggle").click(function () {
                     if ($("nav#nav-mobile ul").hasClass("expanded")) {
                         $("nav#nav-mobile ul.expanded").removeClass("expanded").slideUp(250);
                         //$(this).removeClass("open");
@@ -138,14 +138,14 @@
         <main>
             <div class="main-wrapper">
                 <div class="buy-prints">
-                   <div><h2>
+                   <div class="intro-text"><h2>
                             <span class="thin row-1">Fantastic</span><br>
                             <span class="bold row-2">Landscape</span>
                             <span class="italic thin row-2">&amp; </span>
                             <span class="light row-2">Street</span><br>
                             <span class="light row-3">Photography</span>
                         </h2>
-                        <p class="light">I am dedicated to taking fine personal photographies from northern Europe. Click to browse the collection and purchase your personal favourite</p>
+                        <p class="light left">I am dedicated to taking fine personal photographies from northern Europe. Click to browse the collection and purchase your personal favourite</p>
                     </div>
                     <div class="button">
                         <p><span class="bold">Buy Prints</span></p>
