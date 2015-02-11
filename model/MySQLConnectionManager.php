@@ -8,10 +8,7 @@ class MySQLConnectionManager implements IConnectionManager {
     private $passwd = IConnectionManager::PASSWD;
     private $pdo;
 
-    public function __construct() {
-    }
-
-    public function connect() {
+    private function connect() {
         try {
             if(is_null($this->pdo)) {
                 $this->pdo = new PDO($this->host, $this->user, $this->passwd);
@@ -25,8 +22,23 @@ class MySQLConnectionManager implements IConnectionManager {
         }
     }
 
-    public function disconnect()
-    {
+    private function disconnect() {
         $this->pdo = null;
+    }
+
+    public function request($sql, $inputParams = array(), $fetch) {
+        $this->connect();
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute($inputParams);
+        $result = $statement->$fetch();
+        $this->disconnect();
+        return $result;
+    }
+
+    public function push($sql, $inputParams = array()) {
+        $this->connect();
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute($inputParams);
+        $this->disconnect();
     }
 }

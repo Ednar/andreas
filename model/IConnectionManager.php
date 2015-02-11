@@ -7,6 +7,4 @@ interface IConnectionManager {
     CONST USER = 'andreas';
     CONST PASSWD = 'andreas';
 
-    public function connect();
-    public function disconnect();
 }
