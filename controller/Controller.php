@@ -50,9 +50,119 @@ class Controller {
         ));
     }
 
+    public function addToCart() {
+        $this->savePrintInCart($_POST['printID']);
+        $this->showCart();
+    }
+
+    private function savePrintInCart($printID) {
+        $this->getCartIfSet();
+        $print = $this->model->getPrint($printID);
 
 
+        // TODO fixa det här
+        $frames = $this->model->getAllFrames();
+        $print['frame'] = $frames[$_POST['frameID']];
 
+        $sizes = $this->model->getSizeForPrint($printID);
+        $print['size'] = $sizes[0][1];
+        foreach ($this->$sizes as $size){
+            if ($size[0] = $printID)
+                echo $size[1];
+                echo $size[2];
+        }
+        echo $sizes[0][1];
+        echo $sizes[0][2];
+
+        $print['frameID'] = $_POST['frameID'];
+        $print['sizeID'] = $_POST['sizeID'];
+        $print['amount'] = 1;
+
+        $uniqueID = $printID.$print['frameID'].$print['sizeID'];
+        $uniqueID = trim($uniqueID);
+        if (isset($this->shoppingCart[$uniqueID])) {
+            $this->shoppingCart[$uniqueID]['amount']++;
+        } else {
+            $this->shoppingCart[$uniqueID] = $print;
+        }
+        $this->saveCartToSession();
+
+    }
+
+    private function getCartIfSet() {
+        if (isset($_SESSION['shopping_cart'])) {
+            $this->shoppingCart = $_SESSION['shopping_cart'];
+        } else {
+            $_SESSION['shopping_cart'] = $this->shoppingCart;
+        }
+    }
+
+    private function saveCartToSession() {
+        $_SESSION['shopping_cart'] = $this->shoppingCart;
+    }
+
+    public function showCart() {
+        $this->getCartIfSet();
+        $sum = 0;
+        foreach ($this->shoppingCart as $row) {
+            $sum += $row['price'] * $row['amount'];
+        }
+        if (empty($this->shoppingCart)) {
+            $template = $this->twig->loadTemplate('empty_cart.twig');
+        } else {
+            $template = $this->twig->loadTemplate('shopping_cart.twig');
+        }
+        $template->display(array(
+            'cart' => $this->shoppingCart,
+            'sum' => $sum
+        ));
+    }
+
+    public function decreaseAmount($uniqueID) {
+        $this->getCartIfSet();
+        if (isset($this->shoppingCart[$uniqueID])) {
+            $this->shoppingCart[$uniqueID]['amount']--;
+            if ( $this->shoppingCart[$uniqueID]['amount'] <= 0) {
+                unset( $this->shoppingCart[$uniqueID]);
+            }
+        }
+        $this->saveCartToSession();
+        $this->showCart();
+    }
+
+    public function increaseAmount($uniqueID) {
+        $this->getCartIfSet();
+        if (isset($this->shoppingCart[$uniqueID])) {
+            $this->shoppingCart[$uniqueID]['amount']++;
+        }
+        $this->saveCartToSession();
+        $this->showCart();
+    }
+
+    public function nuke() {
+        session_unset();
+        session_destroy();
+    }
+    
+    /*
+     * Media Library, yay
+     */
+    
+    public function getMediaLibrary() {
+        $library = $this->model->getMediaLibrary();
+        $template = $this->twig->loadTemplate('admin/library.twig');
+        $template->display(array(
+           'library'=>$library
+        ));
+    }
+    
+    public function add_lib_item() {
+        $url = basename($_FILES["picture"]["name"]);
+        $alt = $_POST['alt'];
+        $this->model->insertPictureToLibrary($url, $alt);
+        $template = $this->twig->loadTemplate('admin/library.twig');
+        $template->display(array());
+    }
 
 
 }

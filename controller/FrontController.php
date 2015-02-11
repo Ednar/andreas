@@ -21,6 +21,8 @@ class FrontController implements IFrontController {
             $this->controller->$queries[1]($queries[2]);
         } else {
             $this->controller->$queries[1]();
+        } else {
+            $this->controller->$queries[1]($queries[2]);
         }
     }
 }

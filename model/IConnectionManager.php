@@ -3,7 +3,7 @@
 
 interface IConnectionManager {
 
-    CONST HOST = 'mysql:host=localhost;dbname=andreas';
+    CONST HOST = 'mysql:host=localhost;dbname=andreas;charset=utf8';
     CONST USER = 'andreas';
     CONST PASSWD = 'andreas';
 

@@ -4,7 +4,7 @@ include 'IDAO.php';
 include 'IConnectionManager.php';
 include 'MySQLConnectionManager.php';
 
-class PrintDAO implements ITableGateway {
+class PrintDAO implements IDAO {
 
     private $database;
 
@@ -16,15 +16,15 @@ class PrintDAO implements ITableGateway {
         }
     }
 
-    public function insertPrint($name, $description, $price, $pictureURL) {
+    public function insertPrint($name, $description, $price, $pictureID) {
         $pdo = $this->database->connect();
-        $sql = 'INSERT into Print (name, description, price, pictureURL)'
+        $sql = 'INSERT into Print (name, description, price, pictureID)'
                 . 'VALUES (:name, :description, :price, :pictureURL)';
         $statement = $pdo->prepare($sql);
         $statement->bindParam(':name', $name, PDO::PARAM_STR);
         $statement->bindParam(':description', $description, PDO::PARAM_STR);
         $statement->bindParam(':price', $price, PDO::PARAM_STR);
-        $statement->bindParam(':pictureURL', $pictureURL, PDO::PARAM_STR);
+        $statement->bindParam(':pictureURL', $pictureID, PDO::PARAM_STR);
         $statement->execute();
         $pdo = NULL;
     }
@@ -93,15 +93,15 @@ class PrintDAO implements ITableGateway {
         $pdo = NULL;
     }
 
-    public function updatePrint($printID, $name, $description, $price, $pictureURL) {
+    public function updatePrint($printID, $name, $description, $price, $pictureID) {
         $pdo = $this->database->connect();
         $sql = 'UPDATE Print SET name = :name, description = :description, '
-                . 'price = :price, pictureURL = :pictureURL WHERE printID = :printID';
+                . 'price = :price, pictureID = :pictureID WHERE printID = :printID';
         $statement = $pdo->prepare($sql);
         $statement->bindParam(':name', $name, PDO::PARAM_STR);
         $statement->bindParam(':description', $description, PDO::PARAM_STR);
         $statement->bindParam(':price', $price, PDO::PARAM_STR);
-        $statement->bindParam(':pictureURL', $pictureURL, PDO::PARAM_STR);
+        $statement->bindParam(':pictureID', $pictureID, PDO::PARAM_STR);
         $statement->bindParam(':printID', $printID, PDO::PARAM_STR);
         $statement->execute();
         $pdo = NULL;
@@ -117,6 +117,52 @@ class PrintDAO implements ITableGateway {
         $frames = $statement->fetchAll();
         $pdo = null;
         return $frames;
+    }
+    
+    /*
+     * Media library functions, yay
+     */
+    
+    public function getMediaLibrary() {
+        $pdo = $this->database->connect();
+        $sql = 'SELECT * FROM picture';
+        $statement = $pdo->prepare($sql);
+        $statement->execute();
+        $library = $statement->fetchAll();
+        $pdo = NULL;
+        return $library;
+    }
+    
+    public function insertPictureToLibrary($url, $alt) {
+        $pdo = $this->database->connect();
+        $sql = 'INSERT INTO picture (url, alt) VALUES(:url, :alt)';
+        $statement = $pdo->prepare($sql);
+        $statement->bindParam(':url', $url, PDO::PARAM_STR);
+        $statement->bindParam(':alt', $alt, PDO::PARAM_STR);
+        $target = "img/";
+        move_uploaded_file($_FILES["picture"]["tmp_name"], $target . $url);
+        $statement->execute();
+        $pdo = NULL;
+    }
+    
+    public function deletePictureFromLibrary($pictureID) {
+        $pdo = $this->database->connect();
+        $sql = 'DELETE FROM picture WHERE pictureID = :pictureID';
+        $statement = $pdo->prepare($sql);
+        $statement->bindParam(':pictureID', $pictureID, PDO::PARAM_STR);
+        $statement->execute();
+        $pdo = NULL;
+    }
+    
+    public function updatePictureInLibrary($pictureID, $url, $alt) {
+        $pdo = $this->database->connect();
+        $sql = 'UPDATE picture SET url = :url, alt = :alt WHERE pictureID = :pictureID';
+        $statement = $pdo->prepare($sql);
+        $statement->bindParam(':pictureID', $pictureID, PDO::PARAM_STR);
+        $statement->bindParam(':url', $url, PDO::PARAM_STR);
+        $statement->bindParam(':alt', $alt, PDO::PARAM_STR);
+        $statement->execute();
+        $pdo = NULL;
     }
 
 
