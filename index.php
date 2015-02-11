@@ -6,6 +6,4 @@ ini_set('display_errors', 1);
 
 include_once 'controller/FrontController.php';
 
-$queries = explode('/', $_SERVER['QUERY_STRING']);
-
-$frontController = new FrontController($queries);
+$frontController = new FrontController();
