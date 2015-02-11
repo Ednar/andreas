@@ -8,8 +8,6 @@ class FrontController implements IFrontController {
 
     const DEFAULT_CONTROLLER = 'IndexController';
 
-    private $controllerFactory;
-
     protected $controller = self::DEFAULT_CONTROLLER;
     protected $loader;
     protected $twig;
@@ -17,8 +15,8 @@ class FrontController implements IFrontController {
     public function __construct($queries) {
         $this->controllerFactory = new ControllerFactory();
 
-        $action = 'create' . $queries[0];
-        $this->controller = $this->controllerFactory->$action();
+        $action = $queries[0];
+        $this->controller = ControllerFactory::create($action);
         if (isset($queries[2])) {
             $this->controller->$queries[1]($queries[2]);
         } else {

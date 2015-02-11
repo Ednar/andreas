@@ -173,7 +173,8 @@ a {
 }
 
 .main-content {
-    width:1024px;
+    width:100%;
+    max-width:1024px;
     margin:0 auto;
     padding-top:5%;
 }
@@ -365,9 +366,13 @@ footer {
         .listing-print {
             background-position: center center;
             background-size: cover;
-            float:left;
-            height:200px;
-            width:25%;
+            height:0px;
+            padding-bottom: 75%;
+            width:100%;
+            display:block;
+            text-align: center;
+            margin: 0 auto;
+
         }
 
 /* ============================================================================
@@ -881,6 +886,15 @@ nav .fa {
 ========================================================================================*/
 
 @media all and (min-width: 1024px) {
+
+    .listing-print {
+        background-position: center center;
+        background-size: cover;
+        float:left;
+        height:250px;
+        padding-bottom:0;
+        width:33%;
+    }
 
     .slides-wrapper {
         height:100vh;

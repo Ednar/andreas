@@ -5,13 +5,13 @@
         <div class="main-content">
             <h2>Landscape</h2>
             <p class="crumbs">
-                <a href="index.php?IndexController/showStart">Home</a>
+                <a href="index.php?Index/showStart">Home</a>
                 >
-                <a href="index.php?ProductListController/getAllPrints">Buy Prints</a>
+                <a href="index.php?ProductList/getAllPrints">Buy Prints</a>
                 > Landscape
             </p>
         {% for picture in pictures %}
-    <a href="index.php?PrintInfoController/printInfo/{{ picture.printID }}">
+    <a href="index.php?PrintInfo/printInfo/{{ picture.printID }}">
             <div class="listing-print" style="background-image: url('img/{{ picture.url }}')">
 
             </div>
