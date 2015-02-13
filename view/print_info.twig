@@ -1,39 +1,47 @@
 {% extends "base.twig" %}
 
-
 {% block content %}
-
+    <div class="main-content" style="min-height:0px;">
+        <h2>{{ print.title }}</h2>
+        <p class="crumbs">
+            <a href="index.php?Index/showStart">Home</a>
+            >
+            <a href="index.php?ProductList/getAllPrints">Buy Prints</a>
+            >
+            <a href="index.php?ProductList/getAllPrints">Landscape</a>
+            >
+            {{ print.title }}
+        </p>
+    </div>
     <div id="infoWrapper">
         <div class="printInfo">
-            {{  print.height }}
-            <h2 class="d-grid-2">{{ print.name }}</h2>
-            <h3>{{ print.price|number_format(0) }} SEK</h3>
-            <p class="printDesc d-grid-2">
-                {{ print.description }}
-            </p>
-        </div>
-
             <div class="printImage">
-                <img src="img/{{print.url }}">
+                <img src="img/{{print.fullSize }}">
             </div>
 
-            <div class="purchaseOptions">
-                <form action="index.php?ShoppingCart/addToCart" method="post">
-                    <input name="printID" type="hidden" value="{{ print.printID }}">
-                    <select name="frameID">
-                        {% for frame in frames %}
-                            <option value="{{ frame.frameID }}">{{ frame.name }}</option>
-                        {% endfor %}
-                    </select>
-                    <select name="sizeID">
-                        {% for size in sizes %}
-                            <option value="{{ size.sizeID }}">{{ size.height }}x{{ size.width }} </option>
-                        {% endfor %}
-                    </select>
-                    <button>Add to cart</button>
-                </form>
-            </div>
-
+            <h3>{{ print.price|number_format(0) }} SEK</h3>
+            <span class="printDesc">
+                {{ print.description }}
+            </span>
+            <form action="index.php?ShoppingCart/addToCart" method="post">
+                <input name="printID" type="hidden" value="{{ print.printID }}">
+                <select name="printTypeID" class="select-style">
+                    {% for type in types %}
+                        <option value="{{ type.printTypeID }}">{{ type.type }}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                <select name="sizeID" class="select-style">
+                    {% for size in sizes %}
+                        <option value="{{ size.sizeID }}">{{ size.format }} </option>
+                    {% endfor %}
+                </select>
+                <br>
+                <br>
+                <button class="btn">Add to cart</button>
+            </form>
+        </div>
     </div>
+</div>
 
 {% endblock %}

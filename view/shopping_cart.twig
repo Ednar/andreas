@@ -1,7 +1,7 @@
 {% extends "base.twig" %}
 
-
 {% block content %}
+
     <div class="main-content">
         <div id="shoppingCart">
             <div class="cartHeader">
@@ -12,10 +12,10 @@
                     Name
                 </div>
                 <div class="column">
-                    Size ID
+                    Size
                 </div>
                 <div class="column">
-                    Frame ID
+                    Type
                 </div>
                 <div class="column">
                     Price
@@ -27,25 +27,25 @@
         {% for print in cart %}
             <div class="cartRow">
                 <div class="column">
-                    <img src="img/{{ print.url }}">
+                    <img src="img/{{ print.fullSize }}">
                 </div>
                 <div class="column">
-                    {{ print.name }}
+                    {{ print.title }}
                 </div>
                 <div class="column">
-                    {{ print.sizeID }}
+                    {{ print.size[0] }}
                 </div>
                 <div class="column">
-                    {{ print.frameID }}
+                    {{ print.type[0] }}
                 </div>
                 <div class="column">
                     {{ print.price|number_format(0, ',', ' ') }} SEK
                 </div>
                 <div class="column">
-                    <a href="index.php?ShoppingCart/decreaseAmount/{{ print.printID }}{{ print.frameID }}{{ print.sizeID }}">
+                    <a href="index.php?ShoppingCart/decreaseAmount/{{ print.printID }}{{ print.printTypeID }}{{ print.sizeID }}">
                     <i class="fa fa-minus-square-o"></i></a>
                     {{ print.amount }}
-                    <a href="index.php?ShoppingCartController/increaseAmount/{{ print.printID }}{{ print.frameID }}{{ print.sizeID }}">
+                    <a href="index.php?ShoppingCartController/increaseAmount/{{ print.printID }}{{ print.printTypeID }}{{ print.sizeID }}">
                         <i class="fa fa-plus-square-o"></i>
                     </a>
                 </div>

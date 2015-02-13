@@ -175,6 +175,7 @@ a {
 .main-content {
     width:100%;
     max-width:1024px;
+    min-height:550px;
     margin:0 auto;
     padding-top:5%;
 }
@@ -245,9 +246,6 @@ header#topHeader {
 .slides-wrapper {
     height:100vh;
 }
-.watermark{
-    display: none;
-}
 
 .prev, .next {
     display:none;
@@ -315,7 +313,6 @@ footer {
     font-weight:300;
     float:left;
     padding:2% 5%;
-    margin-top:5%;
     }
 
     .terms, .socialMedia, .contact, .websiteInformation {
@@ -343,6 +340,43 @@ footer {
         font-size: 1.3em!important;
         margin:0px;
         padding:0;
+}
+
+.watermark img{
+    max-width: 150px;
+    float: left;
+    margin: 0px 15px 0px 0px;
+}
+.watermark p{
+    max-width: 90%;
+    float: left;
+    color: #555;
+    font-size: 0.8em;
+    margin:0px;
+}
+
+
+select {
+    width:220px;
+    height:25px;
+    font-size: 1em;
+    font-family: Lato;
+    font-weight: 300;
+    margin:5px 0;
+}
+
+.success-message {
+    position: absolute;
+    width:100%;
+    top:55px;
+    height:50px;
+    background-color:green;
+}
+
+.success-message p {
+    color:#fff;
+    text-align:center;
+    font-weight: 300
 }
 
 /* ============================================================================
@@ -375,9 +409,19 @@ footer {
 
         }
 
+
+
+
 /* ============================================================================
     Shopping cart
     =========================================================================*/
+
+    #shoppingCart {
+        position:relative;
+        top:60px;
+        width:700px;
+        margin: 0 auto;
+    }
 
     .cartRow {
         display:table-row;
@@ -407,9 +451,13 @@ footer {
     =========================================================================*/
 
 #infoWrapper {
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(222,222,222,1);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(222,222,222,1);
+    box-shadow: 0px 0px 10px 0px rgba(222,222,222,1);
     background-color: #f0f0f0;
+    height:500px;
     width:100%;
-    padding-top:120px;
+    margin: 0 auto;
 }
 
 #infoContent {
@@ -421,28 +469,38 @@ footer {
 }
 
 .printImage {
-    width:25%;
-    margin-bottom:50px;
+    margin-left:50px;
     float:left;
 }
+
 
 
 
 .printImage img {
-    max-height:400px;
+    -webkit-box-shadow: 0px 0px 4px 0px rgba(143,143,143,1);
+    -moz-box-shadow: 0px 0px 4px 0px rgba(143,143,143,1);
+    box-shadow: 0px 0px 4px 0px rgba(143,143,143,1);
+    max-width:500px;
+    margin:0% 5%;
 
 }
 
 .printInfo {
-    text-align: center;
-    width:20%;
-    float:left;
+    margin: 0 auto;
+    padding: 3% 0%;
+    width:100%;
+    max-width:1024px;
 }
 
     .printInfo h2 {
         margin:0 auto;
         text-transform: none;
-        font-weight: 400 !important;
+        font-size: 2em;
+        font-weight: 600 !important;
+    }
+
+    .printInfo h3 {
+        margin:5px 0px 10px 5px;
     }
 
     .printInfo p {
@@ -450,9 +508,6 @@ footer {
         padding:20px;
         font-weight: 300;
     }
-
-.purchaseOption {}
-
 
 
 /* ============================================================================
@@ -940,17 +995,12 @@ nav .fa {
 
     .watermark{
         display: inline-block;
-        position: absolute;
-        bottom:0px;
-        background-color: rgba(0,0,0,0.8);
-        z-index: 3;
-        width: 100%;
     }
 
     .watermark img{
         max-width: 150px;
         float: left;
-        margin: 15px;
+        margin: 0px 15px 15px 0px;
     }
     .watermark p{
         max-width: 80%;
@@ -958,7 +1008,6 @@ nav .fa {
         color: #555;
         font-size: 0.7em;
         margin-left: 15px;
-        margin-top: 15px;
     }
 
     .prev, .next {
@@ -967,7 +1016,7 @@ nav .fa {
 
     .slides-pagination {
         position: absolute;
-        bottom:75px !important;
+        bottom:15px !important;
 
     }
 
