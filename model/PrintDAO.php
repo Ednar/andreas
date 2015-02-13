@@ -2,6 +2,7 @@
 
 include 'AbstractDAO.php';
 include 'DatabaseHandle.php';
+require_once 'helpers/DatabaseHandleConstants.php';
 
 class PrintDAO extends AbstractDAO {
 
@@ -26,7 +27,7 @@ class PrintDAO extends AbstractDAO {
         $inputParams = array(
             ':printID' => $printID
         );
-        return $this->databaseHandle->request($sql, $inputParams, "fetch");
+        return $this->databaseHandle->request($sql, $inputParams, DatabaseHandleConstants::FETCH);
     }
 
     public function insertPrint($name, $description, $price, $pictureID) {
@@ -65,7 +66,7 @@ class PrintDAO extends AbstractDAO {
 
     public function getAllFrames() {
         $sql = 'SELECT * FROM Frame';
-        return $this->databaseHandle->request($sql, array(), 'fetchAll');
+        return $this->databaseHandle->request($sql, array());
     }
     
     /*
@@ -74,7 +75,7 @@ class PrintDAO extends AbstractDAO {
     
     public function getMediaLibrary() {
         $sql = 'SELECT * FROM picture';
-        return $this->database->request($sql, array(), 'fetchAll');
+        return $this->database->request($sql, array());
     }
     
     public function insertPictureToLibrary($url, $alt) {

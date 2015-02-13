@@ -1,5 +1,7 @@
 <?php
 
+require_once 'helpers/DatabaseHandleConstants.php';
+
 class PrintTypeDAO extends AbstractDAO {
 
     public function getAllPrintTypes() {

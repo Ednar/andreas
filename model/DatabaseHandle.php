@@ -25,6 +25,7 @@ class DatabaseHandle {
     public function request($sql, $inputParams = array(), $fetchMode = 'fetchAll') {
         $statement = self::$pdo->prepare($sql);
         $statement->execute($inputParams);
+        if ($fetchMode)
         $result = $statement->$fetchMode();
         return $result;
     }

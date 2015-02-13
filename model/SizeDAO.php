@@ -1,6 +1,7 @@
 <?php
 
 require_once 'AbstractDAO.php';
+require_once 'helpers/DatabaseHandleConstants.php';
 
 
 class SizeDAO extends AbstractDAO {
@@ -9,17 +10,23 @@ class SizeDAO extends AbstractDAO {
         $sql = 'SELECT * FROM SizeToPrint
                 LEFT JOIN Size on Size.sizeID = SizeToPrint.sizeID
                 WHERE printID = :printID';
-        return $this->databaseHandle->request($sql, array(':printID' => $printID), 'fetchAll');
+        return $this->databaseHandle->request($sql, array(':printID' => $printID));
     }
 
     public function getSize($sizeID) {
         $sql = 'SELECT format FROM Size WHERE sizeID = :sizeID';
-        return $this->databaseHandle->request($sql, array('sizeID' => $sizeID), 'fetch');
+        return $this->databaseHandle->request(
+            $sql,
+            array('sizeID' => $sizeID),
+            DatabaseHandleConstants::FETCH);
     }
 
     public function getPriceForSizeAndType($typeID, $sizeID) {
         $sql = 'SELECT price FROM Size WHERE printTypeID = :printTypeID AND sizeID = :sizeID';
-        $result =  $this->databaseHandle->request($sql, array(':sizeID' => $sizeID, ':printTypeID' => $typeID), 'fetch');
-        return $result;
+        return $this->databaseHandle->request(
+            $sql,
+            array(':sizeID' => $sizeID, ':printTypeID' => $typeID),
+            DatabaseHandleConstants::FETCH);
+
     }
 }
