@@ -4,8 +4,8 @@ class ProductListController extends BaseController {
 
     private $printDAO;
 
-    protected final function initialize()
-    {
+    public function __construct() {
+        parent::__construct();
         $databaseHandle = new DatabaseHandle();
         $this->printDAO = new PrintDAO($databaseHandle);
     }

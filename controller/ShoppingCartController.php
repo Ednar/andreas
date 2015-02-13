@@ -8,8 +8,8 @@ class ShoppingCartController extends BaseController {
     private $sizeDAO;
     private $printTypeDAO;
 
-    protected function initialize()
-    {
+    public function __construct() {
+        parent::__construct();
         $this->shoppingCart = array();
         $databaseHandle = new DatabaseHandle();
         $this->printDAO = new PrintDAO($databaseHandle);

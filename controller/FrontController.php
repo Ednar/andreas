@@ -1,6 +1,5 @@
 <?php
 
-require_once 'IFrontController.php';
 require_once 'ControllerFactory.php';
 session_start();
 

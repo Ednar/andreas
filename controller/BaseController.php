@@ -12,9 +12,5 @@ abstract class BaseController {
         Twig_Autoloader::register();
         $this->loader = new Twig_Loader_Filesystem('view');
         $this->templateEngine = new Twig_Environment($this->loader);
-        $this->initialize();
     }
-
-    //To let base classes initialize variables during custruction
-    protected abstract function initialize();
 }
