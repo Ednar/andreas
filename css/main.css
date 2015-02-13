@@ -383,6 +383,27 @@ select {
         margin-top:55px;
     }
 
+#cartQty {
+    position: absolute;
+    right:12px;
+    top:5px;
+    width:17px;
+    height:17px;
+    text-align: center;
+    font-family: Lato;
+    font-weight: 100;
+    font-size: 0.7em;
+    background-color: #ff0055;
+    -moz-border-radius: 17px;
+    -webkit-border-radius: 17px;
+    border-radius: 17px;
+    color:#fff;
+}
+
+#cartQty:empty {
+    display: none;
+}
+
 /* ============================================================================
     Product List
     =========================================================================*/
@@ -447,8 +468,6 @@ select {
         .column img {
             width:65px;
         }
-
-
 
 /* ============================================================================
     Print info

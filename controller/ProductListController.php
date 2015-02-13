@@ -14,7 +14,8 @@ class ProductListController extends BaseController {
         $pictures = $this->printDAO->getAllPrints();
         $template = $this->templateEngine->loadTemplate('test.twig');
         $template->display(array(
-            'pictures' => $pictures
+            'pictures' => $pictures,
+            'qty' => $_SESSION['qty'],
         ));
     }
 }

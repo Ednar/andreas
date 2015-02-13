@@ -52,6 +52,7 @@ class ShoppingCartController extends BaseController {
     }
 
     private function saveCartToSession() {
+        $this->getTotalQuantity();
         $_SESSION['shopping_cart'] = $this->shoppingCart;
     }
 
@@ -70,6 +71,7 @@ class ShoppingCartController extends BaseController {
         }
         $template->display(array(
             'cart' => $this->shoppingCart,
+            'qty' => $_SESSION['qty'],
             'sum' => $sum
         ));
     }
@@ -93,6 +95,14 @@ class ShoppingCartController extends BaseController {
         }
         $this->saveCartToSession();
         $this->showCart();
+    }
+
+    public function getTotalQuantity() {
+        $qty = 0;
+        foreach ($this->shoppingCart as $row) {
+            $qty++;
+        }
+        $_SESSION['qty'] = $qty;
     }
 
 }

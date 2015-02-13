@@ -6,7 +6,9 @@ class IndexController extends BaseController {
 
     public function showStart() {
         $template = $this->templateEngine->loadTemplate('start.twig');
-        $template->display(array());
+        $template->display(array(
+            'qty' => $_SESSION['qty'],
+        ));
     }
 
     public function nuke() {
