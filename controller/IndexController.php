@@ -7,7 +7,7 @@ class IndexController extends BaseController {
     public function showStart() {
         $template = $this->templateEngine->loadTemplate('start.twig');
         $template->display(array(
-            'qty' => $_SESSION['qty'],
+            'qty' => empty($_SESSION) ? "" : count($_SESSION['shopping_cart']),
         ));
     }
 

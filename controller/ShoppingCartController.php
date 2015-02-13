@@ -1,108 +1,126 @@
 <?php
 
-
 class ShoppingCartController extends BaseController {
 
-    private $shoppingCart;
+    private static $shoppingCart = array();
     private $printDAO;
     private $sizeDAO;
     private $printTypeDAO;
 
     public function __construct() {
         parent::__construct();
-        $this->shoppingCart = array();
         $databaseHandle = new DatabaseHandle();
         $this->printDAO = new PrintDAO($databaseHandle);
         $this->sizeDAO = new SizeDAO($databaseHandle);
         $this->printTypeDAO = new PrintTypeDAO($databaseHandle);
     }
 
-
     public function addToCart() {
-        $this->getCartIfSet();
+        $this->updateShoppingCartFromSession();
+        $print = $this->getPrintValues();
+        if ($this->printAllreadyInCart($print)) {
+            $this->incrementPrintAmmount($print['uniqueID']);
+        } else {
+            $this->putPrintInCart($print);
+        }
+        $this->showCart();
+    }
 
-        $printID = $_POST['printID'];
-        $print = $this->printDAO->getPrint($printID);
+    private function updateShoppingCartFromSession() {
+        if (isset($_SESSION['shopping_cart'])) {
+            self::$shoppingCart = $_SESSION['shopping_cart'];
+        } else {
+            $_SESSION['shopping_cart'] = self::$shoppingCart;
+        }
+    }
 
+    private function getPrintValues() {
+        $print = $this->printDAO->getPrint($_POST['printID']);
         $print['printTypeID'] = $_POST['printTypeID'];
         $print['sizeID'] = $_POST['sizeID'];
         $print['size'] = $this->sizeDAO->getSize($_POST['sizeID']);
         $print['type'] = $this->printTypeDAO->getPrintTypeByID($_POST['printTypeID']);
         $print['price'] = $this->sizeDAO->getPriceForSizeAndType($_POST['printTypeID'], $_POST['sizeID']);
+        $print['uniqueID'] = $this->createUniqueIDForPrint($print);
         $print['amount'] = 1;
-
-        $uniqueID = $printID.$print['printTypeID'].$print['sizeID'];
-        $uniqueID = trim($uniqueID);
-
-        if (isset($this->shoppingCart[$uniqueID])) {
-            $this->shoppingCart[$uniqueID]['amount']++;
-        } else {
-            $this->shoppingCart[$uniqueID] = $print;
-        }
-        $this->saveCartToSession();
-        $this->showCart();
+        return $print;
     }
 
-    private function getCartIfSet() {
-        if (isset($_SESSION['shopping_cart'])) {
-            $this->shoppingCart = $_SESSION['shopping_cart'];
-        } else {
-            $_SESSION['shopping_cart'] = $this->shoppingCart;
-        }
+    private function createUniqueIDForPrint($print) {
+        $uniqueID = $print['printID'] . $print['printTypeID'] . $print['sizeID'];
+        return trim($uniqueID);
     }
 
-    private function saveCartToSession() {
-        $this->getTotalQuantity();
-        $_SESSION['shopping_cart'] = $this->shoppingCart;
+    private function printAllreadyInCart($print) {
+        return isset(self::$shoppingCart[$print['uniqueID']]);
+    }
+
+    private function incrementPrintAmmount($uniqueID) {
+        return self::$shoppingCart[$uniqueID]['amount']++;
+    }
+
+    private function putPrintInCart($print) {
+        return self::$shoppingCart[$print['uniqueID']] = $print;
     }
 
     public function showCart() {
-        $this->getCartIfSet();
-        $sum = 0;
-        foreach ($this->shoppingCart as $row) {
-            $price = (float)$row['price'];
-            echo $price;
-            $sum += $price * $row['amount'];
-        }
-        if (empty($this->shoppingCart)) {
+        $this->saveCartToSession();
+        if ($this->shoppingCartIsEmpty()) {
             $template = $this->templateEngine->loadTemplate('empty_cart.twig');
         } else {
             $template = $this->templateEngine->loadTemplate('shopping_cart.twig');
         }
         $template->display(array(
-            'cart' => $this->shoppingCart,
-            'qty' => $_SESSION['qty'],
-            'sum' => $sum
+            'cart' => self::$shoppingCart,
+            'qty' => empty($_SESSION) ? "" : count($_SESSION['shopping_cart']),
+            'sum' => $this->getShoppingCartSum()
         ));
     }
 
+    private function saveCartToSession() {
+        $_SESSION['shopping_cart'] = self::$shoppingCart;
+    }
+
+    private function getShoppingCartSum() {
+        $sum = 0;
+        foreach (self::$shoppingCart as $row) {
+            $sum += $row['price'][0] * $row['amount'];
+        }
+        return $sum;
+    }
+
+    private function shoppingCartIsEmpty() {
+        return empty(self::$shoppingCart);
+    }
+
     public function decreaseAmount($uniqueID) {
-        $this->getCartIfSet();
-        if (isset($this->shoppingCart[$uniqueID])) {
-            $this->shoppingCart[$uniqueID]['amount']--;
-            if ( $this->shoppingCart[$uniqueID]['amount'] <= 0) {
-                unset( $this->shoppingCart[$uniqueID]);
+        $this->updateShoppingCartFromSession();
+        if ($this->shoppingCartContainsPrint($uniqueID)) {
+            $this->decrementPrintAmmount($uniqueID);
+            if (self::$shoppingCart[$uniqueID]['amount'] <= 0) {
+                $this->removePrintFromCart($uniqueID);
             }
         }
-        $this->saveCartToSession();
         $this->showCart();
+    }
+
+    private function shoppingCartContainsPrint($uniqueID) {
+        return isset(self::$shoppingCart[$uniqueID]);
+    }
+
+    private function decrementPrintAmmount($uniqueID) {
+        self::$shoppingCart[$uniqueID]['amount']--;
+    }
+
+    private function removePrintFromCart($uniqueID) {
+        unset(self::$shoppingCart[$uniqueID]);
     }
 
     public function increaseAmount($uniqueID) {
-        $this->getCartIfSet();
-        if (isset($this->shoppingCart[$uniqueID])) {
-            $this->shoppingCart[$uniqueID]['amount']++;
+        $this->updateShoppingCartFromSession();
+        if ($this->shoppingCartContainsPrint($uniqueID)) {
+            $this->incrementPrintAmmount($uniqueID);
         }
-        $this->saveCartToSession();
         $this->showCart();
     }
-
-    public function getTotalQuantity() {
-        $qty = 0;
-        foreach ($this->shoppingCart as $row) {
-            $qty++;
-        }
-        $_SESSION['qty'] = $qty;
-    }
-
 }

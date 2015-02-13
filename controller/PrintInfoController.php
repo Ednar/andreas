@@ -28,7 +28,7 @@ class PrintInfoController extends BaseController {
             'print' => $printInfo,
             'sizes' => $sizes,
             'types' => $printTypes,
-            'qty' => $_SESSION['qty'],
+            'qty' => empty($_SESSION) ? "" : count($_SESSION['shopping_cart']),
         ));
     }
 
