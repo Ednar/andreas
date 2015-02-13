@@ -13,4 +13,9 @@ class IndexController extends BaseController {
         session_unset();
         session_destroy();
     }
+
+    protected function initialize()
+    {
+        // Optional constructor
+    }
 }

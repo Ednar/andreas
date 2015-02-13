@@ -11,8 +11,8 @@
                 > Landscape
             </p>
         {% for picture in pictures %}
-    <a href="index.php?PrintInfo/printInfo/{{ picture.printID }}">
-            <div class="listing-print" style="background-image: url('img/{{ picture.url }}')">
+    <a href="index.php?PrintInfo/getPrintInfo/{{ picture.printID }}">
+            <div class="listing-print" style="background-image: url('img/{{ picture.fullSize }}')">
 
             </div>
     </a>

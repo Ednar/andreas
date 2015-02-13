@@ -12,10 +12,8 @@ class MySQLConnectionManager implements IConnectionManager {
         try {
             if(is_null($this->pdo)) {
                 $this->pdo = new PDO($this->host, $this->user, $this->passwd);
-                return $this->pdo;
-            } else {
-                return $this->pdo;
             }
+            return $this->pdo;
         }
         catch (PDOException $ex) {
             throw new Exception($ex->getMessage() . ' error info: '.  $ex->errorInfo);

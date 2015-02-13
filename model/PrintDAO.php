@@ -1,29 +1,34 @@
 <?php
 
-include 'IDAO.php';
-include 'IConnectionManager.php';
+include 'AbstractDAO.php';
 include 'MySQLConnectionManager.php';
 
-class PrintDAO implements IDAO {
-
-    private $database;
-
-    public function __construct() {
-        try {
-            $this->database = new MySQLConnectionManager();
-        } catch (Exception $e) {
-            echo $e->getMessage();
-        }
-    }
+class PrintDAO extends AbstractDAO {
 
     public function getAllPrints() {
         $sql = '
             SELECT *
             FROM Print
-            LEFT JOIN picture
-            ON picture.pictureID = Print.pictureID'
+            LEFT JOIN Image
+            ON Image.imageID = Print.imageID'
         ;
-        return $this->database->request($sql, array(), 'fetchAll');
+        return $this->databaseManager->request($sql, array(), 'fetchAll');
+    }
+
+    public function getPrint($printID) {
+        $sql = 'SELECT * FROM Print
+                LEFT JOIN Image
+                ON Image.imageID = Print.imageID
+                LEFT JOIN SizeToPrint
+                ON Print.printID = SizeToPrint.printID
+                LEFT JOIN Size
+                ON Size.sizeID = SizeToPrint.sizeID
+                WHERE Print.printID = :printID'
+        ;
+        $inputParams = array(
+            ':printID' => $printID
+        );
+        return $this->databaseManager->request($sql, $inputParams, "fetch");
     }
 
     public function insertPrint($name, $description, $price, $pictureID) {
@@ -37,24 +42,10 @@ class PrintDAO implements IDAO {
         $this->database->push($sql, $inputParams);
     }
 
-
-
-    public function getPrint($printID) {
-        $sql = 'SELECT * FROM Print
-                LEFT JOIN picture
-                ON picture.pictureID = Print.pictureID
-                WHERE Print.printID = :printID'
-        ;
-        $inputParams = array(
-            ':printID' => $printID
-        );
-        return $this->database->request($sql, $inputParams, "fetch");
-    }
-
     public function getSizeForPrint($printID) {
         $sql = 'SELECT * FROM Size LEFT JOIN PrintToSize ON Size.sizeID = PrintToSize.sizeID
         WHERE PrintToSize.printID = :printID';
-        return $this->database->request($sql, array(':printID' => $printID), 'fetchAll');
+        return $this->databaseManager->request($sql, array(':printID' => $printID), 'fetchAll');
     }
 
     public function getPrintsByCategory($category) {
@@ -82,7 +73,7 @@ class PrintDAO implements IDAO {
 
     public function getAllFrames() {
         $sql = 'SELECT * FROM Frame';
-        return $this->database->request($sql, array(), 'fetchAll');
+        return $this->databaseManager->request($sql, array(), 'fetchAll');
     }
     
     /*

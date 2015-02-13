@@ -4,46 +4,42 @@
 class ShoppingCartController extends BaseController {
 
     private $shoppingCart;
+    private $printDAO;
+    private $sizeDAO;
+    private $printTypeDAO;
 
-    public function __construct() {
+    protected function initialize()
+    {
         $this->shoppingCart = array();
-        $this->model = $this->model = new PrintDAO();
-        Twig_Autoloader::register();
-        $this->loader = new Twig_Loader_Filesystem('view');
-        $this->templateEngine = new Twig_Environment($this->loader);
+        $databaseManager = new MySQLConnectionManager();
+        $this->printDAO = new PrintDAO($databaseManager);
+        $this->sizeDAO = new SizeDAO($databaseManager);
+        $this->printTypeDAO = new PrintTypeDAO($databaseManager);
     }
+
 
     public function addToCart() {
-        $this->savePrintInCart($_POST['printID']);
-        $this->showCart();
-    }
-
-    private function savePrintInCart($printID) {
         $this->getCartIfSet();
-        $print = $this->model->getPrint($printID);
 
+        $printID = $_POST['printID'];
+        $print = $this->printDAO->getPrint($printID);
 
-
-        // TODO fixa det här
-        $frames = $this->model->getAllFrames();
-        $print['frame'] = $frames[$_POST['frameID']];
-
-        $sizes = $this->model->getSizeForPrint($printID);
-        $print['size'] = $sizes[0][1];
-
-        $print['frameID'] = $_POST['frameID'];
+        $print['printTypeID'] = $_POST['printTypeID'];
         $print['sizeID'] = $_POST['sizeID'];
+        $print['size'] = $this->sizeDAO->getSize($_POST['sizeID']);
+        $print['type'] = $this->printTypeDAO->getPrintTypeByID($_POST['printTypeID']);
         $print['amount'] = 1;
 
-        $uniqueID = $printID.$print['frameID'].$print['sizeID'];
+        $uniqueID = $printID.$print['printTypeID'].$print['sizeID'];
         $uniqueID = trim($uniqueID);
+
         if (isset($this->shoppingCart[$uniqueID])) {
             $this->shoppingCart[$uniqueID]['amount']++;
         } else {
             $this->shoppingCart[$uniqueID] = $print;
         }
         $this->saveCartToSession();
-
+        $this->showCart();
     }
 
     private function getCartIfSet() {
