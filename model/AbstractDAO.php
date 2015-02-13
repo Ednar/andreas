@@ -2,11 +2,11 @@
 
 class AbstractDAO {
 
-    protected $databaseManager;
+    protected $databaseHandle;
 
-    public function __construct($databaseManager) {
+    public function __construct($databaseHandle) {
         try {
-            $this->databaseManager = $databaseManager;
+            $this->databaseHandle = $databaseHandle;
         } catch (InvalidDatabaseConnectionException $e) {
             echo $e->getMessage();
         }

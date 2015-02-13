@@ -11,10 +11,10 @@ class ShoppingCartController extends BaseController {
     protected function initialize()
     {
         $this->shoppingCart = array();
-        $databaseManager = new MySQLConnectionManager();
-        $this->printDAO = new PrintDAO($databaseManager);
-        $this->sizeDAO = new SizeDAO($databaseManager);
-        $this->printTypeDAO = new PrintTypeDAO($databaseManager);
+        $databaseHandle = new DatabaseHandle();
+        $this->printDAO = new PrintDAO($databaseHandle);
+        $this->sizeDAO = new SizeDAO($databaseHandle);
+        $this->printTypeDAO = new PrintTypeDAO($databaseHandle);
     }
 
 
@@ -28,6 +28,7 @@ class ShoppingCartController extends BaseController {
         $print['sizeID'] = $_POST['sizeID'];
         $print['size'] = $this->sizeDAO->getSize($_POST['sizeID']);
         $print['type'] = $this->printTypeDAO->getPrintTypeByID($_POST['printTypeID']);
+        $print['price'] = $this->sizeDAO->getPriceForSizeAndType($_POST['printTypeID'], $_POST['sizeID']);
         $print['amount'] = 1;
 
         $uniqueID = $printID.$print['printTypeID'].$print['sizeID'];
@@ -58,7 +59,9 @@ class ShoppingCartController extends BaseController {
         $this->getCartIfSet();
         $sum = 0;
         foreach ($this->shoppingCart as $row) {
-            $sum += $row['price'] * $row['amount'];
+            $price = (float)$row['price'];
+            echo $price;
+            $sum += $price * $row['amount'];
         }
         if (empty($this->shoppingCart)) {
             $template = $this->templateEngine->loadTemplate('empty_cart.twig');

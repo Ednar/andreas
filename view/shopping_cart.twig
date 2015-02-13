@@ -39,7 +39,7 @@
                     {{ print.type[0] }}
                 </div>
                 <div class="column">
-                    {{ print.price|number_format(0, ',', ' ') }} SEK
+                    {{ print.price[0]|number_format(0, ',', ' ') }} SEK
                 </div>
                 <div class="column">
                     <a href="index.php?ShoppingCart/decreaseAmount/{{ print.printID }}{{ print.printTypeID }}{{ print.sizeID }}">

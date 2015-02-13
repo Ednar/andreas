@@ -1,7 +1,7 @@
 <?php
 
 include 'AbstractDAO.php';
-include 'MySQLConnectionManager.php';
+include 'DatabaseHandle.php';
 
 class PrintDAO extends AbstractDAO {
 
@@ -12,7 +12,7 @@ class PrintDAO extends AbstractDAO {
             LEFT JOIN Image
             ON Image.imageID = Print.imageID'
         ;
-        return $this->databaseManager->request($sql, array(), 'fetchAll');
+        return $this->databaseHandle->request($sql);
     }
 
     public function getPrint($printID) {
@@ -21,14 +21,12 @@ class PrintDAO extends AbstractDAO {
                 ON Image.imageID = Print.imageID
                 LEFT JOIN SizeToPrint
                 ON Print.printID = SizeToPrint.printID
-                LEFT JOIN Size
-                ON Size.sizeID = SizeToPrint.sizeID
                 WHERE Print.printID = :printID'
         ;
         $inputParams = array(
             ':printID' => $printID
         );
-        return $this->databaseManager->request($sql, $inputParams, "fetch");
+        return $this->databaseHandle->request($sql, $inputParams, "fetch");
     }
 
     public function insertPrint($name, $description, $price, $pictureID) {
@@ -42,16 +40,10 @@ class PrintDAO extends AbstractDAO {
         $this->database->push($sql, $inputParams);
     }
 
-    public function getSizeForPrint($printID) {
-        $sql = 'SELECT * FROM Size LEFT JOIN PrintToSize ON Size.sizeID = PrintToSize.sizeID
-        WHERE PrintToSize.printID = :printID';
-        return $this->databaseManager->request($sql, array(':printID' => $printID), 'fetchAll');
-    }
-
     public function getPrintsByCategory($category) {
         $sql = 'SELECT * FROM Print WHERE Category_categoryID IN( '
                 . 'SELECT categoryID FROM Category WHERE name = :category)';
-        return $this->database->request($sql, array('categoryID' => $category), 'fetchAll');
+        return $this->database->request($sql, array('categoryID' => $category));
     }
 
     public function deletePrint($printID) {
@@ -73,7 +65,7 @@ class PrintDAO extends AbstractDAO {
 
     public function getAllFrames() {
         $sql = 'SELECT * FROM Frame';
-        return $this->databaseManager->request($sql, array(), 'fetchAll');
+        return $this->databaseHandle->request($sql, array(), 'fetchAll');
     }
     
     /*

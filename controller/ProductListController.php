@@ -6,8 +6,8 @@ class ProductListController extends BaseController {
 
     protected final function initialize()
     {
-        $databaseManager = new MySQLConnectionManager();
-        $this->printDAO = new PrintDAO($databaseManager);
+        $databaseHandle = new DatabaseHandle();
+        $this->printDAO = new PrintDAO($databaseHandle);
     }
 
     public function getAllPrints() {

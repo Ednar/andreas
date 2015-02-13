@@ -12,10 +12,10 @@ class PrintInfoController extends BaseController {
     private $printTypeDAO;
 
     protected final function initialize() {
-        $databaseManager = new MySQLConnectionManager();
-        $this->printDAO = new PrintDAO($databaseManager);
-        $this->sizeDAO = new SizeDAO($databaseManager);
-        $this->printTypeDAO = new PrintTypeDAO($databaseManager);
+        $databaseHandle = new DatabaseHandle();
+        $this->printDAO = new PrintDAO($databaseHandle);
+        $this->sizeDAO = new SizeDAO($databaseHandle);
+        $this->printTypeDAO = new PrintTypeDAO($databaseHandle);
     }
 
     public function getPrintInfo($printID) {
@@ -26,7 +26,7 @@ class PrintInfoController extends BaseController {
         $template->display(array(
             'print' => $printInfo,
             'sizes' => $sizes,
-            'types' => $printTypes
+            'types' => $printTypes,
         ));
     }
 
