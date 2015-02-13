@@ -4,7 +4,7 @@ require_once 'IFrontController.php';
 require_once 'ControllerFactory.php';
 session_start();
 
-class FrontController implements IFrontController {
+class FrontController {
 
     const DEFAULT_CONTROLLER = 'Index';
     const DEFAULT_ACTION = 'showStart';

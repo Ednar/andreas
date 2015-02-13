@@ -12,7 +12,14 @@ class ControllerFactory {
         if (class_exists($controllerType)) {
             return new $controllerType();
         } else {
-            throw new Exception("Invalid controller name");
+            throw new InvalidControllerException("No matching controller found");
         }
+    }
+}
+
+class InvalidControllerException extends Exception {
+
+    public function __construct($message = null) {
+        parent::$message = $message;
     }
 }
