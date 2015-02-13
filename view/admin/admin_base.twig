@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,300italic,400italic' rel='stylesheet'
+              type='text/css'>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/superslides.css">
+
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="js/vendor/jquery-1.10.2.min.js"></script>
+        <script src="js/jquery.superslides.js" type="text/javascript" charset="utf-8"></script>
+
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+            your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Our content -->
+        <div id="main-wrapper">
+
+            <header id="topHeader">
+                <div id="menu-logo">
+                    <a href="index.php?Index/showStart">
+                        <img src="img/logo_kropp.png" alt="AK"/>
+
+                        <h1>
+
+                            <small>
+                                <span class="thin">Photographer</span>
+                                <span class="mobile-break"><br></span>
+                            </small>
+                            <span class="bold">Andreas Karlsson</span>
+                            <small>
+                                <span class="thin margin-left-100px" >Administrator</span>
+                                <span>Extraordinaire</span>
+                            </small>
+                        </h1> </a>
+                </div>
+
+                <nav id="nav-mobile"></nav>
+                <div id="logo-wrapper" class="mobile-only">
+                    <div id="logo">
+                        <img src="img/logo_kropp.png" alt="AK"/>
+
+                        <h1>
+                            <small>
+                                <span class="thin" >Administrator</span>
+                            </small>
+                            <span class="mobile-break"><br></span>
+                            <span>Extraordinaire</span>
+                        </h1>
+                    </div>
+                </div>
+                
+                <main>
+
+                {% block content %}} {% endblock %}
+                
+                </main>
+
+
+        </div>
+
+    </body>
+
+</html>

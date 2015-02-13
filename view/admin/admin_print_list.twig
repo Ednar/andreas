@@ -1,0 +1,18 @@
+{% extends "admin/admin_base.twig" %}
+
+
+{% block content %}
+    
+    <a href="admin.php?AddPrint/addPrint/">Add new print</a>
+
+    {% for print in prints %}
+
+        <div class="listing-print">
+            <img src="img/{{ print.url }}">
+            <a href="admin.php?EditPrint/editPrint/{{ print.printID }}">Edit</a>
+            <a href="admin.php?DeletePrint/deletePrint/{{ print.printID }}">Delete</a>
+        </div>
+
+    {% endfor %}
+
+{% endblock %}
