@@ -47,19 +47,27 @@
                                 <span class="mobile-break"><br></span>
                             </small>
                             <span class="bold">Andreas Karlsson</span>
+                            <small>
+                                <span class="thin margin-left-100px" >Administrator</span>
+                                <span>Extraordinaire</span>
+                            </small>
                         </h1> </a>
                 </div>
-                <nav id="nav-main">
-                    <ul>
-                        <li><a href="index.php?Index/showStart"><i class="fa fa-home fa-fw"></i>Home</a></li>
-                        <li><a href="index.php?ProductList/getAllPrints"><i class="fa fa-picture-o fa-fw"></i>Buy prints</a></li>
-                        <li><a href=""><i class="fa fa-user fa-fw"></i>About</a></li>
-                        <li><a href="http://www.andreas-karlsson.net"><i class="fa fa-external-link fa-fw"></i>Portfolio</a></li>
-                        <li><a href=""><i class="fa fa-comments fa-fw"></i>Contact</a></li>
-                        <li class="mobile-only"><a href=""><i class="fa fa-shopping-cart fa-fw"></i>View Cart</a></li>
-                        <li class="mobile-only"><a href=""><i class="fa fa-angle-double-right fa-fw"></i>Checkout</a></li>
-                    </ul>
-                </nav>
+
+                <nav id="nav-mobile"></nav>
+                <div id="logo-wrapper" class="mobile-only">
+                    <div id="logo">
+                        <img src="img/logo_kropp.png" alt="AK"/>
+
+                        <h1>
+                            <small>
+                                <span class="thin" >Administrator</span>
+                            </small>
+                            <span class="mobile-break"><br></span>
+                            <span>Extraordinaire</span>
+                        </h1>
+                    </div>
+                </div>
 
                 {% block content %}} {% endblock %}
 
