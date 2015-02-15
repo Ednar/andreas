@@ -23,6 +23,7 @@ class ShoppingCartController extends BaseController {
         } else {
             $this->putPrintInCart($print);
         }
+        $this->saveCartToSession();
         $this->showCart();
     }
 
@@ -64,7 +65,7 @@ class ShoppingCartController extends BaseController {
     }
 
     public function showCart() {
-        $this->saveCartToSession();
+        $this->updateShoppingCartFromSession();
         if ($this->shoppingCartIsEmpty()) {
             $template = $this->templateEngine->loadTemplate('empty_cart.twig');
         } else {
@@ -100,6 +101,7 @@ class ShoppingCartController extends BaseController {
                 $this->removePrintFromCart($uniqueID);
             }
         }
+        $this->saveCartToSession();
         $this->showCart();
     }
 
@@ -120,6 +122,7 @@ class ShoppingCartController extends BaseController {
         if ($this->shoppingCartContainsPrint($uniqueID)) {
             $this->incrementPrintAmount($uniqueID);
         }
+        $this->saveCartToSession();
         $this->showCart();
     }
 }
