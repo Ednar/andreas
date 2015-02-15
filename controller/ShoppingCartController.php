@@ -72,7 +72,6 @@ class ShoppingCartController extends BaseController {
         }
         $template->display(array(
             'cart' => self::$shoppingCart,
-            'qty' => empty($_SESSION) ? "" : count($_SESSION['shopping_cart']),
             'sum' => $this->getShoppingCartSum()
         ));
     }
