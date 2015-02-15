@@ -2,6 +2,9 @@
 
 class ShoppingCartController extends BaseController {
 
+    const SHOPPING_CART_VIEW = 'shopping_cart.twig';
+    const EMPTY_CART_VIEW = 'empty_cart.twig';
+
     private static $shoppingCart = array();
     private $printDAO;
     private $sizeDAO;
@@ -64,21 +67,25 @@ class ShoppingCartController extends BaseController {
         return self::$shoppingCart[$print['uniqueID']] = $print;
     }
 
+    private function saveCartToSession() {
+        $_SESSION['shopping_cart'] = self::$shoppingCart;
+    }
+
     public function showCart() {
         $this->updateShoppingCartFromSession();
-        if ($this->shoppingCartIsEmpty()) {
-            $template = $this->templateEngine->loadTemplate('empty_cart.twig');
-        } else {
-            $template = $this->templateEngine->loadTemplate('shopping_cart.twig');
-        }
+        $template = $this->loadTemplate();
         $template->display(array(
             'cart' => self::$shoppingCart,
             'sum' => $this->getShoppingCartSum()
         ));
     }
 
-    private function saveCartToSession() {
-        $_SESSION['shopping_cart'] = self::$shoppingCart;
+    private function loadTemplate() {
+        $template = $this->templateEngine->loadTemplate(self::SHOPPING_CART_VIEW);
+        if ($this->shoppingCartIsEmpty()) {
+            $template = $this->templateEngine->loadTemplate(self::EMPTY_CART_VIEW);
+        }
+        return $template;
     }
 
     private function getShoppingCartSum() {
