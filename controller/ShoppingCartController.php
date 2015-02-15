@@ -125,4 +125,13 @@ class ShoppingCartController extends BaseController {
         $this->saveCartToSession();
         $this->showCart();
     }
+
+    public function remove($uniqueID) {
+        $this->updateShoppingCartFromSession();
+        if ($this->shoppingCartContainsPrint($uniqueID)) {
+            $this->removePrintFromCart($uniqueID);
+        }
+        $this->saveCartToSession();
+        $this->showCart();
+    }
 }
