@@ -222,6 +222,15 @@ class Twig_Extension_Core extends Twig_Extension
         );
     }
 
+
+    /** To access the session global in templates */
+    public function getGlobals() {
+        return array(
+            'session'   => $_SESSION,
+        ) ;
+    }
+
+
     /**
      * Returns a list of tests to add to the existing list.
      *
@@ -1496,3 +1505,4 @@ function twig_array_batch($items, $size, $fill = null)
 
     return $result;
 }
+

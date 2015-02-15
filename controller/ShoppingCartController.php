@@ -18,8 +18,8 @@ class ShoppingCartController extends BaseController {
     public function addToCart() {
         $this->updateShoppingCartFromSession();
         $print = $this->getPrintValues();
-        if ($this->printAllreadyInCart($print)) {
-            $this->incrementPrintAmmount($print['uniqueID']);
+        if ($this->printAlreadyInCart($print)) {
+            $this->incrementPrintAmount($print['uniqueID']);
         } else {
             $this->putPrintInCart($print);
         }
@@ -51,11 +51,11 @@ class ShoppingCartController extends BaseController {
         return trim($uniqueID);
     }
 
-    private function printAllreadyInCart($print) {
+    private function printAlreadyInCart($print) {
         return isset(self::$shoppingCart[$print['uniqueID']]);
     }
 
-    private function incrementPrintAmmount($uniqueID) {
+    private function incrementPrintAmount($uniqueID) {
         return self::$shoppingCart[$uniqueID]['amount']++;
     }
 
@@ -119,7 +119,7 @@ class ShoppingCartController extends BaseController {
     public function increaseAmount($uniqueID) {
         $this->updateShoppingCartFromSession();
         if ($this->shoppingCartContainsPrint($uniqueID)) {
-            $this->incrementPrintAmmount($uniqueID);
+            $this->incrementPrintAmount($uniqueID);
         }
         $this->showCart();
     }

@@ -83,7 +83,9 @@
 
         <aside class="right-tray">
             <nav>
-                <span id="cartQty">{{ qty }}</span>
+                <span id="cartQty">
+                    {{ session.shopping_cart|length }}
+                </span>
                 <a href="index.php?ShoppingCart/showCart"><img src="img/cart_small.png" alt="shopping cart"></a>
             </nav>
         </aside>
