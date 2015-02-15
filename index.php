@@ -4,6 +4,6 @@
 
 
 
-include_once 'controller/FrontController.php';
+include_once 'controller/Router.php';
 
-$frontController = new FrontController();
+$router = new Router();

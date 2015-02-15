@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="On explicit save action" serverName="jacksberry" persistUploadOnCheckin="false">
+  <component name="PublishConfigData" autoUpload="On explicit save action" serverName="sans">
     <serverData>
-      <paths name="jacksberry">
+      <paths name="sans">
         <serverdata>
           <mappings>
-            <mapping deploy="/var/www/html/andreasLOL" local="$PROJECT_DIR$" web="/andreasLOL" />
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>

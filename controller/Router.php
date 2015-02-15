@@ -3,7 +3,7 @@
 require_once 'ControllerFactory.php';
 session_start();
 
-class FrontController {
+class Router {
 
     const DEFAULT_CONTROLLER = 'Index';
     const DEFAULT_ACTION = 'showStart';
