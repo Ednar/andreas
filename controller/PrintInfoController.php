@@ -15,10 +15,9 @@ class PrintInfoController extends BaseController {
 
     public function __construct() {
         parent::__construct();
-        $databaseHandle = new DatabaseHandle();
-        $this->printDAO = new PrintDAO($databaseHandle);
-        $this->sizeDAO = new SizeDAO($databaseHandle);
-        $this->printTypeDAO = new PrintTypeDAO($databaseHandle);
+        $this->printDAO = new PrintDAO();
+        $this->sizeDAO = new SizeDAO();
+        $this->printTypeDAO = new PrintTypeDAO();
     }
 
     /**
