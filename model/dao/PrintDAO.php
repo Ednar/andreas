@@ -1,10 +1,8 @@
 <?php
 
 include 'AbstractDAO.php';
-include 'model/DatabaseHandle.php';
-require_once 'helpers/DatabaseHandleConstants.php';
 
-class PrintDAO extends AbstractDAO {
+class PrintDAO extends BaseDAO {
 
     /**
      * @return mixed
@@ -16,7 +14,9 @@ class PrintDAO extends AbstractDAO {
             LEFT JOIN Image
             ON Image.imageID = Print.imageID'
         ;
-        return $this->databaseHandle->request($sql);
+        $statement = self::$pdo->prepare($sql);
+        $statement->execute();
+        return $statement->fetchAll();
     }
 
     /**
@@ -36,7 +36,9 @@ class PrintDAO extends AbstractDAO {
         $inputParams = array(
             ':printID' => $printID
         );
-        return $this->databaseHandle->request($sql, $inputParams, DatabaseHandleConstants::FETCH);
+        $statement = self::$pdo->prepare($sql);
+        $statement->execute($inputParams);
+        return $statement->fetch();
     }
 
     /**
