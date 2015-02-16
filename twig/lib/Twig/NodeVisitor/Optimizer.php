@@ -182,7 +182,7 @@ class Twig_NodeVisitor_Optimizer implements Twig_NodeVisitorInterface
             return;
         }
 
-        // when do we need to add the loop variable back?
+        // when do we need to addToCart the loop variable back?
 
         // the loop variable is referenced for the current loop
         elseif ($node instanceof Twig_Node_Expression_Name && 'loop' === $node->getAttribute('name')) {

@@ -96,7 +96,7 @@
 * Change starting CSS to be based on normalize.css instead of reset.css ([#500](https://github.com/h5bp/html5-boilerplate/issues/500)).
 * Add Respond.js media query polyfill.
 * Add Google Chrome Frame script prompt for IE6 users.
-* Simplify the `html` conditional comments for modern browsers and add an `oldie` class.
+* Simplify the `html` conditional comments for modern browsers and addToCart an `oldie` class.
 * Update clearfix to use "micro clearfix".
 * Add placeholder CSS MQs for mobile-first approach.
 * Add `textarea { resize: vertical; }` to only allow vertical resizing.

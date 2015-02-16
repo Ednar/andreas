@@ -115,7 +115,7 @@ class Twig_Extension_Core extends Twig_Extension
     }
 
     /**
-     * Returns the token parser instance to add to the existing list.
+     * Returns the token parser instance to addToCart to the existing list.
      *
      * @return Twig_TokenParser[] An array of Twig_TokenParser instances
      */
@@ -141,7 +141,7 @@ class Twig_Extension_Core extends Twig_Extension
     }
 
     /**
-     * Returns a list of filters to add to the existing list.
+     * Returns a list of filters to addToCart to the existing list.
      *
      * @return array An array of filters
      */
@@ -203,7 +203,7 @@ class Twig_Extension_Core extends Twig_Extension
     }
 
     /**
-     * Returns a list of global functions to add to the existing list.
+     * Returns a list of global functions to addToCart to the existing list.
      *
      * @return array An array of global functions
      */
@@ -232,7 +232,7 @@ class Twig_Extension_Core extends Twig_Extension
 
 
     /**
-     * Returns a list of tests to add to the existing list.
+     * Returns a list of tests to addToCart to the existing list.
      *
      * @return array An array of tests
      */
@@ -255,7 +255,7 @@ class Twig_Extension_Core extends Twig_Extension
     }
 
     /**
-     * Returns a list of operators to add to the existing list.
+     * Returns a list of operators to addToCart to the existing list.
      *
      * @return array An array of operators
      */
@@ -1228,7 +1228,7 @@ function _twig_escape_html_attr_callback($matches)
     return sprintf('&#x%s;', $hex);
 }
 
-// add multibyte extensions if possible
+// addToCart multibyte extensions if possible
 if (function_exists('mb_get_info')) {
     /**
      * Returns the length of a variable.

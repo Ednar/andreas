@@ -11,7 +11,7 @@
 class Twig_Extension_Debug extends Twig_Extension
 {
     /**
-     * Returns a list of global functions to add to the existing list.
+     * Returns a list of global functions to addToCart to the existing list.
      *
      * @return array An array of global functions
      */

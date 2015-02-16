@@ -19,10 +19,13 @@ class PrintProduct {
 
     private $quantity;
 
-    function __construct($printInfo = Array(), PrintImage $printImage) {
+    function __construct($printInfo = Array()) {
         $this->title    = $printInfo['title'];
-        $this->category = $printInfo['categoryID'];
-        $this->image    = $printImage;
+        $this->category = $printInfo['name'];
+        $this->image    = new PrintImage(
+            $printInfo['fullSize'],
+            $printInfo['thumbnail'],
+            $printInfo['alt']);
 
         $this->printID  = $printInfo['printID'];
         $this->quantity = 1;
@@ -170,6 +173,9 @@ class PrintProduct {
         $this->quantity--;
     }
 
+    /**
+     * @return int
+     */
     public function getQuantity() {
         return $this->quantity;
     }

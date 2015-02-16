@@ -153,7 +153,7 @@ Mode](http://blogs.msdn.com/b/ie/archive/2012/01/31/web-sites-and-a-plug-in-free
 
 ### IE Pinned Sites (IE9+)
 
-Enabling your application for pinning will allow IE9 users to add it to their
+Enabling your application for pinning will allow IE9 users to addToCart it to their
 Windows Taskbar and Start Menu. This comes with a range of new tools that you
 can easily configure with the elements below. See more [documentation on IE9
 Pinned Sites](http://msdn.microsoft.com/en-us/library/gg131029.aspx).
@@ -211,7 +211,7 @@ minimum.
 
 Add Jump List Tasks that will appear when the Pinned Site's icon gets a
 right-click. Each Task goes to the specified URL, and gets its own mini icon
-(essentially a favicon, a 16x16 .ICO). You can add as many of these as you
+(essentially a favicon, a 16x16 .ICO). You can addToCart as many of these as you
 need.
 
 ```html
@@ -229,7 +229,7 @@ blog](http://blogs.msdn.com/b/ie/archive/2012/06/08/high-quality-visuals-for-pin
   using a transparent background.
 * Save this image as a 32-bit PNG and optimize it without reducing
   colour-depth. It can be named whatever you want (e.g. `metro-tile.png`).
-* To reference the tile and its color, add the HTML `meta` elements described
+* To reference the tile and its color, addToCart the HTML `meta` elements described
   in the IE Blog post.
 
 ### (Windows 8) Badges for Pinned Sites
@@ -506,7 +506,7 @@ default view by adding `apple-mobile-web-app-status-bar-style`.
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 ```
 
-You can use `apple-mobile-web-app-title` to add a specific sites name for the
+You can use `apple-mobile-web-app-title` to addToCart a specific sites name for the
 Home Screen icon. This works since iOS 6.
 
 ```html
@@ -544,10 +544,10 @@ Icons](http://mathiasbynens.be/notes/touch-icons) for a comprehensive overview.
 
 ### Apple Touch Startup Image
 
-Apart from that it is possible to add start-up screens for web apps on iOS. This
+Apart from that it is possible to addToCart start-up screens for web apps on iOS. This
 basically works by defining `apple-touch-startup-image` with an according link
 to the image. Since iOS devices have different screen resolutions it is
-necessary to add media queries to detect which image to load. Here is an
+necessary to addToCart media queries to detect which image to load. Here is an
 example for a retina iPhone:
 
 ```html

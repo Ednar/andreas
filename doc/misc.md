@@ -13,7 +13,7 @@ benefit from different collections of ignores.
 OS-specific and editor-specific files should be ignored using a "global
 ignore" that applies to all repositories on your system.
 
-For example, add the following to your `~/.gitconfig`, where the `.gitignore`
+For example, addToCart the following to your `~/.gitconfig`, where the `.gitignore`
 in your HOME directory contains the files and directories you'd like to
 globally ignore:
 

@@ -22,7 +22,7 @@ abstract class Twig_Extension implements Twig_ExtensionInterface
     }
 
     /**
-     * Returns the token parser instances to add to the existing list.
+     * Returns the token parser instances to addToCart to the existing list.
      *
      * @return array An array of Twig_TokenParserInterface or Twig_TokenParserBrokerInterface instances
      */
@@ -32,7 +32,7 @@ abstract class Twig_Extension implements Twig_ExtensionInterface
     }
 
     /**
-     * Returns the node visitor instances to add to the existing list.
+     * Returns the node visitor instances to addToCart to the existing list.
      *
      * @return Twig_NodeVisitorInterface[] An array of Twig_NodeVisitorInterface instances
      */
@@ -42,7 +42,7 @@ abstract class Twig_Extension implements Twig_ExtensionInterface
     }
 
     /**
-     * Returns a list of filters to add to the existing list.
+     * Returns a list of filters to addToCart to the existing list.
      *
      * @return array An array of filters
      */
@@ -52,7 +52,7 @@ abstract class Twig_Extension implements Twig_ExtensionInterface
     }
 
     /**
-     * Returns a list of tests to add to the existing list.
+     * Returns a list of tests to addToCart to the existing list.
      *
      * @return array An array of tests
      */
@@ -62,7 +62,7 @@ abstract class Twig_Extension implements Twig_ExtensionInterface
     }
 
     /**
-     * Returns a list of functions to add to the existing list.
+     * Returns a list of functions to addToCart to the existing list.
      *
      * @return array An array of functions
      */
@@ -72,7 +72,7 @@ abstract class Twig_Extension implements Twig_ExtensionInterface
     }
 
     /**
-     * Returns a list of operators to add to the existing list.
+     * Returns a list of operators to addToCart to the existing list.
      *
      * @return array An array of operators
      */
@@ -82,7 +82,7 @@ abstract class Twig_Extension implements Twig_ExtensionInterface
     }
 
     /**
-     * Returns a list of global variables to add to the existing list.
+     * Returns a list of global variables to addToCart to the existing list.
      *
      * @return array An array of global variables
      */

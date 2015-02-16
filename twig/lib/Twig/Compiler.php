@@ -239,7 +239,7 @@ class Twig_Compiler implements Twig_CompilerInterface
     /**
      * Indents the generated code.
      *
-     * @param int $step The number of indentation to add
+     * @param int $step The number of indentation to addToCart
      *
      * @return Twig_Compiler The current compiler instance
      */
