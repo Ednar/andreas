@@ -14,32 +14,38 @@ class ShoppingCartController extends BaseController {
 
     public function __construct() {
         parent::__construct();
-        $databaseHandle = new DatabaseHandle();
-        $this->printDAO = new PrintDAO($databaseHandle);
-        $this->sizeDAO = new SizeDAO($databaseHandle);
-        $this->printTypeDAO = new PrintTypeDAO($databaseHandle);
+        $this->printDAO = new PrintDAO();
+        $this->sizeDAO = new SizeDAO();
+        $this->printTypeDAO = new PrintTypeDAO();
         self::$shoppingCart = new ShoppingCart();
+
+        if (isset($_SESSION['shopping_cart'])) {
+            $this->prints = $_SESSION['shopping_cart'];
+        } else {
+            $_SESSION['shopping_cart'] = $this->prints;
+        }
     }
 
+    public function __destruct() {
+        self::$shoppingCart->saveCartToSession();
+        $this->showCart();
+    }
 
     public function addToCart() {
         $print = $this->getPrint();
-        self::$shoppingCart->add($print);
-        $this->showCart();
+        self::$shoppingCart->addToCart($print);
     }
 
     private function getPrint() {
         $printInfo = $this->printDAO->getPrint($_POST['printID']);
-        $image = new PrintImage($printInfo['fullSize'], $printInfo['thumbnail'], $printInfo['alt']);
-        $print = new PrintProduct($printInfo, $image);
-        $print->setTypeID($_POST['printTypeID']);
+        $print = new PrintProduct($printInfo);
         $print->setSizeID($_POST['sizeID']);
+        $print->setTypeID($_POST['typeID']);
         $print->setSize($this->sizeDAO->getSize($_POST['sizeID']));
         $print->setType($this->printTypeDAO->getPrintTypeByID($_POST['printTypeID']));
         $print->setPrice($this->sizeDAO->getPriceForSizeAndType($_POST['printTypeID'], $_POST['sizeID']));
         return $print;
     }
-
 
     public function showCart() {
         $template = $this->loadTemplate();
@@ -50,26 +56,21 @@ class ShoppingCartController extends BaseController {
 
     private function loadTemplate() {
         $template = $this->templateEngine->loadTemplate(self::SHOPPING_CART_VIEW);
-        if (!isset(self::$shoppingCart)) {
+        if (is_null(self::$shoppingCart)) {
             $template = $this->templateEngine->loadTemplate(self::EMPTY_CART_VIEW);
         }
         return $template;
     }
 
+    public function increaseQuantity($uniqueID) {
+        self::$shoppingCart->increaseQuantity($uniqueID);
+    }
 
     public function decreaseQuantity($uniqueID) {
         self::$shoppingCart->decreaseQuantity($uniqueID);
-        $this->showCart();
-    }
-
-
-    public function increaseQuantity($uniqueID) {
-        self::$shoppingCart->increaseQuantity($uniqueID);
-        $this->showCart();
     }
 
     public function remove($uniqueID) {
         self::$shoppingCart->remove($uniqueID);
-        $this->showCart();
     }
 }
