@@ -51,7 +51,10 @@
         <nav id="nav-main">
             <ul>
                 <li><a href="index.php?Index/showStart"><i class="fa fa-home fa-fw"></i>Home</a></li>
-                <li><a href="index.php?ProductList/getAllPrints"><i class="fa fa-picture-o fa-fw"></i>Buy prints</a></li>
+                <li><a href="index.php?ProductList/getAllPrints"><i class="fa fa-picture-o fa-fw"></i>Buy prints
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                </li>
                 <li><a href=""><i class="fa fa-user fa-fw"></i>About</a></li>
                 <li><a href="http://www.andreas-karlsson.net"><i class="fa fa-external-link fa-fw"></i>Portfolio</a></li>
                 <li><a href=""><i class="fa fa-comments fa-fw"></i>Contact</a></li>
@@ -83,8 +86,8 @@
 
         <aside class="right-tray">
             <nav>
+                <!-- Display the number of items in the cart  -->
                 <span id="cartQty">{% if session.shopping_cart|length > 0 %}{{ session.shopping_cart|length }}{% endif %}</span>
-                <!-- Sorry -->
                 <a href="index.php?ShoppingCart/showCart"><img src="img/cart_small.png" alt="shopping cart"></a>
             </nav>
         </aside>
@@ -92,7 +95,7 @@
 
 
 
-    <script> //för att skjuta in och ut nav-meny på mobil
+    <script> //Extend and retract mobile navigation
         $(document).ready(function () {
             $("#nav-mobile").html($("#nav-main").html());
             $("#nav-toggle").click(function () {
@@ -106,7 +109,7 @@
             });
         });
     </script>
-    <script> // för att animera hamburgaren vid klick/pet
+    <script> // Animate hamburger on click / touch
 
         $(function () {
             $("#nav-toggle").click(function () {
@@ -132,9 +135,9 @@
 
         <div class="socialMedia">
             <h3>Get in touch</h3>
-            <span>Facebook</span>           <br>
-            <span>Instagram</span>    <br>
-            <span>500px</span>
+            <span><i class="fa fa-fw fa-facebook-official"></i> Facebook</span>           <br>
+            <span><i class="fa fa-fw fa-instagram"></i> Instagram</span>    <br>
+            <span><i class="fa fa-fw fa-picture-o"></i> 500px</span>
         </div>
 
 

@@ -9,13 +9,12 @@ class IndexController extends BaseController {
         $template->display(array());
     }
 
+    /**
+     * Unsets and destroys the session.
+     */
     public function nuke() {
+        // TODO remove this function for production
         session_unset();
         session_destroy();
-    }
-
-    protected function initialize()
-    {
-        // Optional constructor
     }
 }

@@ -19,6 +19,12 @@ class PrintInfoController extends BaseController {
         $this->printTypeDAO = new PrintTypeDAO($databaseHandle);
     }
 
+    /**
+     * Gets and displays the information page for a specific print based on
+     * the unique identifier
+     *
+     * @param $printID unique print identifier
+     */
     public function getPrintInfo($printID) {
         $printInfo = $this->printDAO->getPrint($printID);
         $sizes = $this->sizeDAO->getSizesForPrint($printID);

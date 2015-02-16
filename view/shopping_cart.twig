@@ -6,6 +6,7 @@
         <h2>
             Shopping cart
         </h2>
+        <p style="margin:0px;">It's getting too hot!<img src="img/ghost.png"><a href="index.php?IndexController/nuke">Paint the target</a></p>
         <div id="shoppingCart">
         {% for print in cart %}
             <div class="cartRow">
@@ -31,11 +32,11 @@
                     {{ print.price[0]|number_format(0, ',', ' ') }} SEK
                 </div>
                 <div class="column">
-                    <a href="index.php?ShoppingCart/decreaseAmount/{{ print.printID }}{{ print.printTypeID }}{{ print.sizeID }}">
+                    <a href="index.php?ShoppingCart/decreaseQuantity/{{ print.printID }}{{ print.printTypeID }}{{ print.sizeID }}">
                         <i class="fa fa-minus"></i>
                     </a>
                     {{ print.amount }}
-                    <a href="index.php?ShoppingCart/increaseAmount/{{ print.printID }}{{ print.printTypeID }}{{ print.sizeID }}">
+                    <a href="index.php?ShoppingCart/increaseQuantity/{{ print.printID }}{{ print.printTypeID }}{{ print.sizeID }}">
                         <i class="fa fa-plus"></i>
                     </a>
                 </div>

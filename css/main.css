@@ -307,8 +307,8 @@ main {
 footer {
     width:100%;
     box-sizing: border-box;
-    background-color: #222;
-    color:#c0c0c0;
+    background-color: #111;
+    color: #aaa;
     font-size:1em;
     font-weight:300;
     float:left;
@@ -446,8 +446,8 @@ select {
         top:12px;
         width:700px;
         background-color: #f0f0f0;
-        padding:4%;
-        margin: 0 auto;
+        padding:4% 4% 0% 4%;
+        margin: 0 auto 100px auto;
     }
 
         #shoppingCart h3 {
@@ -457,6 +457,10 @@ select {
         #shoppingCart p {
             text-align:left;
             margin-bottom:0px;
+        }
+
+        #shoppingCart h1 {
+            padding-bottom:5%;
         }
 
     .cartRow {

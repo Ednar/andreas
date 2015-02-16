@@ -4,10 +4,20 @@ require_once 'IndexController.php';
 require_once 'PrintInfoController.php';
 require_once 'ProductListController.php';
 require_once 'ShoppingCartController.php';
-require_once 'AdminProductListController.php';
 
+/**
+ * Class ControllerFactory
+ *
+ */
 class ControllerFactory {
 
+    /**
+     * Creates a new controller the provided controller name
+     *
+     * @param $controller string name of the controller to return
+     * @return mixed
+     * @throws InvalidControllerException if the provided controller name does not exist
+     */
     public static function create($controller) {
         $controllerType = $controller . 'Controller';
         if (class_exists($controllerType)) {

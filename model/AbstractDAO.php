@@ -11,8 +11,6 @@ class AbstractDAO {
             echo $e->getMessage();
         }
     }
-
-
 }
 
 class InvalidDatabaseConnectionException extends Exception {

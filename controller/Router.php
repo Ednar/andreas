@@ -3,13 +3,28 @@
 require_once 'ControllerFactory.php';
 session_start();
 
+/**
+ * Class Router
+ *
+ * Parses the request from the URI and calls the appropriate controller with
+ * the requested arguments and parameters.
+ *
+ * Should the request be incomplete or incorrect the router will provide a
+ * default route instead of displaying an error message.
+ */
 class Router {
 
     const DEFAULT_CONTROLLER = 'Index';
     const DEFAULT_ACTION = 'showStart';
 
+    /**
+     * @var array
+     */
     private $queries;
 
+    /**
+     * Parses the URI and calls a controller on construction
+     */
     public function __construct() {
         $this->queries = $this->getQueriesFromURL();
         $this->run(
