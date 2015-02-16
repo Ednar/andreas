@@ -1,6 +1,6 @@
 <?php
 
-require_once 'AbstractDAO.php';
+require_once 'BaseDAO.php';
 
 class SizeDAO extends BaseDAO {
 

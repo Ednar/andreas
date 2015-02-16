@@ -1,6 +1,6 @@
 <?php
 
-include 'AbstractDAO.php';
+include 'BaseDAO.php';
 
 class PrintDAO extends BaseDAO {
 

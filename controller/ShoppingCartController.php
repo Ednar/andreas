@@ -39,6 +39,8 @@ class ShoppingCartController extends BaseController {
     private function getPrint() {
         $printInfo = $this->printDAO->getPrint($_POST['printID']);
         $print = new PrintProduct($printInfo);
+        $print->setSizeID($_POST['sizeID']);
+        $print->setTypeID($_POST['typeID']);
         $print->setSize($this->sizeDAO->getSize($_POST['sizeID']));
         $print->setType($this->printTypeDAO->getPrintTypeByID($_POST['printTypeID']));
         $print->setPrice($this->sizeDAO->getPriceForSizeAndType($_POST['printTypeID'], $_POST['sizeID']));

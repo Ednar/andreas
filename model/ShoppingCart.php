@@ -26,6 +26,7 @@ class ShoppingCart {
 
     public function addToCart(PrintProduct $print) {
         if ($this->cartContainsPrint($print)) {
+            echo $print->getUniqueID();
             $this->increaseQuantity($print->getUniqueID());
         } else {
             $this->putPrintInCart($print);
@@ -33,7 +34,7 @@ class ShoppingCart {
     }
 
     private function cartContainsPrint(PrintProduct $print){
-        return isset($this->prints[$print->getUniqueID()]);
+        return isset($this->prints[ $print->getUniqueID() ]);
     }
 
     public function increaseQuantity($uniqueID) {
