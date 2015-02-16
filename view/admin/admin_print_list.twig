@@ -3,15 +3,15 @@
 
 {% block content %}
     
-    <a href="admin.php?AdminAddPrint/addPrint/">Add new print</a>
+    <a href="index.php?AdminAddPrint/addPrint/">Add new print</a>
     
     <div class="listing-print">
 
     {% for print in prints %}
 
             <img src="img/{{ print.thumbnail }}">
-            <a href="admin.php?AdminEditPrint/editPrint/{{ print.printID }}">Edit</a>
-            <a href="admin.php?AdminDeletePrint/deletePrint/{{ print.printID }}">Delete</a>
+            <a href="index.php?AdminEditPrint/editPrint/{{ print.printID }}">Edit</a>
+            <a href="index.php?AdminDeletePrint/deletePrint/{{ print.printID }}">Delete</a>
 
     {% endfor %}
     
