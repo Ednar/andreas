@@ -13,11 +13,10 @@ class AdminProductListController extends BaseController {
     }
 
     public function getAllPrints() {
-        $pictures = $this->printDAO->getAllPrints();
-        $template = $this->templateEngine->loadTemplate('test.twig');
+        $prints = $this->printDAO->getAllPrints();
+        $template = $this->templateEngine->loadTemplate('admin/admin_print_list.twig');
         $template->display(array(
-            'pictures' => $pictures,
-            'qty' => empty($_SESSION) ? "" : count($_SESSION['shopping_cart']),
+            'prints' => $prints,
         ));
     }
 }
