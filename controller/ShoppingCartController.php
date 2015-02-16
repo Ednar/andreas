@@ -1,11 +1,13 @@
 <?php
 
+require_once 'model/ShoppingCart.php';
+
 class ShoppingCartController extends BaseController {
 
     const SHOPPING_CART_VIEW = 'shopping_cart.twig';
     const EMPTY_CART_VIEW = 'empty_cart.twig';
 
-    private static $shoppingCart = array();
+    private static $shoppingCart;
     private $printDAO;
     private $sizeDAO;
     private $printTypeDAO;
@@ -16,153 +18,58 @@ class ShoppingCartController extends BaseController {
         $this->printDAO = new PrintDAO($databaseHandle);
         $this->sizeDAO = new SizeDAO($databaseHandle);
         $this->printTypeDAO = new PrintTypeDAO($databaseHandle);
+        self::$shoppingCart = new ShoppingCart();
     }
 
-    /**
-     * Uses global _POST data to add print to the shopping cart
-     */
+
     public function addToCart() {
-        $this->updateShoppingCartFromSession();
-        $print = $this->getPrintValues();
-        if ($this->printAlreadyInCart($print)) {
-            $this->incrementPrintAmount($print['uniqueID']);
-        } else {
-            $this->putPrintInCart($print);
-        }
-        $this->saveCartToSession();
+        $print = $this->getPrint();
+        self::$shoppingCart->add($print);
         $this->showCart();
     }
 
-    private function updateShoppingCartFromSession() {
-        if (isset($_SESSION['shopping_cart'])) {
-            self::$shoppingCart = $_SESSION['shopping_cart'];
-        } else {
-            $_SESSION['shopping_cart'] = self::$shoppingCart;
-        }
-    }
-
-    private function getPrintValues() {
-        $print = $this->printDAO->getPrint($_POST['printID']);
-        $print['printTypeID']   = $_POST['printTypeID'];
-        $print['sizeID']        = $_POST['sizeID'];
-        $print['size']          = $this->sizeDAO->getSize($_POST['sizeID']);
-        $print['type']          = $this->printTypeDAO->getPrintTypeByID($_POST['printTypeID']);
-        $print['price']         = $this->sizeDAO->getPriceForSizeAndType($_POST['printTypeID'], $_POST['sizeID']);
-        $print['uniqueID']      = $this->createUniqueIDForPrint($print);
-        $print['amount']        = 1;
+    private function getPrint() {
+        $printInfo = $this->printDAO->getPrint($_POST['printID']);
+        $image = new PrintImage($printInfo['fullSize'], $printInfo['thumbnail'], $printInfo['alt']);
+        $print = new PrintProduct($printInfo, $image);
+        $print->setTypeID($_POST['printTypeID']);
+        $print->setSizeID($_POST['sizeID']);
+        $print->setSize($this->sizeDAO->getSize($_POST['sizeID']));
+        $print->setType($this->printTypeDAO->getPrintTypeByID($_POST['printTypeID']));
+        $print->setPrice($this->sizeDAO->getPriceForSizeAndType($_POST['printTypeID'], $_POST['sizeID']));
         return $print;
     }
 
-    private function createUniqueIDForPrint($print) {
-        $uniqueID = $print['printID'] . $print['printTypeID'] . $print['sizeID'];
-        return trim($uniqueID);
-    }
 
-    private function printAlreadyInCart($print) {
-        return isset(self::$shoppingCart[$print['uniqueID']]);
-    }
-
-    private function incrementPrintAmount($uniqueID) {
-        return self::$shoppingCart[$uniqueID]['amount']++;
-    }
-
-    private function putPrintInCart($print) {
-        return self::$shoppingCart[$print['uniqueID']] = $print;
-    }
-
-    private function saveCartToSession() {
-        $_SESSION['shopping_cart'] = self::$shoppingCart;
-    }
-
-    /**
-     * Displays the unique shopping cart information stored in the _SESSION
-     */
     public function showCart() {
-        $this->updateShoppingCartFromSession();
         $template = $this->loadTemplate();
         $template->display(array(
             'cart' => self::$shoppingCart,
-            'sum' => $this->getShoppingCartSum()
         ));
     }
 
     private function loadTemplate() {
         $template = $this->templateEngine->loadTemplate(self::SHOPPING_CART_VIEW);
-        if ($this->shoppingCartIsEmpty()) {
+        if (!isset(self::$shoppingCart)) {
             $template = $this->templateEngine->loadTemplate(self::EMPTY_CART_VIEW);
         }
         return $template;
     }
 
-    private function shoppingCartIsEmpty() {
-        return empty(self::$shoppingCart);
-    }
 
-    private function getShoppingCartSum() {
-        $sum = 0;
-        foreach (self::$shoppingCart as $row) {
-            $sum += $row['price'][0] * $row['amount'];
-        }
-        return $sum;
-    }
-
-
-    /**
-     * Decreases the quantity of a print in the cart. Should the amount go below zero,
-     * the print will be completely removed.
-     *
-     * @param $uniqueID unique print identifier
-     */
     public function decreaseQuantity($uniqueID) {
-        $this->updateShoppingCartFromSession();
-        if ($this->shoppingCartContainsPrint($uniqueID)) {
-            $this->decrementPrintAmount($uniqueID);
-            if (self::$shoppingCart[$uniqueID]['amount'] <= 0) {
-                $this->removePrintFromCart($uniqueID);
-            }
-        }
-        $this->saveCartToSession();
+        self::$shoppingCart->decreaseQuantity($uniqueID);
         $this->showCart();
     }
 
-    private function shoppingCartContainsPrint($uniqueID) {
-        return isset(self::$shoppingCart[$uniqueID]);
-    }
 
-    private function decrementPrintAmount($uniqueID) {
-        self::$shoppingCart[$uniqueID]['amount']--;
-    }
-
-    private function removePrintFromCart($uniqueID) {
-        unset(self::$shoppingCart[$uniqueID]);
-    }
-
-    /**
-     * Increases the quantity of a print in the cart.
-     *
-     * @param $uniqueID unique print identifier
-     */
     public function increaseQuantity($uniqueID) {
-        $this->updateShoppingCartFromSession();
-        if ($this->shoppingCartContainsPrint($uniqueID)) {
-            $this->incrementPrintAmount($uniqueID);
-        }
-        $this->saveCartToSession();
+        self::$shoppingCart->increaseQuantity($uniqueID);
         $this->showCart();
     }
 
-
-    /**
-     * Completely removes a print from the shopping cart
-     *
-     * @param $uniqueID $uniqueID unique print identifier
-     */
     public function remove($uniqueID) {
-        $this->updateShoppingCartFromSession();
-        if ($this->shoppingCartContainsPrint($uniqueID)) {
-            $this->removePrintFromCart($uniqueID);
-        }
-        $this->saveCartToSession();
+        self::$shoppingCart->remove($uniqueID);
         $this->showCart();
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 include 'AbstractDAO.php';
-include 'DatabaseHandle.php';
+include 'model/DatabaseHandle.php';
 require_once 'helpers/DatabaseHandleConstants.php';
 
 class PrintDAO extends AbstractDAO {
@@ -29,6 +29,8 @@ class PrintDAO extends AbstractDAO {
                 ON Image.imageID = Print.imageID
                 LEFT JOIN SizeToPrint
                 ON Print.printID = SizeToPrint.printID
+                LEFT JOIN Category
+                ON Print.categoryID = Category.categoryID
                 WHERE Print.printID = :printID'
         ;
         $inputParams = array(

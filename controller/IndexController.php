@@ -16,5 +16,7 @@ class IndexController extends BaseController {
         // TODO remove this function for production
         session_unset();
         session_destroy();
+        $template = $this->templateEngine->loadTemplate('nuke.twig');
+        $template->display(array());
     }
 }

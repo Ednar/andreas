@@ -36,10 +36,10 @@ class SizeDAO extends AbstractDAO {
      */
     public function getPriceForSizeAndType($typeID, $sizeID) {
         $sql = 'SELECT price FROM Size WHERE printTypeID = :printTypeID AND sizeID = :sizeID';
-        return $this->databaseHandle->request(
+        $result = $this->databaseHandle->request(
             $sql,
             array(':sizeID' => $sizeID, ':printTypeID' => $typeID),
             DatabaseHandleConstants::FETCH);
-
+        return $result[0];
     }
 }

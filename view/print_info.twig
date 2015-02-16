@@ -16,7 +16,7 @@
     <div id="infoWrapper">
         <div class="printInfo">
             <div class="printImage">
-                <img src="img/{{print.fullSize }}">
+                <img src="img/{{print.image.fullSize }}">
             </div>
 
             <h3>{{ print.price[0]|number_format(0) }} SEK</h3>
@@ -26,13 +26,13 @@
             <form action="index.php?ShoppingCart/addToCart" method="post">
                 <input name="printID" type="hidden" value="{{ print.printID }}">
                 <select name="printTypeID" class="select-style">
-                    {% for type in types %}
+                    {% for type in print.typeOptions %}
                         <option value="{{ type.printTypeID }}">{{ type.type }}</option>
                     {% endfor %}
                 </select>
                 <br>
                 <select name="sizeID" class="select-style">
-                    {% for size in sizes %}
+                    {% for size in print.sizeOptions %}
                         <option value="{{ size.sizeID }}">{{ size.format }} </option>
                     {% endfor %}
                 </select>
