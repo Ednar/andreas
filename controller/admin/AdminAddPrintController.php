@@ -1,8 +1,12 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+require_once 'controller/BaseController.php';
 
+class AdminAddPrintController extends BaseController {
+
+    public function addPrint() {
+        $template = $this->templateEngine->loadTemplate('admin/admin_add_print.twig');
+        $template->display(array());
+    }
+
+}
