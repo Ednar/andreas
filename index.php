@@ -2,8 +2,6 @@
  error_reporting(E_ALL);
  ini_set('display_errors', 1);
 
+include_once 'controller/Router.php';
 
-
-include_once 'controller/FrontController.php';
-
-$frontController = new FrontController();
+$router = new Router();

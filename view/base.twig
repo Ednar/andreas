@@ -83,7 +83,8 @@
 
         <aside class="right-tray">
             <nav>
-                <span id="cartQty">{{ qty }}</span>
+                <span id="cartQty">{% if session.shopping_cart|length > 0 %}{{ session.shopping_cart|length }}{% endif %}</span>
+                <!-- Sorry -->
                 <a href="index.php?ShoppingCart/showCart"><img src="img/cart_small.png" alt="shopping cart"></a>
             </nav>
         </aside>

@@ -2,6 +2,9 @@
 
 class ShoppingCartController extends BaseController {
 
+    const SHOPPING_CART_VIEW = 'shopping_cart.twig';
+    const EMPTY_CART_VIEW = 'empty_cart.twig';
+
     private static $shoppingCart = array();
     private $printDAO;
     private $sizeDAO;
@@ -18,11 +21,12 @@ class ShoppingCartController extends BaseController {
     public function addToCart() {
         $this->updateShoppingCartFromSession();
         $print = $this->getPrintValues();
-        if ($this->printAllreadyInCart($print)) {
-            $this->incrementPrintAmmount($print['uniqueID']);
+        if ($this->printAlreadyInCart($print)) {
+            $this->incrementPrintAmount($print);
         } else {
             $this->putPrintInCart($print);
         }
+        $this->saveCartToSession();
         $this->showCart();
     }
 
@@ -51,34 +55,37 @@ class ShoppingCartController extends BaseController {
         return trim($uniqueID);
     }
 
-    private function printAllreadyInCart($print) {
+    private function printAlreadyInCart($print) {
         return isset(self::$shoppingCart[$print['uniqueID']]);
     }
 
-    private function incrementPrintAmmount($uniqueID) {
-        return self::$shoppingCart[$uniqueID]['amount']++;
+    private function incrementPrintAmount($print) {
+        return self::$shoppingCart[$print['uniqueID']]++;
     }
 
     private function putPrintInCart($print) {
         return self::$shoppingCart[$print['uniqueID']] = $print;
     }
 
+    private function saveCartToSession() {
+        $_SESSION['shopping_cart'] = self::$shoppingCart;
+    }
+
     public function showCart() {
-        $this->saveCartToSession();
-        if ($this->shoppingCartIsEmpty()) {
-            $template = $this->templateEngine->loadTemplate('empty_cart.twig');
-        } else {
-            $template = $this->templateEngine->loadTemplate('shopping_cart.twig');
-        }
+        $this->updateShoppingCartFromSession();
+        $template = $this->loadTemplate();
         $template->display(array(
             'cart' => self::$shoppingCart,
-            'qty' => empty($_SESSION) ? "" : count($_SESSION['shopping_cart']),
             'sum' => $this->getShoppingCartSum()
         ));
     }
 
-    private function saveCartToSession() {
-        $_SESSION['shopping_cart'] = self::$shoppingCart;
+    private function loadTemplate() {
+        $template = $this->templateEngine->loadTemplate(self::SHOPPING_CART_VIEW);
+        if ($this->shoppingCartIsEmpty()) {
+            $template = $this->templateEngine->loadTemplate(self::EMPTY_CART_VIEW);
+        }
+        return $template;
     }
 
     private function getShoppingCartSum() {
@@ -101,6 +108,7 @@ class ShoppingCartController extends BaseController {
                 $this->removePrintFromCart($uniqueID);
             }
         }
+        $this->saveCartToSession();
         $this->showCart();
     }
 
@@ -119,8 +127,18 @@ class ShoppingCartController extends BaseController {
     public function increaseAmount($uniqueID) {
         $this->updateShoppingCartFromSession();
         if ($this->shoppingCartContainsPrint($uniqueID)) {
-            $this->incrementPrintAmmount($uniqueID);
+            $this->incrementPrintAmount($uniqueID);
         }
+        $this->saveCartToSession();
+        $this->showCart();
+    }
+
+    public function remove($uniqueID) {
+        $this->updateShoppingCartFromSession();
+        if ($this->shoppingCartContainsPrint($uniqueID)) {
+            $this->removePrintFromCart($uniqueID);
+        }
+        $this->saveCartToSession();
         $this->showCart();
     }
 }

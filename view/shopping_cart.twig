@@ -23,6 +23,9 @@
                 <div class="column">
                     Quantity
                 </div>
+                <div class="column">
+                    Remove
+                </div>
             </div>
         {% for print in cart %}
             <div class="cartRow">
@@ -43,10 +46,16 @@
                 </div>
                 <div class="column">
                     <a href="index.php?ShoppingCart/decreaseAmount/{{ print.printID }}{{ print.printTypeID }}{{ print.sizeID }}">
-                    <i class="fa fa-minus-square-o"></i></a>
+                        <i class="fa fa-minus"></i>
+                    </a>
                     {{ print.amount }}
                     <a href="index.php?ShoppingCart/increaseAmount/{{ print.printID }}{{ print.printTypeID }}{{ print.sizeID }}">
-                        <i class="fa fa-plus-square-o"></i>
+                        <i class="fa fa-plus"></i>
+                    </a>
+                </div>
+                <div class="column">
+                    <a href="index.php?ShoppingCart/remove/{{ print.printID }}{{ print.printTypeID }}{{ print.sizeID }}">
+                        <i class="fa fa-times"></i>
                     </a>
                 </div>
 

@@ -4,7 +4,7 @@ ini_set('display_errors', 1);
 
 
 
-include_once 'controller/FrontController.php';
+include_once 'controller/Router.php';
 
 $frontController = new FrontController();
 
