@@ -1,9 +1,11 @@
 <?php
 
 require_once 'BaseController.php';
-require_once 'model/PrintDAO.php';
-require_once 'model/SizeDAO.php';
-require_once 'model/PrintTypeDAO.php';
+require_once 'model/dao/PrintDAO.php';
+require_once 'model/dao/SizeDAO.php';
+require_once 'model/dao/PrintTypeDAO.php';
+require_once 'model/PrintImage.php';
+require_once 'model/PrintProduct.php';
 
 class PrintInfoController extends BaseController {
 
@@ -27,13 +29,13 @@ class PrintInfoController extends BaseController {
      */
     public function getPrintInfo($printID) {
         $printInfo = $this->printDAO->getPrint($printID);
-        $sizes = $this->sizeDAO->getSizesForPrint($printID);
-        $printTypes = $this->printTypeDAO->getAllPrintTypes();
+        $image = new PrintImage($printInfo['fullSize'], $printInfo['thumbnail'], $printInfo['alt']);
+        $print = new PrintProduct($printInfo, $image);
+        $print->setSizeOptions($this->sizeDAO->getSizesForPrint($printID));
+        $print->setTypeOptions( $this->printTypeDAO->getAllPrintTypes());
         $template = $this->templateEngine->loadTemplate('print_info.twig');
         $template->display(array(
-            'print' => $printInfo,
-            'sizes' => $sizes,
-            'types' => $printTypes,
+            'print' => $print
         ));
     }
 

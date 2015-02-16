@@ -8,41 +8,38 @@
         </h2>
         <p style="margin:0px;">It's getting too hot!<img src="img/ghost.png"><a href="index.php?IndexController/nuke">Paint the target</a></p>
         <div id="shoppingCart">
-        {% for print in cart %}
+        {% for print in cart.prints %}
             <div class="cartRow">
                 <div class="column">
-                    <img src="img/{{ print.fullSize }}">
+                    <img src="img/{{ print.image.thumbnail }}">
                 </div>
                 <div class="column">
                    <h3>
                        <a href="index.php?PrintInfo/getPrintInfo/{{ print.printID }}">{{ print.title }}</a>
                    </h3>
-                    <p>{{ print.size[0] }}</p>
-                    <p>{{ print.type[0] }}</p>
-
+                    <p>{{ print.size }}</p>
+                    <p>{{ print.type }}</p>
                         <a href="index.php?ShoppingCart/remove/{{ print.printID }}{{ print.printTypeID }}{{ print.sizeID }}">
                             <p>Remove
                             <i class="fa fa-times"></i>
                             </p>
                         </a>
-
-                </div>
-
-                <div class="column">
-                    {{ print.price[0]|number_format(0, ',', ' ') }} SEK
                 </div>
                 <div class="column">
-                    <a href="index.php?ShoppingCart/decreaseQuantity/{{ print.printID }}{{ print.printTypeID }}{{ print.sizeID }}">
+                    {{ print.price|number_format(0, ',', ' ') }} SEK
+                </div>
+                <div class="column">
+                    <a href="index.php?ShoppingCart/decreaseQuantity/{{ print.printID }}{{ print.typeID }}{{ print.sizeID }}">
                         <i class="fa fa-minus"></i>
                     </a>
-                    {{ print.amount }}
-                    <a href="index.php?ShoppingCart/increaseQuantity/{{ print.printID }}{{ print.printTypeID }}{{ print.sizeID }}">
+                    {{ print.quantity }}
+                    <a href="index.php?ShoppingCart/increaseQuantity/{{ print.printID }}{{ print.typeID }}{{ print.sizeID }}">
                         <i class="fa fa-plus"></i>
                     </a>
                 </div>
             </div>
         {% endfor %}
-            <h1>Sum: {{ sum|number_format(0, ',', ' ') }} SEK</h1>
+            <h1>Sum: {{ cart.sum|number_format(0, ',', ' ') }} SEK</h1>
         </div>
     </div>
 {% endblock %}

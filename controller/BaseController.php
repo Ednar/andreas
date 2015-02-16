@@ -1,7 +1,7 @@
 <?php
 
 require_once 'twig/lib/Twig/Autoloader.php';
-require_once 'model/PrintDAO.php';
+require_once 'model/dao/PrintDAO.php';
 
 abstract class BaseController {
 
