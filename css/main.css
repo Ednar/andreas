@@ -443,10 +443,21 @@ select {
 
     #shoppingCart {
         position:relative;
-        top:60px;
+        top:12px;
         width:700px;
+        background-color: #f0f0f0;
+        padding:4%;
         margin: 0 auto;
     }
+
+        #shoppingCart h3 {
+            margin: 0px;
+        }
+
+        #shoppingCart p {
+            text-align:left;
+            margin-bottom:0px;
+        }
 
     .cartRow {
         display:table-row;
@@ -462,11 +473,19 @@ select {
     .column {
         white-space: nowrap;
         display: table-cell;
+        vertical-align:top;
         padding-right:15px;
+        min-width:100px;
+        padding-bottom:20px;
+
+    }
+
+    .column:nth-child(2) {
+        min-width:250px;
     }
 
         .column img {
-            width:65px;
+            width:180px;
         }
 
 /* ============================================================================

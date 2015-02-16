@@ -3,44 +3,30 @@
 {% block content %}
 
     <div class="main-content">
+        <h2>
+            Shopping cart
+        </h2>
         <div id="shoppingCart">
-            <div class="cartHeader">
-                <div class="column">
-                    Image
-                </div>
-                <div class="column">
-                    Name
-                </div>
-                <div class="column">
-                    Size
-                </div>
-                <div class="column">
-                    Type
-                </div>
-                <div class="column">
-                    Price
-                </div>
-                <div class="column">
-                    Quantity
-                </div>
-                <div class="column">
-                    Remove
-                </div>
-            </div>
         {% for print in cart %}
             <div class="cartRow">
                 <div class="column">
                     <img src="img/{{ print.fullSize }}">
                 </div>
                 <div class="column">
-                    <a href="index.php?PrintInfo/getPrintInfo/{{ print.printID }}">{{ print.title }}</a>
+                   <h3>
+                       <a href="index.php?PrintInfo/getPrintInfo/{{ print.printID }}">{{ print.title }}</a>
+                   </h3>
+                    <p>{{ print.size[0] }}</p>
+                    <p>{{ print.type[0] }}</p>
+
+                        <a href="index.php?ShoppingCart/remove/{{ print.printID }}{{ print.printTypeID }}{{ print.sizeID }}">
+                            <p>Remove
+                            <i class="fa fa-times"></i>
+                            </p>
+                        </a>
+
                 </div>
-                <div class="column">
-                    {{ print.size[0] }}
-                </div>
-                <div class="column">
-                    {{ print.type[0] }}
-                </div>
+
                 <div class="column">
                     {{ print.price[0]|number_format(0, ',', ' ') }} SEK
                 </div>
@@ -53,15 +39,9 @@
                         <i class="fa fa-plus"></i>
                     </a>
                 </div>
-                <div class="column">
-                    <a href="index.php?ShoppingCart/remove/{{ print.printID }}{{ print.printTypeID }}{{ print.sizeID }}">
-                        <i class="fa fa-times"></i>
-                    </a>
-                </div>
-
             </div>
         {% endfor %}
-            <h3>Sum: {{ sum|number_format(0, ',', ' ') }} SEK</h3>
+            <h1>Sum: {{ sum|number_format(0, ',', ' ') }} SEK</h1>
         </div>
     </div>
 {% endblock %}

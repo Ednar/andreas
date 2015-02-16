@@ -88,6 +88,10 @@ class ShoppingCartController extends BaseController {
         return $template;
     }
 
+    private function shoppingCartIsEmpty() {
+        return empty(self::$shoppingCart);
+    }
+
     private function getShoppingCartSum() {
         $sum = 0;
         foreach (self::$shoppingCart as $row) {
@@ -96,9 +100,7 @@ class ShoppingCartController extends BaseController {
         return $sum;
     }
 
-    private function shoppingCartIsEmpty() {
-        return empty(self::$shoppingCart);
-    }
+
 
     public function decreaseAmount($uniqueID) {
         $this->updateShoppingCartFromSession();
