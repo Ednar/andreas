@@ -6,6 +6,7 @@ require_once 'ProductListController.php';
 require_once 'ShoppingCartController.php';
 require_once 'admin/AdminAddPrintController.php';
 require_once 'admin/AdminProductListController.php';
+require_once 'adminAdminstInsertPrint.php';
 
 /**
  * Class ControllerFactory
