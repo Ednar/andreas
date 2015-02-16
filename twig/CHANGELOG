@@ -78,7 +78,7 @@
  * fixed usage of the html_attr escaping strategy to avoid double-escaping with the html strategy
  * added new operators: ends with, starts with, and matches
  * fixed some compatibility issues with HHVM
- * added a way to add custom escaping strategies
+ * added a way to addToCart custom escaping strategies
  * fixed the C extension compilation on Windows
  * fixed the batch filter when using a fill argument with an exact match of elements to batch
  * fixed the filesystem loader cache when a template name exists in several namespaces
@@ -591,7 +591,7 @@ Backward incompatibilities:
  * added strict_variable setting to throw an exception when an invalid variable is used in a template (disabled by default)
  * added the lexer, parser, and compiler as arguments to the Twig_Environment constructor
  * changed the cache option to only accepts an explicit path to a cache directory or false
- * added a way to add token parsers, filters, and visitors without creating an extension
+ * added a way to addToCart token parsers, filters, and visitors without creating an extension
  * added three interfaces: Twig_NodeInterface, Twig_TokenParserInterface, and Twig_FilterInterface
  * changed the generated code to match the new coding standards
  * fixed sandbox mode (__toString() method check was not enforced if called implicitly from a simple statement like {{ article }})

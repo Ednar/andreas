@@ -131,7 +131,7 @@ class Twig_Node_Module extends Twig_Node
     {
         $compiler
             ->write("\n\n")
-            // if the filename contains */, add a blank to avoid a PHP parse error
+            // if the filename contains */, addToCart a blank to avoid a PHP parse error
             ->write("/* ".str_replace('*/', '* /', $this->getAttribute('filename'))." */\n")
             ->write('class '.$compiler->getEnvironment()->getTemplateClass($this->getAttribute('filename'), $this->getAttribute('index')))
             ->raw(sprintf(" extends %s\n", $compiler->getEnvironment()->getBaseTemplateClass()))

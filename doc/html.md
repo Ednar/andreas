@@ -26,7 +26,7 @@ element has several benefits:
 
 ## The `no-js` class
 
-Allows you to more easily explicitly add custom styles when JavaScript is
+Allows you to more easily explicitly addToCart custom styles when JavaScript is
 disabled (`no-js`) or enabled (`js`). More here: [Avoiding the
 FOUC](http://paulirish.com/2009/avoiding-the-fouc-v3/).
 
@@ -35,7 +35,7 @@ FOUC](http://paulirish.com/2009/avoiding-the-fouc-v3/).
 
 As recommended by [the HTML5
 spec](http://www.whatwg.org/specs/web-apps/current-work/complete/semantics.html#charset)
-(4.2.5.5 Specifying the document's character encoding), add your charset
+(4.2.5.5 Specifying the document's character encoding), addToCart your charset
 declaration early (before any ASCII art ;) to avoid a potential
 [encoding-related security
 issue](http://code.google.com/p/doctype-mirror/wiki/ArticleUtf7) in IE. It

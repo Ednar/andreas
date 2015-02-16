@@ -1,10 +1,8 @@
 <?php
 
-require_once 'AbstractDAO.php';
-require_once 'helpers/DatabaseHandleConstants.php';
+require_once 'BaseDAO.php';
 
-
-class SizeDAO extends AbstractDAO {
+class SizeDAO extends BaseDAO {
 
     /**
      * @param $printID
@@ -14,7 +12,9 @@ class SizeDAO extends AbstractDAO {
         $sql = 'SELECT * FROM SizeToPrint
                 LEFT JOIN Size on Size.sizeID = SizeToPrint.sizeID
                 WHERE printID = :printID';
-        return $this->databaseHandle->request($sql, array(':printID' => $printID));
+        $statement = self::$pdo->prepare($sql);
+        $statement->execute(array('printID' => $printID));
+        return $statement->fetchAll();
     }
 
     /**
@@ -23,10 +23,9 @@ class SizeDAO extends AbstractDAO {
      */
     public function getSize($sizeID) {
         $sql = 'SELECT format FROM Size WHERE sizeID = :sizeID';
-        return $this->databaseHandle->request(
-            $sql,
-            array('sizeID' => $sizeID),
-            DatabaseHandleConstants::FETCH);
+        $statement = self::$pdo->prepare($sql);
+        $statement->execute(array('sizeID' => $sizeID));
+        return $statement->fetch();
     }
 
     /**
@@ -36,10 +35,10 @@ class SizeDAO extends AbstractDAO {
      */
     public function getPriceForSizeAndType($typeID, $sizeID) {
         $sql = 'SELECT price FROM Size WHERE printTypeID = :printTypeID AND sizeID = :sizeID';
-        $result = $this->databaseHandle->request(
-            $sql,
-            array(':sizeID' => $sizeID, ':printTypeID' => $typeID),
-            DatabaseHandleConstants::FETCH);
+        $inputParams = array(':sizeID' => $sizeID, ':printTypeID' => $typeID);
+        $statement = self::$pdo->prepare($sql);
+        $statement->execute($inputParams);
+        $result = $statement->fetch();
         return $result[0];
     }
 }

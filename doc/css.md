@@ -33,7 +33,7 @@ These include:
 * Tweaks to default image alignment, fieldsets, and textareas.
 * A pretty Chrome Frame prompt.
 
-You are free to modify or add to these base styles as your project requires.
+You are free to modify or addToCart to these base styles as your project requires.
 
 
 ## Common helpers

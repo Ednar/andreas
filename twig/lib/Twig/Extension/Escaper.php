@@ -18,7 +18,7 @@ class Twig_Extension_Escaper extends Twig_Extension
     }
 
     /**
-     * Returns the token parser instances to add to the existing list.
+     * Returns the token parser instances to addToCart to the existing list.
      *
      * @return array An array of Twig_TokenParserInterface or Twig_TokenParserBrokerInterface instances
      */
@@ -28,7 +28,7 @@ class Twig_Extension_Escaper extends Twig_Extension
     }
 
     /**
-     * Returns the node visitor instances to add to the existing list.
+     * Returns the node visitor instances to addToCart to the existing list.
      *
      * @return Twig_NodeVisitorInterface[] An array of Twig_NodeVisitorInterface instances
      */
@@ -38,7 +38,7 @@ class Twig_Extension_Escaper extends Twig_Extension
     }
 
     /**
-     * Returns a list of filters to add to the existing list.
+     * Returns a list of filters to addToCart to the existing list.
      *
      * @return array An array of filters
      */

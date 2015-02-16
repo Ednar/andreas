@@ -747,7 +747,7 @@ class Twig_Environment
     public function addTokenParser(Twig_TokenParserInterface $parser)
     {
         if ($this->extensionInitialized) {
-            throw new LogicException('Unable to add a token parser as extensions have already been initialized.');
+            throw new LogicException('Unable to addToCart a token parser as extensions have already been initialized.');
         }
 
         $this->staging->addTokenParser($parser);
@@ -794,7 +794,7 @@ class Twig_Environment
     public function addNodeVisitor(Twig_NodeVisitorInterface $visitor)
     {
         if ($this->extensionInitialized) {
-            throw new LogicException('Unable to add a node visitor as extensions have already been initialized.');
+            throw new LogicException('Unable to addToCart a node visitor as extensions have already been initialized.');
         }
 
         $this->staging->addNodeVisitor($visitor);
@@ -832,7 +832,7 @@ class Twig_Environment
         }
 
         if ($this->extensionInitialized) {
-            throw new LogicException(sprintf('Unable to add filter "%s" as extensions have already been initialized.', $name));
+            throw new LogicException(sprintf('Unable to addToCart filter "%s" as extensions have already been initialized.', $name));
         }
 
         $this->staging->addFilter($name, $filter);
@@ -921,7 +921,7 @@ class Twig_Environment
         }
 
         if ($this->extensionInitialized) {
-            throw new LogicException(sprintf('Unable to add test "%s" as extensions have already been initialized.', $name));
+            throw new LogicException(sprintf('Unable to addToCart test "%s" as extensions have already been initialized.', $name));
         }
 
         $this->staging->addTest($name, $test);
@@ -979,7 +979,7 @@ class Twig_Environment
         }
 
         if ($this->extensionInitialized) {
-            throw new LogicException(sprintf('Unable to add function "%s" as extensions have already been initialized.', $name));
+            throw new LogicException(sprintf('Unable to addToCart function "%s" as extensions have already been initialized.', $name));
         }
 
         $this->staging->addFunction($name, $function);
@@ -1068,7 +1068,7 @@ class Twig_Environment
 
             /* This condition must be uncommented in Twig 2.0
             if (!array_key_exists($name, $this->globals)) {
-                throw new LogicException(sprintf('Unable to add global "%s" as the runtime or the extensions have already been initialized.', $name));
+                throw new LogicException(sprintf('Unable to addToCart global "%s" as the runtime or the extensions have already been initialized.', $name));
             }
             */
         }

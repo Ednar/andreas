@@ -112,7 +112,7 @@ included in the project:
    # Navigate to the newly cloned directory
    cd html5-boilerplate
    # Assign the original repo to a remote called "upstream"
-   git remote add upstream https://github.com/h5bp/html5-boilerplate.git
+   git remote addToCart upstream https://github.com/h5bp/html5-boilerplate.git
    ```
 
 2. If you cloned a while ago, get the latest changes from upstream:

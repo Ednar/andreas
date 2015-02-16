@@ -1,10 +1,8 @@
 <?php
 
-include 'AbstractDAO.php';
-include 'model/DatabaseHandle.php';
-require_once 'helpers/DatabaseHandleConstants.php';
+include 'BaseDAO.php';
 
-class PrintDAO extends AbstractDAO {
+class PrintDAO extends BaseDAO {
 
     /**
      * @return mixed
@@ -14,9 +12,10 @@ class PrintDAO extends AbstractDAO {
             SELECT *
             FROM Print
             LEFT JOIN Image
-            ON Image.imageID = Print.imageID'
-        ;
-        return $this->databaseHandle->request($sql);
+            ON Image.imageID = Print.imageID';
+        $statement = self::$pdo->prepare($sql);
+        $statement->execute();
+        return $statement->fetchAll();
     }
 
     /**
@@ -31,12 +30,13 @@ class PrintDAO extends AbstractDAO {
                 ON Print.printID = SizeToPrint.printID
                 LEFT JOIN Category
                 ON Print.categoryID = Category.categoryID
-                WHERE Print.printID = :printID'
-        ;
+                WHERE Print.printID = :printID';
+        $statement = self::$pdo->prepare($sql);
         $inputParams = array(
             ':printID' => $printID
         );
-        return $this->databaseHandle->request($sql, $inputParams, DatabaseHandleConstants::FETCH);
+        $statement->execute($inputParams);
+        return $statement->fetch();
     }
 
     /**
@@ -48,12 +48,13 @@ class PrintDAO extends AbstractDAO {
     public function insertPrint($name, $description, $price, $pictureID) {
         $sql = 'INSERT into Print (name, description, price, pictureID)'
                 . 'VALUES (:name, :description, :price, :pictureURL)';
+        $statement = self::$pdo->prepare($sql);
         $inputParams = array(
             ':name' => $name,
             'description' => $description,
             ':price' => $price,
             'pictureURL' => $pictureID);
-        $this->database->push($sql, $inputParams);
+        $statement->execute($inputParams);
     }
 
     /**
@@ -71,7 +72,8 @@ class PrintDAO extends AbstractDAO {
      */
     public function deletePrint($printID) {
         $sql = 'DELETE FROM Print WHERE printID = :printID';
-        $this->database->push($sql, array(':printID' => $printID));
+        $statement = self::$pdo->prepare($sql);
+        $statement->execute(array(':printID' => $printID));
     }
 
     /**
@@ -84,25 +86,18 @@ class PrintDAO extends AbstractDAO {
     public function updatePrint($printID, $name, $description, $price, $pictureID) {
         $sql = 'UPDATE Print SET name = :name, description = :description, '
                 . 'price = :price, pictureID = :pictureID WHERE printID = :printID';
+        $statement = self::$pdo->prepare($sql);
         $inputParameters = array(
             ':name' => $name,
             ':description' => $description,
             ':price' => $price,
             ':pictureID' => $pictureID,
             'printID' => $printID);
-        $this->database->push($sql, $inputParameters);
+        $statement->execute($inputParameters);
     }
 
-    /**
-     * @return mixed
-     */
-    public function getAllFrames() {
-        $sql = 'SELECT * FROM Frame';
-        return $this->databaseHandle->request($sql, array());
-    }
-    
     /*
-     * Media library functions, yay
+     * Media library functions
      */
 
     /**
@@ -110,7 +105,8 @@ class PrintDAO extends AbstractDAO {
      */
     public function getMediaLibrary() {
         $sql = 'SELECT * FROM picture';
-        return $this->database->request($sql, array());
+        $statement = self::$pdo->prepare($sql);
+        return $statement->execute();
     }
 
     /**
@@ -118,16 +114,13 @@ class PrintDAO extends AbstractDAO {
      * @param $alt
      */
     public function insertPictureToLibrary($url, $alt) {
-        $pdo = $this->database->connect();
         $sql = 'INSERT INTO picture (url, alt) VALUES(:url, :alt)';
-        $statement = $pdo->prepare($sql);
-        $statement->bindParam(':url', $url, PDO::PARAM_STR);
-        $statement->bindParam(':alt', $alt, PDO::PARAM_STR);
+        $statement = self::$pdo->prepare($sql);
         $target = "img/";
         // Vad händer här? //
         move_uploaded_file($_FILES["picture"]["tmp_name"], $target . $url);
-        $statement->execute();
-        $pdo = NULL;
+        $inputParams = array(':url' => $url, ':alt' => $alt);
+        $statement->execute($inputParams);
     }
 
     /**
@@ -135,7 +128,8 @@ class PrintDAO extends AbstractDAO {
      */
     public function deletePictureFromLibrary($pictureID) {
         $sql = 'DELETE FROM picture WHERE pictureID = :pictureID';
-        $this->database->push($sql, array(':pictureID' => $pictureID));
+        $statement = self::$pdo->prepare($sql);
+        $statement->execute(array(':pictureID' => $pictureID));
     }
 
     /**
@@ -145,10 +139,11 @@ class PrintDAO extends AbstractDAO {
      */
     public function updatePictureInLibrary($pictureID, $url, $alt) {
         $sql = 'UPDATE picture SET url = :url, alt = :alt WHERE pictureID = :pictureID';
+        $statement = self::$pdo->prepare($sql);
         $inputParams = array(
             ':pictureID' => $pictureID,
             ':url' => $url,
             ':alt' => $alt);
-        $this->database->push($sql, $inputParams);
+        $statement->execute($inputParams);
     }
 }

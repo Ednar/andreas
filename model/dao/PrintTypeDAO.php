@@ -1,15 +1,15 @@
 <?php
 
-require_once 'helpers/DatabaseHandleConstants.php';
-
-class PrintTypeDAO extends AbstractDAO {
+class PrintTypeDAO extends BaseDAO {
 
     /**
      * @return mixed
      */
     public function getAllPrintTypes() {
         $sql = 'SELECT * FROM PrintType';
-        return $this->databaseHandle->request($sql, array(), 'fetchAll');
+        $statement = self::$pdo->prepare($sql);
+        $statement->execute();
+        return $statement->fetchAll();
     }
 
     /**
@@ -18,6 +18,8 @@ class PrintTypeDAO extends AbstractDAO {
      */
     public function getPrintTypeByID($typeID) {
         $sql = 'SELECT type FROM PrintType WHERE printTypeID = :typeID';
-        return $this->databaseHandle->request($sql, array('typeID' => $typeID), 'fetch');
+        $statement = self::$pdo->prepare($sql);
+        $statement->execute(array('typeID' => $typeID));
+        return $statement->fetch();
     }
 }
