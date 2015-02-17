@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class PrintTypeDAO
+ */
 class PrintTypeDAO extends BaseDAO {
 
     /**

@@ -2,6 +2,9 @@
 
 require_once 'BaseDAO.php';
 
+/**
+ * Class SizeDAO
+ */
 class SizeDAO extends BaseDAO {
 
     /**

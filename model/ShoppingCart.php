@@ -1,7 +1,11 @@
 <?php
 
 require_once 'PrintProduct.php';
+require_once 'helpers/GlobalConstants.php';
 
+/**
+ * Class ShoppingCart
+ */
 class ShoppingCart {
 
     private $prints = array();
@@ -15,13 +19,13 @@ class ShoppingCart {
     }
 
     public function loadCartFromSession() {
-        if (isset($_SESSION['shopping_cart'])) {
-            $this->prints = $_SESSION['shopping_cart'];
+        if (isset($_SESSION[GlobalConstants::CART])) {
+            $this->prints = $_SESSION[GlobalConstants::CART];
         }
     }
 
     public function saveCartToSession() {
-        $_SESSION['shopping_cart'] = $this->prints;
+        $_SESSION[GlobalConstants::CART] = $this->prints;
     }
 
     public function addToCart(PrintProduct $print) {
@@ -67,5 +71,9 @@ class ShoppingCart {
 
     public function remove($uniqueID) {
         unset($this->prints[$uniqueID]);
+    }
+
+    public function isEmpty() {
+        return empty($this->prints);
     }
 }

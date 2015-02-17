@@ -31,6 +31,9 @@ class ControllerFactory {
     }
 }
 
+/**
+ * Class InvalidControllerException
+ */
 class InvalidControllerException extends Exception {
 
     public function __construct($message = null) {

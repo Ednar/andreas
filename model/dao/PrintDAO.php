@@ -2,6 +2,9 @@
 
 include 'BaseDAO.php';
 
+/**
+ * Class PrintDAO
+ */
 class PrintDAO extends BaseDAO {
 
     /**

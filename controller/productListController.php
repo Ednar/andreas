@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class ProductListController
+ */
 class ProductListController extends BaseController {
 
     private $printDAO;
@@ -9,6 +12,9 @@ class ProductListController extends BaseController {
         $this->printDAO = new PrintDAO();
     }
 
+    /**
+     * Renders a list of all stored prints
+     */
     public function getAllPrints() {
         $pictures = $this->printDAO->getAllPrints();
         $template = $this->templateEngine->loadTemplate('test.twig');

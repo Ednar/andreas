@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Class PrintImage
+ *
+ * Holds relevant image information
+ */
 class PrintImage {
 
     private $fullSize;
