@@ -34,7 +34,8 @@ class PrintInfoController extends BaseController {
         $print->setTypeOptions( $this->printTypeDAO->getAllPrintTypes());
         $template = $this->templateEngine->loadTemplate('print_info.twig');
         $template->display(array(
-            'print' => $print
+            'print' => $print,
+            'printInfo' => $printInfo
         ));
     }
 
