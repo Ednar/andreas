@@ -5,7 +5,7 @@ require_once 'BaseDAO.php';
 /**
  * Class SizeDAO
  */
-class SizeDAO extends BaseDAO {
+final class SizeDAO extends BaseDAO {
 
     /**
      * @param $printID
@@ -33,7 +33,7 @@ class SizeDAO extends BaseDAO {
 
     /**
      * @param $typeID
-     * @param $sizeID
+     * @param $format
      * @return mixed
      */
     public function getPriceForSizeAndType($typeID, $format) {

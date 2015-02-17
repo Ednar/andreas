@@ -6,7 +6,7 @@ require_once 'helpers/GlobalConstants.php';
 /**
  * Class ShoppingCartController
  */
-class ShoppingCartController extends BaseController {
+final class ShoppingCartController extends BaseController {
 
     const SHOPPING_CART_VIEW = 'shopping_cart.twig';
     const EMPTY_CART_VIEW = 'empty_cart.twig';
@@ -79,7 +79,7 @@ class ShoppingCartController extends BaseController {
     /**
      * Increases the quantity of the print by 1
      *
-     * @param $uniqueID the unique ID of the print to increment
+     * @param $uniqueID int unique ID of the print to increment
      */
     public function increaseQuantity($uniqueID) {
         self::$shoppingCart->increaseQuantity($uniqueID);
@@ -88,7 +88,7 @@ class ShoppingCartController extends BaseController {
     /**
      * Decreases the quantity of the print by 1
      *
-     * @param $uniqueID the unique ID of the print to decrement
+     * @param $uniqueID string unique ID of the print to decrement
      */
     public function decreaseQuantity($uniqueID) {
         self::$shoppingCart->decreaseQuantity($uniqueID);
@@ -97,7 +97,7 @@ class ShoppingCartController extends BaseController {
     /**
      * Removes a print from the cart
      *
-     * @param $uniqueID the unique ID of the print to decrement
+     * @param $uniqueID string unique ID of the print to decrement
      */
     public function remove($uniqueID) {
         self::$shoppingCart->remove($uniqueID);

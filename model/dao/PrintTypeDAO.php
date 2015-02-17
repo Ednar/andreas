@@ -3,7 +3,7 @@
 /**
  * Class PrintTypeDAO
  */
-class PrintTypeDAO extends BaseDAO {
+final class PrintTypeDAO extends BaseDAO {
 
     /**
      * @return mixed

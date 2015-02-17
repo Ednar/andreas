@@ -15,7 +15,7 @@ require_once 'AdminEditPrintController.php';
  * Class ControllerFactory
  *
  */
-class ControllerFactory {
+final class ControllerFactory {
 
     /**
      * Creates a new controller the provided controller name
@@ -36,7 +36,7 @@ class ControllerFactory {
 /**
  * Class InvalidControllerException
  */
-class InvalidControllerException extends Exception {
+final class InvalidControllerException extends Exception {
 
     public function __construct($message = null) {
         parent::$message = $message;

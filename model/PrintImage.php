@@ -5,7 +5,7 @@
  *
  * Holds relevant image information
  */
-class PrintImage {
+final class PrintImage {
 
     private $fullSize;
     private $altText;

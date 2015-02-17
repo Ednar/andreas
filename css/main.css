@@ -110,7 +110,7 @@ h6 {font-size: 0.8em;}
 
 .thin {font-weight: 300;}
 .light{font-weight: 400;}
-.medium{font-weight: 700;}
+
 .bold {font-weight: 900;}
 .italic{font-style: italic;}
 
@@ -118,45 +118,9 @@ h6 {font-size: 0.8em;}
    Grid styles
    ========================================================================== */
 
-
-.row{
-    width:100%;
-    max-width:960px;
-    /* for desktop view */
-    margin:0 auto;
-    outline: 1px solid blue;
-    /* to visualize our element */
-
-}
-
 /* clearfix set against the row class  for conviance */
-.row:before,.row:after {content: " ";display: table;}
-.row:after {clear: both;}
-
-
-.grid{
-    height:20px;
-    /* to visualize */
-    float:left;
-    margin:1%;
-    outline:1px solid red;
-    /* to visualize */
-}
-
-.m-grid-1{width:23%;}
-.m-grid-2{width:48%;}
-.m-gird-3{width:73%;}
-.m-grid-4{width:98%;}
 
 @media (min-width:960px){
-    .d-grid-1{width:10.5%;}
-    .d-grid-2{width:23%;}
-    .d-grid-3{width:35.5%;}
-    .d-grid-4{width:48%;}
-    .d-grid-5{width:60.5%;}
-    .d-grid-6{width:73%;}
-    .d-grid-7{width:85.5%;}
-    .d-grid-8{width:98%;}
 }
 
 /* ==========================================================================
@@ -176,20 +140,9 @@ a {
     width:100%;
     height:100%;
     max-width:1024px;
-    min-height:550px;
+    min-height:450px;
     margin:0 auto;
     padding-top:5%;
-}
-
-.wrapper{
-    width:100%;
-    position:absolute;
-    top:0px;
-
-    -webkit-transition:all 1.0s ease-in-out;
-    -moz-transition:all 1.0s ease-in-out;
-    -o-transition:all 1.0s ease-in-out;
-    transition:all 1.0s ease-in-out;
 }
 
 #logo-wrapper {
@@ -215,11 +168,11 @@ a {
     #logo h1{
         position:relative;
         left:10px;
-        top:0px;
+        top:0;
         font-size:0.9em;
         float:left;
-        margin:0px;
-        padding:0px;
+        margin:0;
+        padding:0;
     }
 
     #menu-logo a{
@@ -232,7 +185,7 @@ header#topHeader {
     background-color: rgba(0,0,0,0.8);
     width: 100%;
     height:55px;
-    top:0px;
+    top:0;
     z-index:999;
 }
 
@@ -339,21 +292,21 @@ footer {
         font-weight:400;
         text-transform: capitalize;
         font-size: 1.3em!important;
-        margin:0px;
+        margin:0;
         padding:0;
 }
 
 .watermark img{
     max-width: 150px;
     float: left;
-    margin: 0px 15px 0px 0px;
+    margin: 0 15px 0 0;
 }
 .watermark p{
     max-width: 90%;
     float: left;
     color: #555;
     font-size: 0.8em;
-    margin:0px;
+    margin:0;
 }
 
 
@@ -432,7 +385,7 @@ select {
 }
 
 .admin-listing-row .column p {
-    margin: 0px;
+    margin: 0;
 }
 
 .admin-listing-row .column {
@@ -464,7 +417,7 @@ select {
 }
 .basic-grey h1 {
     font-size: 25px;
-    padding: 0px 0px 10px 40px;
+    padding: 0 0 10px 40px;
     display: block;
     border-bottom:1px solid #E4E4E4;
     margin: -10px -15px 30px -10px;;
@@ -476,7 +429,7 @@ select {
 }
 .basic-grey label {
     display: block;
-    margin: 0px;
+    margin: 0;
 }
 .basic-grey label>span {
     float: left;
@@ -498,9 +451,9 @@ select {
     width: 70%;
     font-size: 14px;
     line-height:15px;
-    box-shadow: inset 0px 1px 4px #ECECEC;
-    -moz-box-shadow: inset 0px 1px 4px #ECECEC;
-    -webkit-box-shadow: inset 0px 1px 4px #ECECEC;
+    box-shadow: inset 0 1px 4px #ECECEC;
+    -moz-box-shadow: inset 0 1px 4px #ECECEC;
+    -webkit-box-shadow: inset 0 1px 4px #ECECEC;
 }
 .basic-grey textarea{
     padding: 5px 3px 3px 5px;
@@ -544,7 +497,7 @@ select {
             margin-bottom:5px;
         }
         .main-content p {
-            margin:0px 0px 30px 0px;
+            margin:0 0 30px 0;
             font-size: 0.9em;
             font-weight: 300;
             text-align: center;
@@ -560,8 +513,9 @@ select {
 
         }
 
-
-
+.printDesc {
+    font-weight:100;
+}
 
 /* ============================================================================
     Shopping cart
@@ -572,17 +526,17 @@ select {
         top:12px;
         width:700px;
         background-color: #f0f0f0;
-        padding:4% 4% 0% 4%;
+        padding:4% 4% 0 4%;
         margin: 0 auto 100px auto;
     }
 
         #shoppingCart h3 {
-            margin: 0px;
+            margin: 0;
         }
 
         #shoppingCart p {
             text-align:left;
-            margin-bottom:0px;
+            margin-bottom:0;
         }
 
         #shoppingCart h1 {
@@ -594,13 +548,7 @@ select {
         width:100%;
     }
 
-    .cartHeader {
-        display:table-row;
-        width:100%;
-        font-weight:800;
-    }
-
-    .column {
+.column {
         white-space: nowrap;
         display: table-cell;
         vertical-align:top;
@@ -627,21 +575,13 @@ select {
     =========================================================================*/
 
 #infoWrapper {
-    -webkit-box-shadow: 0px 0px 10px 0px rgba(222,222,222,1);
-    -moz-box-shadow: 0px 0px 10px 0px rgba(222,222,222,1);
-    box-shadow: 0px 0px 10px 0px rgba(222,222,222,1);
+    -webkit-box-shadow: 0 0 10px 0 rgba(222,222,222,1);
+    -moz-box-shadow: 0 0 10px 0 rgba(222,222,222,1);
+    box-shadow: 0 0 10px 0 rgba(222,222,222,1);
     background-color: #f0f0f0;
     height:500px;
     width:100%;
     margin: 0 auto;
-}
-
-#infoContent {
-    background-color: #f0f0f0;
-    width:25%;
-    height:0px;
-    padding-bottom: 25%;
-    float:left;
 }
 
 .printImage {
@@ -653,17 +593,18 @@ select {
 
 
 .printImage img {
-    -webkit-box-shadow: 0px 0px 4px 0px rgba(143,143,143,1);
-    -moz-box-shadow: 0px 0px 4px 0px rgba(143,143,143,1);
-    box-shadow: 0px 0px 4px 0px rgba(143,143,143,1);
-    max-height:200px;
-    margin:0% 5%;
+    -webkit-box-shadow: 0 0 4px 0 rgba(143,143,143,1);
+    -moz-box-shadow: 0 0 4px 0 rgba(143,143,143,1);
+    box-shadow: 0 0 4px 0 rgba(143,143,143,1);
+    max-height:300px;
+    max-width:450px;
+    margin:0 5%;
 
 }
 
 .printInfo {
     margin: 0 auto;
-    padding: 3% 0%;
+    padding: 3% 0;
     width:100%;
     max-width:1024px;
 }
@@ -676,7 +617,7 @@ select {
     }
 
     .printInfo h3 {
-        margin:5px 0px 10px 5px;
+        margin:5px 0 10px 5px;
     }
 
     .printInfo p {
@@ -686,8 +627,8 @@ select {
     }
     
     .printSpecs {
-        float: right;
-        width: 55%;
+        float: left;
+        width: 45%;
     }
 
 
@@ -725,7 +666,7 @@ select {
     border-right: solid 10px transparent; }
 
 nav {
-    margin-bottom: 0px;
+    margin-bottom: 0;
     font-family:Lato;
     font-weight:300;
 }
@@ -771,8 +712,8 @@ nav#nav-mobile ul {
     left: 0;
     right: 0;
     top:39px;
-    margin-left: 0px;
-    padding-left:0px!important;
+    margin-left: 0;
+    padding-left:0 !important;
     margin-right: auto;
     text-align: left;
     background-color: rgba(25, 25, 25, 1);
@@ -780,8 +721,8 @@ nav#nav-mobile ul {
 nav#nav-mobile li {
     display: inline-block;
     float:left;
-    padding: 0px 0;
-    margin: 0 0px;
+    padding: 0 0;
+    margin: 0 0;
     width:100%;
     border-bottom: solid 1px #222222; }
 nav#nav-mobile li:last-child {
@@ -809,7 +750,7 @@ nav#nav-mobile a:hover {
 
 #nav-toggle span {
     position: relative;
-    padding: 0px;
+    padding: 0;
     display: block;
     left: 10px; top: 10px;
     height: 5px;
@@ -821,7 +762,7 @@ nav#nav-mobile a:hover {
     left: 15px; top: 15px;
     width: 50px;
     height: 30px;
-    padding: 0px;
+    padding: 0;
 }
 
 #nav-toggle span,
@@ -855,7 +796,7 @@ nav#nav-mobile a:hover {
     background-color: transparent;
 }
 #nav-toggle.active span:before, #nav-toggle.active span:after {
-    top: 0px;
+    top: 0;
 }
 #nav-toggle.active span:before {
     transform: rotate(45deg);
@@ -993,10 +934,6 @@ nav .fa {
 
 .clearfix {
     *zoom: 1;
-}
-
-.margin-left-100px {
-    margin-left: 100px;
 }
 
 /* ==========================================================================
@@ -1157,11 +1094,10 @@ nav .fa {
         display: inline-block;
         color:#fff;
         font-size:1.2em;
-        margin:0;
         position: relative;
         top:10px;
         left:10px;
-        margin-right: 30px;
+        margin: 0 30px 0 0;
     }
 
     .mobile-break {
@@ -1191,7 +1127,7 @@ nav .fa {
     .watermark img{
         max-width: 150px;
         float: left;
-        margin: 0px 15px 15px 0px;
+        margin: 0 15px 15px 0;
     }
     .watermark p{
         max-width: 80%;

@@ -2,7 +2,7 @@
 
 require_once 'controller/BaseController.php';
 
-class AdminProductListController extends BaseController {
+final class AdminProductListController extends BaseController {
 
     private $printDAO;
 

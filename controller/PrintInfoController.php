@@ -7,7 +7,10 @@ require_once 'model/dao/PrintTypeDAO.php';
 require_once 'model/PrintImage.php';
 require_once 'model/PrintProduct.php';
 
-class PrintInfoController extends BaseController {
+/**
+ * Class PrintInfoController
+ */
+final class PrintInfoController extends BaseController {
 
     private $printDAO;
     private $sizeDAO;
@@ -24,7 +27,7 @@ class PrintInfoController extends BaseController {
      * Gets and displays the information page for a specific print based on
      * the unique identifier
      *
-     * @param $printID unique print identifier
+     * @param $printID int unique print identifier
      */
     public function getPrintInfo($printID) {
         $printInfo = $this->printDAO->getPrintByID($printID);

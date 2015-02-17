@@ -3,7 +3,7 @@
 /**
  * Class ProductListController
  */
-class ProductListController extends BaseController {
+final class ProductListController extends BaseController {
 
     private $printDAO;
     private $categoryDAO;

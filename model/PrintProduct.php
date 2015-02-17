@@ -3,7 +3,7 @@
 /**
  * Class PrintProduct
  */
-class PrintProduct {
+final class PrintProduct {
 
     private $title;
     private $category;

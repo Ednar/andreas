@@ -1,8 +1,8 @@
 <?php
 
-require_once 'controller/BaseController.php';
+require_once 'BaseController.php';
 
-class AdminEditPrintController extends BaseController{
+final class AdminEditPrintController extends BaseController{
 
     private $printDAO;
     private $categoriesDAO;

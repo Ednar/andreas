@@ -3,10 +3,10 @@
 /**
  * Class CategoriesDAO
  */
-class CategoriesDAO extends BaseDAO {
+final class CategoriesDAO extends BaseDAO {
 
     /**
-     * @return mixed
+     * @return mixed the names and IDs of all categories
      */
     public function getAllCategories() {
         $sql = '

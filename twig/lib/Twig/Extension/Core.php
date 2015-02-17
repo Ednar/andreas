@@ -931,6 +931,7 @@ function twig_reverse_filter(Twig_Environment $env, $item, $preserveKeys = false
  * Sorts an array.
  *
  * @param array $array An array
+ * @return array
  */
 function twig_sort_filter($array)
 {
@@ -956,11 +957,12 @@ function twig_in_filter($value, $compare)
 /**
  * Escapes a string.
  *
- * @param Twig_Environment $env        A Twig_Environment instance
- * @param string           $string     The value to be escaped
- * @param string           $strategy   The escaping strategy
- * @param string           $charset    The charset
- * @param bool             $autoescape Whether the function is called by the auto-escaping feature (true) or by the developer (false)
+ * @param Twig_Environment $env A Twig_Environment instance
+ * @param string $string The value to be escaped
+ * @param string $strategy The escaping strategy
+ * @param string $charset The charset
+ * @param bool $autoescape Whether the function is called by the auto-escaping feature (true) or by the developer (false)
+ * @return mixed|string
  */
 function twig_escape_filter(Twig_Environment $env, $string, $strategy = 'html', $charset = null, $autoescape = false)
 {

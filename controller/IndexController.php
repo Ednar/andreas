@@ -5,7 +5,7 @@ require_once 'BaseController.php';
 /**
  * Class IndexController
  */
-class IndexController extends BaseController {
+final class IndexController extends BaseController {
 
     /**
      * Renders the default template

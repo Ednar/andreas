@@ -1,12 +1,15 @@
 <?php
 
-require_once 'controller/BaseController.php';
+require_once 'BaseController.php';
 require_once 'model/dao/CategoriesDAO.php';
 require_once 'helpers/GlobalConstants.php';
 require_once 'model/dao/ImageDAO.php';
 require_once 'model/dao/SizeDAO.php';
 
-class AdminAddPrintController extends BaseController {
+/**
+ * Class AdminAddPrintController
+ */
+final class AdminAddPrintController extends BaseController {
 
     private $categoriesDAO;
     private $printDAO;

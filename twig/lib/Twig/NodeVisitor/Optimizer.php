@@ -128,7 +128,8 @@ class Twig_NodeVisitor_Optimizer implements Twig_NodeVisitorInterface
      *   * "echo $this->render(Parent)Block()" with "$this->display(Parent)Block()"
      *
      * @param Twig_NodeInterface $node A Node
-     * @param Twig_Environment   $env  The current Twig environment
+     * @param Twig_Environment $env The current Twig environment
+     * @return Twig_Node|Twig_NodeInterface
      */
     protected function optimizePrintNode(Twig_NodeInterface $node, Twig_Environment $env)
     {
@@ -152,7 +153,8 @@ class Twig_NodeVisitor_Optimizer implements Twig_NodeVisitorInterface
      * Removes "raw" filters.
      *
      * @param Twig_NodeInterface $node A Node
-     * @param Twig_Environment   $env  The current Twig environment
+     * @param Twig_Environment $env The current Twig environment
+     * @return Twig_Node|Twig_NodeInterface
      */
     protected function optimizeRawFilter(Twig_NodeInterface $node, Twig_Environment $env)
     {

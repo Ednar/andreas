@@ -5,7 +5,7 @@
  *
  * Handles the connections to the database.
  * It is recommended that any DAO class inherits from this base class to
- * gain automatic connection handling
+ * gain automatic connection handling through the PDO variable.
  *
  */
 class BaseDAO {

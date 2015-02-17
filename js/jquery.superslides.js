@@ -150,7 +150,7 @@ var css = {
   },
   images: function() {
     var $images = that.$container.find('img')
-                                 .not(that.options.elements.preserve)
+                                 .not(that.options.elements.preserve);
 
     $images.removeAttr('width').removeAttr('height')
       .css({
@@ -217,7 +217,7 @@ var css = {
     });
 
   }
-}
+};
 
 var fx = {
   slide: function(orientation, complete) {
@@ -524,7 +524,7 @@ Superslides.prototype = {
     this.css.containers();
     this.css.images();
 
-    this.pagination._addItem(this.size())
+    this.pagination._addItem(this.size());
 
     this._findPositions(this.current);
     this.$el.trigger('updated.slides');

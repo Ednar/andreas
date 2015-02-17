@@ -12,7 +12,7 @@ session_start();
  * Should the request be incomplete or incorrect the router will provide a
  * default route.
  */
-class Router {
+final class Router {
 
     const DEFAULT_CONTROLLER = 'Index';
     const DEFAULT_ACTION = 'showStart';

@@ -5,10 +5,10 @@ include 'BaseDAO.php';
 /**
  * Class PrintDAO
  */
-class PrintDAO extends BaseDAO {
+final class PrintDAO extends BaseDAO {
 
     /**
-     * @return mixed
+     * @return mixed print and image information for all prints
      */
     public function getAllPrints() {
         $sql = '
@@ -23,7 +23,7 @@ class PrintDAO extends BaseDAO {
 
     /**
      * @param $category
-     * @return mixed
+     * @return mixed print and image information for images in category
      */
     public function getPrintsByCategory($category) {
         $sql = 'SELECT *
@@ -38,7 +38,7 @@ class PrintDAO extends BaseDAO {
 
     /**
      * @param $printID
-     * @return mixed
+     * @return mixed print, image and category information for print
      */
     public function getPrintByID($printID) {
         $sql = 'SELECT * FROM Print
@@ -71,6 +71,12 @@ class PrintDAO extends BaseDAO {
         return $statement->fetch()[0];
     }
 
+    /**
+     * @param $title
+     * @param $description
+     * @param $imageID
+     * @param $categoryID
+     */
     public function insertPrint($title, $description, $imageID, $categoryID) {
         $sql = 'INSERT into Print (title, description, imageID, categoryID)'
                 . 'VALUES (:title, :description, :imageID, :categoryID)';
@@ -87,7 +93,7 @@ class PrintDAO extends BaseDAO {
     /**
      * @param $printID
      * @param $title
-     * @param $description optional description
+     * @param $description string optional description
      * @param $categoryID
      */
     public function updateSelectedPrint($printID, $title, $description, $categoryID) {
@@ -104,7 +110,7 @@ class PrintDAO extends BaseDAO {
     }
 
     /**
-     * @param $printID the id of the print to delete
+     * @param $printID int the id of the print to delete
      */
     public function deletePrint($printID) {
         $sql = 'DELETE FROM Print WHERE printID = :printID';
@@ -113,7 +119,7 @@ class PrintDAO extends BaseDAO {
     }
 
     /**
-     * @param $printID the id of the print to delete
+     * @param $printID int the id of the print to delete
      */
     public function deleteImageFromFilesystem($printID) {
        $sql = 'select fullSize from Image
