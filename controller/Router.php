@@ -10,7 +10,7 @@ session_start();
  * the requested arguments and parameters.
  *
  * Should the request be incomplete or incorrect the router will provide a
- * default route instead of displaying an error message.
+ * default route.
  */
 class Router {
 
@@ -23,7 +23,7 @@ class Router {
     private $queries;
 
     /**
-     * Parses the URI and calls a controller on construction
+     * Parses the URI and delegates to a controller
      */
     public function __construct() {
         $this->queries = $this->getQueriesFromURL();
@@ -47,11 +47,15 @@ class Router {
     }
 
     private function getController() {
-        if (class_exists($this->queries[0] . 'Controller')) {
+        if ($this->validControllerExists()) {
             return ControllerFactory::create($this->queries[0]);
         } else {
             return ControllerFactory::create(self::DEFAULT_CONTROLLER);
         }
+    }
+
+    private function validControllerExists() {
+        return class_exists($this->queries[0] . 'Controller');
     }
 
     private function getAction() {

@@ -1,0 +1,28 @@
+{% extends "admin/admin_base.twig" %}
+
+{% block content %}
+
+    <div class="main-content">
+        <h2>Select product image</h2>
+        <form action="index.php?AdminAddPrint/savePrint" method="post">
+            <span>Upload image: </span>
+            <input type="file" name="image" accept="image/*">
+            <br>
+            <span>Title: </span>
+            <input type="text" name="title">
+            <br>
+            <span>Description: </span>
+            <input type="text" name="description">
+            <br>
+            <span>Category: </span>
+            <select name="category">
+                {% for category in categories %}
+                    <option value="{{ category.categoryID }}">{{ category.name }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <input type="submit" value="Save">
+        </form>
+    </div>
+
+{% endblock %}

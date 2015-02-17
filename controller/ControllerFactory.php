@@ -5,6 +5,11 @@ require_once 'PrintInfoController.php';
 require_once 'ProductListController.php';
 require_once 'ShoppingCartController.php';
 
+require_once 'AdminProductListController.php';
+require_once 'AdminAddPrintController.php';
+require_once 'AdminDeletePrintController.php';
+require_once 'AdminEditPrintController.php';
+
 
 /**
  * Class ControllerFactory
@@ -28,7 +33,9 @@ class ControllerFactory {
         }
     }
 }
-
+/**
+ * Class InvalidControllerException
+ */
 class InvalidControllerException extends Exception {
 
     public function __construct($message = null) {

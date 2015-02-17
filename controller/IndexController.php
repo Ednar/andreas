@@ -2,15 +2,21 @@
 
 require_once 'BaseController.php';
 
+/**
+ * Class IndexController
+ */
 class IndexController extends BaseController {
 
+    /**
+     * Renders the default template
+     */
     public function showStart() {
         $template = $this->templateEngine->loadTemplate('start.twig');
         $template->display(array());
     }
 
     /**
-     * Unsets and destroys the session.
+     * Unset and destroy the session.
      */
     public function nuke() {
         // TODO remove this function for production

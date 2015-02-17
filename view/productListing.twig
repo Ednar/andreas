@@ -1,0 +1,26 @@
+{% extends "base.twig" %}
+
+
+{% block content %}
+    <div class="main-content">
+        {% if category %}
+        <h2>{{ category }}</h2>
+        {% endif %}
+        <p class="crumbs">
+            <a href="index.php?Index/showStart">Home</a>
+            >
+            <a href="index.php?ProductList/selectCategory">Buy Prints</a>
+            {% if category != null %}
+            >
+            {{ category }}
+            
+            {% endif %}
+        </p>
+        {% for picture in pictures %}
+            <a href="index.php?PrintInfo/getPrintInfo/{{ picture.printID }}">
+                <div class="listing-print" style="background-image: url('img/printImg/{{ picture.fullSize }}')">
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

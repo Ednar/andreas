@@ -7,167 +7,169 @@
 <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="no-js"> <!--<![endif]-->
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,300italic,400italic' rel='stylesheet'
-          type='text/css'>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/superslides.css">
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,300italic,400italic' rel='stylesheet'
+              type='text/css'>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/superslides.css">
 
-    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
-    <script src="js/vendor/jquery-1.10.2.min.js"></script>
-    <script src="js/jquery.superslides.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="js/vendor/jquery-1.10.2.min.js"></script>
+        <script src="js/jquery.superslides.js" type="text/javascript" charset="utf-8"></script>
 
-</head>
-<body>
-<!--[if lt IE 8]>
-<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
-    your browser</a> to improve your experience.</p>
-<![endif]-->
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+            your browser</a> to improve your experience.</p>
+        <![endif]-->
 
-<!-- Our content -->
-<div id="main-wrapper">
-    <header id="topHeader">
-        <div id="menu-logo">
-            <a href="index.php?Index/showStart">
-            <img src="img/logo_kropp.png" alt="AK"/>
+        <!-- Our content -->
+        <div id="main-wrapper">
+            <header id="topHeader">
+                <div id="menu-logo">
+                    <a href="index.php?Index/showStart">
+                        <img src="img/logo_kropp.png" alt="AK"/>
 
-            <h1>
+                        <h1>
 
-                <small>
-                    <span class="thin">Photographer</span>
-                    <span class="mobile-break"><br></span>
-                </small>
-                <span class="bold">Andreas Karlsson</span>
-               </h1> </a>
-        </div>
-        <nav id="nav-main">
-            <ul>
-                <li><a href="index.php?Index/showStart"><i class="fa fa-home fa-fw"></i>Home</a></li>
-                <li><a href="index.php?ProductList/getAllPrints"><i class="fa fa-picture-o fa-fw"></i>Buy prints
-                        <i class="fa fa-caret-down"></i>
+                            <small>
+                                <span class="thin">Photographer</span>
+                                <span class="mobile-break"><br></span>
+                            </small>
+                            <span class="bold">Andreas Karlsson</span>
+                        </h1> </a>
+                </div>
+                <nav id="nav-main">
+                    <ul>
+                        <li><a href="index.php?Index/showStart"><i class="fa fa-home fa-fw"></i>Home</a></li>
+                        <li><a href="index.php?ProductList/selectCategory"><i class="fa fa-picture-o fa-fw"></i>Buy prints
+                                <i class="fa fa-caret-down"></i>
+                            </a>
+
+                        </li>
+                        <li><a href=""><i class="fa fa-user fa-fw"></i>About</a></li>
+                        <li><a href="http://www.andreas-karlsson.net"><i class="fa fa-external-link fa-fw"></i>Portfolio</a></li>
+                        <li><a href=""><i class="fa fa-comments fa-fw"></i>Contact</a></li>
+                        <li><a href="index.php?AdminProductList/getAllPrints"><i class="fa fa-external-link fa-fw"></i>Admin</a></li>
+                        <li class="mobile-only"><a href=""><i class="fa fa-shopping-cart fa-fw"></i>View Cart</a></li>
+                        <li class="mobile-only"><a href=""><i class="fa fa-angle-double-right fa-fw"></i>Checkout</a></li>
+                    </ul>
+                </nav>
+
+                <div id="nav-trigger">
+                    <a id="nav-toggle" class="nav-toggle-a" href="#">
+                        <div><span></span></div>
                     </a>
-                </li>
-                <li><a href=""><i class="fa fa-user fa-fw"></i>About</a></li>
-                <li><a href="http://www.andreas-karlsson.net"><i class="fa fa-external-link fa-fw"></i>Portfolio</a></li>
-                <li><a href=""><i class="fa fa-comments fa-fw"></i>Contact</a></li>
-                <li class="mobile-only"><a href=""><i class="fa fa-shopping-cart fa-fw"></i>View Cart</a></li>
-                <li class="mobile-only"><a href=""><i class="fa fa-angle-double-right fa-fw"></i>Checkout</a></li>
-            </ul>
-        </nav>
+                </div>
 
-        <div id="nav-trigger">
-            <a id="nav-toggle" class="nav-toggle-a" href="#">
-                <div><span></span></div>
-            </a>
+                <nav id="nav-mobile"></nav>
+                <div id="logo-wrapper" class="mobile-only">
+                    <div id="logo">
+                        <img src="img/logo_kropp.png" alt="AK"/>
+
+                        <h1>
+                            <small>
+                                <span class="thin">Photographer</span>
+                                <span class="mobile-break"><br></span>
+                            </small>
+                            <span class="bold">Andreas Karlsson</span>
+                        </h1>
+                    </div>
+                </div>
+
+                <aside class="right-tray">
+                    <nav>
+                        <!-- Display the number of items in the cart  -->
+                        <span id="cartQty">{% if session.shopping_cart|length > 0 %}{{ session.shopping_cart|length }}{% endif %}</span>
+                        <a href="index.php?ShoppingCart/showCart"><img src="img/cart_small.png" alt="shopping cart"></a>
+                    </nav>
+                </aside>
+            </header>
+
+
+
+            <script> //Extend and retract mobile navigation
+                $(document).ready(function () {
+                    $("#nav-mobile").html($("#nav-main").html());
+                    $("#nav-toggle").click(function () {
+                        if ($("nav#nav-mobile ul").hasClass("expanded")) {
+                            $("nav#nav-mobile ul.expanded").removeClass("expanded").slideUp(250);
+                            //$(this).removeClass("open");
+                        } else {
+                            $("nav#nav-mobile ul").addClass("expanded").slideDown(250);
+                            //$(this).addClass("open");
+                        }
+                    });
+                });
+            </script>
+            <script> // Animate hamburger on click / touch
+
+                $(function () {
+                    $("#nav-toggle").click(function () {
+                        $("#nav-toggle").toggleClass("active")
+                    });
+                });
+
+            </script>
+
         </div>
 
-        <nav id="nav-mobile"></nav>
-        <div id="logo-wrapper" class="mobile-only">
-            <div id="logo">
-                <img src="img/logo_kropp.png" alt="AK"/>
 
-                <h1>
-                    <small>
-                        <span class="thin">Photographer</span>
-                        <span class="mobile-break"><br></span>
-                    </small>
-                    <span class="bold">Andreas Karlsson</span>
-                </h1>
+        {% block content %}} {% endblock %}
+
+        <footer>
+            <div id="footerContent">
+                <div class="terms">
+                    <h3>Purchasing Conditions</h3>
+                    <span>Delivery</span>           <br>
+                    <span>Payment Options</span>    <br>
+                    <span>Returns</span>
+                </div>
+
+                <div class="socialMedia">
+                    <h3>Get in touch</h3>
+                    <span><i class="fa fa-fw fa-facebook-official"></i> Facebook</span>           <br>
+                    <span><i class="fa fa-fw fa-instagram"></i> Instagram</span>    <br>
+                    <span><i class="fa fa-fw fa-picture-o"></i> 500px</span>
+                </div>
+
+
+                <div class="contact">
+                    <h3>Contact me</h3>
+                    <span> +46 (0)73-930 86 62</span>           <br>
+                    <span>info@andreas-karlsson.net</span>
+                </div>
+
+                <div class="websiteInformation">
+                    <h3>Website information</h3>
+                    <span>© Andreas Karlsson 2015</span>           <br>
+                    <span>Website by Sans Webbutveckling</span>
+                </div>
+                <div class="watermark">
+                    <img class="footer-logo" src="img/digimarc.png" alt="Digimarc logo">
+
+                    <p>
+                        Images Digitally Watermarked by Digimarc | Images on the website have been digitally
+                        watermarked with ownership and usage information. Digimarc and the Digimarc logo
+                        are registered trademarks of Digimarc Corporation. The "Digimarc-Enabled" Web Button
+                        is a trademark of Digimarc Corporation, used with permission.
+                    </p>
+
+                </div>
+
             </div>
-        </div>
 
-        <aside class="right-tray">
-            <nav>
-                <!-- Display the number of items in the cart  -->
-                <span id="cartQty">{% if session.shopping_cart|length > 0 %}{{ session.shopping_cart|length }}{% endif %}</span>
-                <a href="index.php?ShoppingCart/showCart"><img src="img/cart_small.png" alt="shopping cart"></a>
-            </nav>
-        </aside>
-    </header>
+        </footer>
 
-
-
-    <script> //Extend and retract mobile navigation
-        $(document).ready(function () {
-            $("#nav-mobile").html($("#nav-main").html());
-            $("#nav-toggle").click(function () {
-                if ($("nav#nav-mobile ul").hasClass("expanded")) {
-                    $("nav#nav-mobile ul.expanded").removeClass("expanded").slideUp(250);
-                    //$(this).removeClass("open");
-                } else {
-                    $("nav#nav-mobile ul").addClass("expanded").slideDown(250);
-                    //$(this).addClass("open");
-                }
-            });
-        });
-    </script>
-    <script> // Animate hamburger on click / touch
-
-        $(function () {
-            $("#nav-toggle").click(function () {
-                $("#nav-toggle").toggleClass("active")
-            });
-        });
-
-    </script>
-
-</div>
-
-
-    {% block content %}} {% endblock %}
-
-<footer>
-    <div id="footerContent">
-        <div class="terms">
-            <h3>Purchasing Conditions</h3>
-            <span>Delivery</span>           <br>
-            <span>Payment Options</span>    <br>
-            <span>Returns</span>
-        </div>
-
-        <div class="socialMedia">
-            <h3>Get in touch</h3>
-            <span><i class="fa fa-fw fa-facebook-official"></i> Facebook</span>           <br>
-            <span><i class="fa fa-fw fa-instagram"></i> Instagram</span>    <br>
-            <span><i class="fa fa-fw fa-picture-o"></i> 500px</span>
-        </div>
-
-
-        <div class="contact">
-            <h3>Contact me</h3>
-            <span> +46 (0)73-930 86 62</span>           <br>
-            <span>info@andreas-karlsson.net</span>
-        </div>
-
-        <div class="websiteInformation">
-            <h3>Website information</h3>
-            <span>© Andreas Karlsson 2015</span>           <br>
-            <span>Website by Sans Webbutveckling</span>
-        </div>
-        <div class="watermark">
-            <img class="footer-logo" src="img/digimarc.png" alt="Digimarc logo">
-
-            <p>
-                Images Digitally Watermarked by Digimarc | Images on the website have been digitally
-                watermarked with ownership and usage information. Digimarc and the Digimarc logo
-                are registered trademarks of Digimarc Corporation. The "Digimarc-Enabled" Web Button
-                is a trademark of Digimarc Corporation, used with permission.
-            </p>
-
-        </div>
-
-        </div>
-
-</footer>
-
-</body>
+    </body>
 
 </html>

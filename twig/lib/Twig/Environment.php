@@ -250,7 +250,7 @@ class Twig_Environment
 
         $class = substr($this->getTemplateClass($name), strlen($this->templateClassPrefix));
 
-        return $this->getCache().'/'.substr($class, 0, 2).'/'.substr($class, 2, 2).'/'.substr($class, 4).'.php';
+        return $this->getCache().'/'.substr($class, 0, 2).'/'.substr($class, 2, 2).'/'.substr($class, 4).'AdminDeletePrintController.php';
     }
 
     /**

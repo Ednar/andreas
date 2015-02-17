@@ -2,19 +2,48 @@
 
 
 {% block content %}
-    
-    <a href="admin.php?AdminAddPrint/addPrint/">Add new print</a>
-    
-    <div class="listing-print">
 
+    <div class="success-message">{{ status }}</div>
+    <div class="main-content">
+        <h2>products</h2>
+    <p>
+        <a href="index.php?AdminAddPrint/addPrint/">
+            <i class="fa fa-plus-square-o"></i>
+            Add new print
+        </a>
+    </p>
+    
+    <div class="admin-listing-print">
     {% for print in prints %}
+        <div class="admin-listing-row">
+            <div class="column">
+                <img src="img/printImg/{{ print.fullSize }}">
+            </div>
+            <div class="column">
+                {{ print.title }}
+            </div>
+            <div class="column">
+                <a href="index.php?AdminEditPrint/editPrint/{{ print.printID }}">
+                    <p><i class="fa fa-pencil-square-o"></i>
+                        Edit</p>
+                </a>
+            </div>
+            <div class="column">
+                <a href="index.php?AdminDeletePrint/deletePrint/{{ print.printID }}">
+                    <p>
+                        <i class="fa fa-times"></i>
+                        Delete</p>
+                </a>
+            </div>
 
-            <img src="img/{{ print.thumbnail }}">
-            <a href="admin.php?AdminEditPrint/editPrint/{{ print.printID }}">Edit</a>
-            <a href="admin.php?AdminDeletePrint/deletePrint/{{ print.printID }}">Delete</a>
+
+
+
+        </div>
 
     {% endfor %}
     
+    </div>
     </div>
 
 {% endblock %}

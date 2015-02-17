@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class PrintProduct
+ */
 class PrintProduct {
 
     private $title;
@@ -24,15 +27,21 @@ class PrintProduct {
         $this->category = $printInfo['name'];
         $this->image    = new PrintImage(
             $printInfo['fullSize'],
-            $printInfo['thumbnail'],
             $printInfo['alt']);
 
         $this->printID  = $printInfo['printID'];
         $this->quantity = 1;
     }
 
+    /**
+     * Returns a unique ID for each product based on a few select values.
+     *
+     * Note: This does not indicate object equality.
+     *
+     * @return string the unique print ID
+     */
     public function getUniqueID() {
-        return $this->printID . $this->getSizeID() . $this->getTypeID();
+        return $this->printID . $this->getTypeID() . $this->getSizeID();
     }
 
     /**
@@ -109,7 +118,10 @@ class PrintProduct {
      * @return array
      */
     public function getSizeOptions() {
-        return $this->sizeOptions;
+        return array($this->sizeOptions[0],
+            $this->sizeOptions[1],
+            $this->sizeOptions[2],
+            $this->sizeOptions[3]);
     }
 
     /**
@@ -136,39 +148,41 @@ class PrintProduct {
     /**
      * @param mixed $type
      */
-    public function setType($type)
-    {
+    public function setType($type) {
         $this->type = $type['type'];
     }
 
     /**
      * @param mixed $price
      */
-    public function setPrice($price)
-    {
+    public function setPrice($price) {
         $this->price = $price;
     }
 
     /**
      * @param mixed $sizeID
      */
-    public function setSizeID($sizeID)
-    {
+    public function setSizeID($sizeID) {
         $this->sizeID = $sizeID;
     }
 
     /**
      * @param mixed $typeID
      */
-    public function setTypeID($typeID)
-    {
+    public function setTypeID($typeID) {
         $this->typeID = $typeID;
     }
 
+    /**
+     * Increases the quantity of the print by 1
+     */
     public function incrementQuantity() {
         $this->quantity++;
     }
 
+    /**
+     * Decreases the quantity of the print by 1
+     */
     public function decrementQuantity() {
         $this->quantity--;
     }

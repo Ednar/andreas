@@ -6,20 +6,24 @@
         <h2>
             Shopping cart
         </h2>
+        <!--
+        Add this to enable easy removal of the session
+
         <p style="margin:0px;">It's getting too hot!<img src="img/ghost.png"><a href="index.php?IndexController/nuke">Paint the target</a></p>
+        //-->
         <div id="shoppingCart">
         {% for print in cart.prints %}
             <div class="cartRow">
                 <div class="column">
-                    <img src="img/{{ print.image.thumbnail }}">
+                    <img src="img/printImg/{{ print.image.fullSize }}">
                 </div>
                 <div class="column">
                    <h3>
                        <a href="index.php?PrintInfo/getPrintInfo/{{ print.printID }}">{{ print.title }}</a>
                    </h3>
-                    <p>{{ print.size }}</p>
                     <p>{{ print.type }}</p>
-                        <a href="index.php?ShoppingCart/remove/{{ print.printID }}{{ print.printTypeID }}{{ print.sizeID }}">
+                    <p>{{ print.sizeID }}</p>
+                        <a href="index.php?ShoppingCart/remove/{{ print.printID }}{{ print.typeID }}{{ print.sizeID }}">
                             <p>Remove
                             <i class="fa fa-times"></i>
                             </p>

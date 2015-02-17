@@ -174,6 +174,7 @@ a {
 
 .main-content {
     width:100%;
+    height:100%;
     max-width:1024px;
     min-height:550px;
     margin:0 auto;
@@ -227,7 +228,7 @@ a {
     }
 
 header#topHeader {
-    position:relative;
+    position:absolute;
     background-color: rgba(0,0,0,0.8);
     width: 100%;
     height:55px;
@@ -367,16 +368,24 @@ select {
 
 .success-message {
     position: absolute;
+    text-align:center;
+    font-family: Lato;
+    color:#fff;
+    font-weight: 300;
     width:100%;
     top:55px;
-    height:50px;
-    background-color:green;
+    height:25px;
+    background-color:limegreen;
 }
 
 .success-message p {
     color:#fff;
     text-align:center;
     font-weight: 300
+}
+
+.success-message:empty {
+    display: none;
 }
 
     main {
@@ -404,11 +413,129 @@ select {
     display: none;
 }
 
+.admin-listing-print {
+    text-align: center;
+    background-color:#f0f0f0;
+    padding:3%;
+    width:50%;
+    margin:0 auto;
+}
+
+    .admin-listing-print .column img {
+        width:100px;
+    }
+
+.admin-listing-row {
+    display: table-row;
+    width:500px;
+
+}
+
+.admin-listing-row .column p {
+    margin: 0px;
+}
+
+.admin-listing-row .column {
+    width:10px !important;
+    text-align:left;
+    vertical-align: middle;
+}
+
+.admin-listing-row .column:nth-child(2) {
+    min-width:100px !important;
+}
+
+.admin-listing-row .column:last-child {
+    min-width:100px !important;
+}
+
+/* Basic Grey */
+.basic-grey {
+    text-align: left;
+    margin-left:auto;
+    margin-right:auto;
+    max-width: 500px;
+    background: #F7F7F7;
+    padding: 25px 15px 25px 10px;
+    font: 1em Lato;
+    color: #666;
+    text-shadow: 1px 1px 1px #FFF;
+    border:1px solid #E4E4E4;
+}
+.basic-grey h1 {
+    font-size: 25px;
+    padding: 0px 0px 10px 40px;
+    display: block;
+    border-bottom:1px solid #E4E4E4;
+    margin: -10px -15px 30px -10px;;
+    color: #888;
+}
+.basic-grey h1>span {
+    display: block;
+    font-size: 11px;
+}
+.basic-grey label {
+    display: block;
+    margin: 0px;
+}
+.basic-grey label>span {
+    float: left;
+    width: 20%;
+    text-align: right;
+    padding-right: 10px;
+    margin-top: 10px;
+    color: #999;
+}
+.basic-grey input[type="text"], .basic-grey input[type="email"], .basic-grey textarea, .basic-grey select {
+    border: 1px solid #DADADA;
+    color: #888;
+    height: 30px;
+    margin-bottom: 16px;
+    margin-right: 6px;
+    margin-top: 2px;
+    outline: 0 none;
+    padding: 3px 3px 3px 5px;
+    width: 70%;
+    font-size: 14px;
+    line-height:15px;
+    box-shadow: inset 0px 1px 4px #ECECEC;
+    -moz-box-shadow: inset 0px 1px 4px #ECECEC;
+    -webkit-box-shadow: inset 0px 1px 4px #ECECEC;
+}
+.basic-grey textarea{
+    padding: 5px 3px 3px 5px;
+}
+.basic-grey select {
+    text-indent: 0.01px;
+    text-overflow: '';
+    width: 50%;
+    height: 35px;
+    line-height: 25px;
+}
+.basic-grey textarea{
+    height:100px;
+}
+.basic-grey input[type="submit"] {
+    font-weight: 100;
+    background: #2980b9;
+    border: none;
+    padding: 10px 25px 10px 25px;
+    color: #FFF;
+    box-shadow: 1px 1px 5px #B6B6B6;
+    border-radius: 3px;
+    text-shadow: 1px 1px 1px #9E3F3F;
+    cursor: pointer;
+}
+.basic-grey input[type="submit"]:hover {
+    background: #3498db;
+}
+
 /* ============================================================================
     Product List
     =========================================================================*/
     .main-content {
-
+        margin-bottom:5%;
+        text-align: center;
     }
         .main-content h2 {
             font-size:2.8em;
@@ -425,8 +552,7 @@ select {
         .listing-print {
             background-position: center center;
             background-size: cover;
-            height:0px;
-            padding-bottom: 75%;
+            height:300px;
             width:100%;
             display:block;
             text-align: center;
@@ -484,12 +610,16 @@ select {
 
     }
 
+    .column h3 {
+        text-align:left;
+    }
+
     .column:nth-child(2) {
-        min-width:250px;
+        min-width:200px;
     }
 
         .column img {
-            width:180px;
+            height:70px;
         }
 
 /* ============================================================================
@@ -526,7 +656,7 @@ select {
     -webkit-box-shadow: 0px 0px 4px 0px rgba(143,143,143,1);
     -moz-box-shadow: 0px 0px 4px 0px rgba(143,143,143,1);
     box-shadow: 0px 0px 4px 0px rgba(143,143,143,1);
-    max-width:500px;
+    max-height:200px;
     margin:0% 5%;
 
 }
@@ -554,6 +684,12 @@ select {
         padding:20px;
         font-weight: 300;
     }
+    
+    .printSpecs {
+        float: right;
+        width: 55%;
+    }
+
 
 
 /* ============================================================================
@@ -661,6 +797,12 @@ nav#nav-mobile a:hover {
     background-color: rgba(0, 0, 0, 0.8);
     -moz-opacity: 0.8;
     color: #fff; }
+
+
+
+
+
+
 
 /* Nav-button
 -------------------------------------------------------------- */
