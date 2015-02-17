@@ -48,14 +48,13 @@ class PrintDAO extends BaseDAO {
      * @param $price
      * @param $pictureID
      */
-    public function insertPrint($name, $description, $price, $pictureID) {
+    public function insertPrint($name, $description, $pictureID) {
         $sql = 'INSERT into Print (name, description, price, pictureID)'
                 . 'VALUES (:name, :description, :price, :pictureURL)';
         $statement = self::$pdo->prepare($sql);
         $inputParams = array(
             ':name' => $name,
             'description' => $description,
-            ':price' => $price,
             'pictureURL' => $pictureID);
         $statement->execute($inputParams);
     }

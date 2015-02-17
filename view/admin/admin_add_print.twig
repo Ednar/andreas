@@ -2,26 +2,28 @@
 
 {% block content %}
 
-    <h1>o hai!</h1>
-    <div id="infoWrapper">
-
-        <form action="index.php?AdminInsertPrint/insertPrint" method="post">
-            <fieldset>
-            <legend>Choose picture</legend>
+<div class="main-content">
+    <h2>Add product</h2>
+        <form action="index.php?AdminAddPrint/savePrint" method="post" class="basic-grey">
+            <label>Choose picture: </label>
             <input type="file" name="image" accept="image/*">
-            <legend>Title: </legend>
+                <br>
+                <br>
+            <label>Title: </label>
             <input type="text" name="title">
-            <legend>Description: </legend>
-            <input type="text" name="alt">
-            <legend>Category: </legend>
+                <br>
+            <label>Description: </label>
+            <input type="text" name="description">
+                <br>
+            <label>Category: </label>
             <select name="category">
-                <option value="Street">Street</option>
-                <option value="Landscape">Landscape</option>
-            </select><br>
+                {% for category in categories %}
+                <option value="{{ category.categoryID }}">{{ category.name }}</option>
+                {% endfor %}
+            </select>
+                <br>
             <input type="submit" value="Save">
-            </fieldset>
         </form>
-
-    </div>
+</div>
 
 {% endblock %}

@@ -4,9 +4,10 @@ require_once 'IndexController.php';
 require_once 'PrintInfoController.php';
 require_once 'ProductListController.php';
 require_once 'ShoppingCartController.php';
-require_once 'admin/AdminAddPrintController.php';
-require_once 'admin/AdminProductListController.php';
-require_once 'admin/AdminInsertPrint.php';
+
+require_once 'AdminProductListController.php';
+require_once 'AdminAddPrintController.php';
+
 
 /**
  * Class ControllerFactory
@@ -30,7 +31,6 @@ class ControllerFactory {
         }
     }
 }
-
 /**
  * Class InvalidControllerException
  */

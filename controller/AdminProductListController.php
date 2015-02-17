@@ -8,8 +8,7 @@ class AdminProductListController extends BaseController {
 
     public function __construct() {
         parent::__construct();
-        $databaseHandle = new DatabaseHandle();
-        $this->printDAO = new PrintDAO($databaseHandle);
+        $this->printDAO = new PrintDAO();
     }
 
     public function getAllPrints() {
