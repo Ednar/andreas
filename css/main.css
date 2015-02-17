@@ -684,7 +684,10 @@ select {
         padding:20px;
         font-weight: 300;
     }
-
+    
+    .printSpecs {
+        float: right;
+    }
 
 
 
