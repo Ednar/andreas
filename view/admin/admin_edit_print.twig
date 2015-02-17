@@ -1,0 +1,30 @@
+{% extends "admin/admin_base.twig" %}
+
+{% block content %}
+
+    <div class="main-content">
+        <h2>Edit {{ print.title }}</h2>
+        <form enctype="multipart/form-data" action="index.php?AdminEditPrint/updatePrint/{{print.printID}}" method="post" class="basic-grey">
+            <label>Title: </label>
+            <input type="text" name="title" value="{{ print.title }}">
+            <br>
+            <label>Description: </label>
+            <input type="text" name="description" value = "{{ print.description }}">
+            <br>
+            <label>Category: </label>
+            <select name="category">
+                {% for category in categories %}
+                    <option value="{{ category.categoryID }}"
+                            {% if category.categoryID == print.categoryID %}
+                    selected
+                {% endif %}
+                            >
+                            {{ category.name }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <input type="submit" value="Save">
+        </form>
+    </div>
+
+{% endblock %}

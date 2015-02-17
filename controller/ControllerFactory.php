@@ -7,6 +7,8 @@ require_once 'ShoppingCartController.php';
 
 require_once 'AdminProductListController.php';
 require_once 'AdminAddPrintController.php';
+require_once 'AdminDeletePrintController.php';
+require_once 'AdminEditPrintController.php';
 
 
 /**

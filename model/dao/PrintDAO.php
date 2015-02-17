@@ -86,37 +86,47 @@ class PrintDAO extends BaseDAO {
 
     /**
      * @param $printID
-     * @param $name
+     * @param $title
      * @param $description optional description
-     * @param $price
-     * @param $pictureID
+     * @param $categoryID
      */
-    public function updatePrint($printID, $name, $description, $price, $pictureID) {
-        $sql = 'UPDATE Print SET name = :name, description = :description, '
-                . 'price = :price, pictureID = :pictureID WHERE printID = :printID';
+    public function updateSelectedPrint($printID, $title, $description, $categoryID) {
+        $sql = 'UPDATE Print SET title = :title, description = :description, '
+                . 'categoryID = :categoryID WHERE printID = :printID';
         $statement = self::$pdo->prepare($sql);
         $inputParameters = array(
-            ':name' => $name,
+            ':printID' => $printID,
+            ':title' => $title,
             ':description' => $description,
-            ':price' => $price,
-            ':pictureID' => $pictureID,
-            'printID' => $printID);
+            ':categoryID' => $categoryID
+        );
         $statement->execute($inputParameters);
     }
 
     /**
      * @param $printID
-     * @param $imageID
      */
     public function deletePrint($printID) {
-        $sql = 'DELETE FROM Print,SizeToPrint WHERE printID = :printID';
+        $sql = 'DELETE FROM Print WHERE printID = :printID';
         $statement = self::$pdo->prepare($sql);
         $statement->execute(array(':printID' => $printID));
     }
 
-    public function deleteImage($imageID) {
-        $sql = 'DELETE FROM Image WHERE imageID = :imageID';
+    public function deleteImageFromFilesystem($printID) {
+       $sql = 'select fullSize from Image
+                WHERE imageID IN (SELECT imageID FROM Print where printID = :printID)';
         $statement = self::$pdo->prepare($sql);
-        $statement->execute(array(':imageID' => $imageID));
+        $statement->execute(array(':printID' => $printID));
+        $fileName = $statement->fetchColumn();
+        $target = 'img/printImg/' . $fileName;
+
+
+        if (file_exists($target)) {
+            unlink($target);
+            echo 'File '.$fileName.' has been deleted';
+        } else {
+            echo 'Could not delete '.$fileName.', file does not exist';
+        }
+
     }
 }
