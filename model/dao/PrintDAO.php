@@ -104,7 +104,7 @@ class PrintDAO extends BaseDAO {
     }
 
     /**
-     * @param $printID
+     * @param $printID the id of the print to delete
      */
     public function deletePrint($printID) {
         $sql = 'DELETE FROM Print WHERE printID = :printID';
@@ -112,6 +112,9 @@ class PrintDAO extends BaseDAO {
         $statement->execute(array(':printID' => $printID));
     }
 
+    /**
+     * @param $printID the id of the print to delete
+     */
     public function deleteImageFromFilesystem($printID) {
        $sql = 'select fullSize from Image
                 WHERE imageID IN (SELECT imageID FROM Print where printID = :printID)';
@@ -120,10 +123,8 @@ class PrintDAO extends BaseDAO {
         $fileName = $statement->fetchColumn();
         $target = 'img/printImg/' . $fileName;
 
-
         if (file_exists($target)) {
             unlink($target);
-            echo 'File '.$fileName.' has been deleted';
         } else {
             echo 'Could not delete '.$fileName.', file does not exist';
         }

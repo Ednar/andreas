@@ -3,19 +3,16 @@
 {% block content %}
 
 <div class="main-content">
-    <h2>Delete Print?</h2>
-
+    <h2 style="text-transform: none; padding-bottom:20px;">Are you sure?</h2>
+    <p>This action cannot be undone.</p>
     <div class="admin-listing-print">
-        <div class="column">
-        <span>Confirm deletion</span>
-        </div>
         <div class="column">
             {{ print.title }}
         </div>
-        <div class="column"><a href="index.php?AdminDeletePrint/confirmedDeletePrint/{{ printID }}"><i class="fa fa-trash-o"></i>
+        <div class="column" style="min-width:0px; font-size:1.5em; padding:20px;"><a href="index.php?AdminDeletePrint/confirmedDeletePrint/{{ printID }}"><i class="fa fa-trash-o"></i>
                 Delete</a>
         </div>
-        <div class="column"><a href="index.php?AdminProductList/getAllPrints"><i class="fa fa-ban"></i>
+        <div class="column" style="min-width:0px; font-size:1.5em; padding:20px;"><a href="index.php?AdminProductList/getAllPrints"><i class="fa fa-ban"></i>
                 Cancel</a>
         </div>
     </div>

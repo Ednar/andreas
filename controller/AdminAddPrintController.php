@@ -13,8 +13,6 @@ class AdminAddPrintController extends BaseController {
     private $imageDAO;
     private $sizeDAO;
 
-    private $target = 'img/printImg/';
-
     public function __construct() {
         parent::__construct();
         $this->categoriesDAO = new CategoriesDAO();
@@ -32,10 +30,11 @@ class AdminAddPrintController extends BaseController {
     }
 
     public function savePrint() {
+        $target = 'img/printImg/';
         $imageTmpName = $_FILES['image']['tmp_name'];
         $imageName = $_FILES['image']['name'];
+        move_uploaded_file($imageTmpName, $target . $imageName);
         $imageAlt = $_POST['alt'];
-        move_uploaded_file($imageTmpName, $this->target . $imageName);
         $this->imageDAO->insertImage($imageName, $imageAlt);
 
         $imageID = $this->imageDAO->getImageID($imageName);
@@ -44,9 +43,18 @@ class AdminAddPrintController extends BaseController {
         $categoryID = $_POST[GlobalConstants::CATEGORY_ID];
         $this->printDAO->insertPrint($title, $description, $imageID, $categoryID);
 
+        $imageWidth = getImageSize($target . $imageName)[0];
+        $imageHeight = getImageSize($target . $imageName)[1];
 
-        $sizeIDs = $this->getSizeIDs();
+        $wideScreen = $imageWidth / $imageHeight  > 2 ? true : false;
+        $sizeIDs = null;
+        if ($wideScreen) {
+            $sizeIDs = $this->sizeDAO->getSizeIDsForAspectRatioWide();
+        } else {
+            $sizeIDs = $this->sizeDAO->getSizeIDsForAspectRatioFat();
+        }
         $printID = $this->printDAO->getPrintIDByTitle($title);
+
         $this->sizeDAO->setSizeToPrint($printID, $sizeIDs);
 
         $prints = $this->printDAO->getAllPrints();
@@ -55,21 +63,5 @@ class AdminAddPrintController extends BaseController {
             'status' => 'Print successfully added',
             'prints' => $prints,
         ));
-    }
-
-
-    private function aspectRatioIsWide($imageWidth, $imageHeight){
-        return $imageWidth / $imageHeight > 2 ? true : false;
-    }
-
-    private function getSizeIDs() {
-        $imageName = $_FILES['image']['name'];
-        $imageWidth = getImageSize($this->target . $imageName)[0];
-        $imageHeight = getImageSize($this->target . $imageName)[1];
-        if ( $this->aspectRatioIsWide($imageWidth, $imageHeight)) {
-            return $this->sizeDAO->getSizeIDsForAspectRatioWide();
-        } else {
-            return $this->sizeDAO->getSizeIDsForAspectRatioFat();
-        }
     }
 }
