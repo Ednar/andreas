@@ -6,9 +6,13 @@
         <p class="crumbs">
             <a href="index.php?Index/showStart">Home</a>
             >
-            <a href="index.php?ProductList/getAllPrints">Buy Prints</a>
+            <a href="index.php?ProductList/selectCategory">Buy Prints</a>
             >
-            <a href="index.php?ProductList/getAllPrints">Landscape</a>
+            {% if print.category == "Landscape" %}
+            <a href="index.php?ProductList/getPrintsForCategory/1">{{ print.category }}</a>
+            {% elseif print.category == "Street" %}
+            <a href="index.php?ProductList/getPrintsForCategory/2">{{ print.category }}</a>    
+            {% endif %}
             >
             {{ print.title }}
         </p>
