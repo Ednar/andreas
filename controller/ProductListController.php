@@ -21,7 +21,7 @@ class ProductListController extends BaseController {
         $pictures = $this->printDAO->getAllPrints();
         $template = $this->templateEngine->loadTemplate('productListing.twig');
         $template->display(array(
-            'category' => $this->categoryDAO->getAllCategories()[0][1],
+            //'category' => $this->categoryDAO->getAllCategories()[0][1], <-- Har sönder brödsmulorna
             'pictures' => $pictures
         ));
     }
