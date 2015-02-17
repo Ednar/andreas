@@ -16,11 +16,11 @@
                 {% for category in categories %}
                     <option value="{{ category.categoryID }}"
                             {% if category.categoryID == print.categoryID %}
-                    selected
-                {% endif %}
+                                selected
+                            {% endif %}
                             >
-                            {{ category.name }}</option>
-                {% endfor %}
+                        {{ category.name }}</option>
+                    {% endfor %}
             </select>
             <br>
             <input type="submit" value="Save">
