@@ -27,7 +27,6 @@ class PrintProduct {
         $this->category = $printInfo['name'];
         $this->image    = new PrintImage(
             $printInfo['fullSize'],
-            $printInfo['thumbnail'],
             $printInfo['alt']);
 
         $this->printID  = $printInfo['printID'];
@@ -119,7 +118,10 @@ class PrintProduct {
      * @return array
      */
     public function getSizeOptions() {
-        return $this->sizeOptions;
+        return array($this->sizeOptions[0],
+            $this->sizeOptions[1],
+            $this->sizeOptions[2],
+            $this->sizeOptions[3]);
     }
 
     /**
@@ -146,32 +148,28 @@ class PrintProduct {
     /**
      * @param mixed $type
      */
-    public function setType($type)
-    {
+    public function setType($type) {
         $this->type = $type['type'];
     }
 
     /**
      * @param mixed $price
      */
-    public function setPrice($price)
-    {
+    public function setPrice($price) {
         $this->price = $price;
     }
 
     /**
      * @param mixed $sizeID
      */
-    public function setSizeID($sizeID)
-    {
+    public function setSizeID($sizeID) {
         $this->sizeID = $sizeID;
     }
 
     /**
      * @param mixed $typeID
      */
-    public function setTypeID($typeID)
-    {
+    public function setTypeID($typeID) {
         $this->typeID = $typeID;
     }
 

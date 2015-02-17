@@ -27,8 +27,8 @@ class PrintInfoController extends BaseController {
      * @param $printID unique print identifier
      */
     public function getPrintInfo($printID) {
-        $printInfo = $this->printDAO->getPrint($printID);
-        $image = new PrintImage($printInfo['fullSize'], $printInfo['thumbnail'], $printInfo['alt']);
+        $printInfo = $this->printDAO->getPrintByID($printID);
+        $image = new PrintImage($printInfo['fullSize'], $printInfo['alt']);
         $print = new PrintProduct($printInfo, $image);
         $print->setSizeOptions($this->sizeDAO->getSizesForPrint($printID));
         $print->setTypeOptions( $this->printTypeDAO->getAllPrintTypes());

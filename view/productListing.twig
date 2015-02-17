@@ -3,7 +3,7 @@
 
 {% block content %}
         <div class="main-content">
-            <h2>Landscape</h2>
+            <h2>{{ category }}</h2>
             <p class="crumbs">
                 <a href="index.php?Index/showStart">Home</a>
                 >
@@ -12,7 +12,7 @@
             </p>
         {% for picture in pictures %}
     <a href="index.php?PrintInfo/getPrintInfo/{{ picture.printID }}">
-            <div class="listing-print" style="background-image: url('img/{{ picture.fullSize }}')">
+            <div class="listing-print" style="background-image: url('img/printImg/{{ picture.fullSize }}')">
 
             </div>
     </a>

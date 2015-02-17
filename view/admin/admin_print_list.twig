@@ -3,6 +3,7 @@
 
 {% block content %}
 
+    <div class="success-message">{{ status }}</div>
     <div class="main-content">
         <h2>products</h2>
     <p>
@@ -16,7 +17,7 @@
     {% for print in prints %}
         <div class="admin-listing-row">
             <div class="column">
-                <img src="img/{{ print.thumbnail }}">
+                <img src="img/printImg/{{ print.fullSize }}">
             </div>
             <div class="column">
                 {{ print.title }}

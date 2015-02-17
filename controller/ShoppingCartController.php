@@ -59,7 +59,7 @@ class ShoppingCartController extends BaseController {
     }
 
     private function getPrint() {
-        $printInfo = $this->printDAO->getPrint($_POST[GlobalConstants::PRINT_ID]);
+        $printInfo = $this->printDAO->getPrintByID($_POST[GlobalConstants::PRINT_ID]);
         $print = new PrintProduct($printInfo);
         $print->setSizeID($_POST[GlobalConstants::SIZE_ID]);
         $print->setTypeID($_POST[GlobalConstants::TYPE_ID]);
@@ -67,7 +67,7 @@ class ShoppingCartController extends BaseController {
         $print->setType($this->printTypeDAO->getPrintTypeByID($_POST[GlobalConstants::TYPE_ID]));
         $print->setPrice($this->sizeDAO->getPriceForSizeAndType(
             $_POST[GlobalConstants::TYPE_ID],
-            $_POST[GlobalConstants::SIZE_ID]));
+            $_POST['sizeID']));
         return $print;
     }
 

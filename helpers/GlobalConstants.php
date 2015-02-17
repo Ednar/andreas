@@ -12,5 +12,6 @@ class GlobalConstants {
     CONST SIZE_ID = 'sizeID';
     CONST TYPE_ID = 'printTypeID';
     CONST CATEGORY_ID = 'category';
+    CONST FORMAT = 'format';
 
 }

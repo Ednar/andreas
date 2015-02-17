@@ -22,10 +22,25 @@ class PrintDAO extends BaseDAO {
     }
 
     /**
+     * @param $category
+     * @return mixed
+     */
+    public function getPrintsByCategory($category) {
+        $sql = 'SELECT *
+                FROM Print
+                LEFT JOIN Image
+                ON Image.imageID = Print.imageID
+                WHERE Print.categoryID = :categoryID';
+        $statement = self::$pdo->prepare($sql);
+        $statement->execute(array(':categoryID' => $category));
+        return $statement->fetchAll();
+    }
+
+    /**
      * @param $printID
      * @return mixed
      */
-    public function getPrint($printID) {
+    public function getPrintByID($printID) {
         $sql = 'SELECT * FROM Print
                 LEFT JOIN Image
                 ON Image.imageID = Print.imageID
@@ -43,40 +58,31 @@ class PrintDAO extends BaseDAO {
     }
 
     /**
-     * @param $name
-     * @param $description optional description
-     * @param $price
-     * @param $pictureID
-     */
-    public function insertPrint($name, $description, $pictureID) {
-        $sql = 'INSERT into Print (name, description, price, pictureID)'
-                . 'VALUES (:name, :description, :price, :pictureURL)';
-        $statement = self::$pdo->prepare($sql);
-        $inputParams = array(
-            ':name' => $name,
-            'description' => $description,
-            'pictureURL' => $pictureID);
-        $statement->execute($inputParams);
-    }
-
-    /**
-     * @param $category
+     * @param $title
      * @return mixed
      */
-    public function getPrintsByCategory($category) {
-        $sql = 'SELECT * FROM Print WHERE Category_categoryID IN( '
-                . 'SELECT categoryID FROM Category WHERE name = :category)';
-        return $this->database->request($sql, array('categoryID' => $category));
+    public function getPrintIDByTitle($title) {
+        $sql = 'SELECT printID FROM Print WHERE title = :title';
+        $statement = self::$pdo->prepare($sql);
+        $inputParams = array(
+            ':title' => $title
+        );
+        $statement->execute($inputParams);
+        return $statement->fetch()[0];
     }
 
-    /**
-     * @param $printID
-     */
-    public function deletePrint($printID) {
-        $sql = 'DELETE FROM Print WHERE printID = :printID';
+    public function insertPrint($title, $description, $imageID, $categoryID) {
+        $sql = 'INSERT into Print (title, description, imageID, categoryID)'
+                . 'VALUES (:title, :description, :imageID, :categoryID)';
         $statement = self::$pdo->prepare($sql);
-        $statement->execute(array(':printID' => $printID));
-    }
+        $inputParams = array(
+            ':title' => $title,
+            ':description' => $description,
+            ':imageID' => $imageID,
+            ':categoryID' => $categoryID
+         );
+        $statement->execute($inputParams);
+        }
 
     /**
      * @param $printID
@@ -98,54 +104,19 @@ class PrintDAO extends BaseDAO {
         $statement->execute($inputParameters);
     }
 
-    /*
-     * Media library functions
-     */
-
     /**
-     * @return mixed
+     * @param $printID
+     * @param $imageID
      */
-    public function getMediaLibrary() {
-        $sql = 'SELECT * FROM picture';
+    public function deletePrint($printID) {
+        $sql = 'DELETE FROM Print,SizeToPrint WHERE printID = :printID';
         $statement = self::$pdo->prepare($sql);
-        return $statement->execute();
+        $statement->execute(array(':printID' => $printID));
     }
 
-    /**
-     * @param $url
-     * @param $alt
-     */
-    public function insertPictureToLibrary($url, $alt) {
-        $sql = 'INSERT INTO picture (url, alt) VALUES(:url, :alt)';
+    public function deleteImage($imageID) {
+        $sql = 'DELETE FROM Image WHERE imageID = :imageID';
         $statement = self::$pdo->prepare($sql);
-        $target = "img/";
-        // Vad händer här? //
-        move_uploaded_file($_FILES["picture"]["tmp_name"], $target . $url);
-        $inputParams = array(':url' => $url, ':alt' => $alt);
-        $statement->execute($inputParams);
-    }
-
-    /**
-     * @param $pictureID
-     */
-    public function deletePictureFromLibrary($pictureID) {
-        $sql = 'DELETE FROM picture WHERE pictureID = :pictureID';
-        $statement = self::$pdo->prepare($sql);
-        $statement->execute(array(':pictureID' => $pictureID));
-    }
-
-    /**
-     * @param $pictureID
-     * @param $url
-     * @param $alt
-     */
-    public function updatePictureInLibrary($pictureID, $url, $alt) {
-        $sql = 'UPDATE picture SET url = :url, alt = :alt WHERE pictureID = :pictureID';
-        $statement = self::$pdo->prepare($sql);
-        $inputParams = array(
-            ':pictureID' => $pictureID,
-            ':url' => $url,
-            ':alt' => $alt);
-        $statement->execute($inputParams);
+        $statement->execute(array(':imageID' => $imageID));
     }
 }

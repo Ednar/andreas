@@ -4,11 +4,14 @@
 
 <div class="main-content">
     <h2>Add product</h2>
-        <form action="index.php?AdminAddPrint/savePrint" method="post" class="basic-grey">
+        <form enctype="multipart/form-data" action="index.php?AdminAddPrint/savePrint" method="post" class="basic-grey">
             <label>Choose picture: </label>
             <input type="file" name="image" accept="image/*">
                 <br>
                 <br>
+            <label>Image alt text: </label>
+            <input type="text" name="alt">
+            <br>
             <label>Title: </label>
             <input type="text" name="title">
                 <br>

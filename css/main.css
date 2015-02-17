@@ -367,16 +367,24 @@ select {
 
 .success-message {
     position: absolute;
+    text-align:center;
+    font-family: Lato;
+    color:#fff;
+    font-weight: 300;
     width:100%;
     top:55px;
-    height:50px;
-    background-color:green;
+    height:25px;
+    background-color:limegreen;
 }
 
 .success-message p {
     color:#fff;
     text-align:center;
     font-weight: 300
+}
+
+.success-message:empty {
+    display: none;
 }
 
     main {
@@ -783,6 +791,12 @@ nav#nav-mobile a:hover {
     background-color: rgba(0, 0, 0, 0.8);
     -moz-opacity: 0.8;
     color: #fff; }
+
+
+
+
+
+
 
 /* Nav-button
 -------------------------------------------------------------- */
