@@ -21,11 +21,14 @@ final class ProductListController extends BaseController {
         $pictures = $this->printDAO->getAllPrints();
         $template = $this->templateEngine->loadTemplate('productListing.twig');
         $template->display(array(
-            'category' => $this->categoryDAO->getAllCategories()[0][1],
+            'category' => 'All Prints',
             'pictures' => $pictures
         ));
     }
 
+    /**
+     * @param $categoryID
+     */
     public function getPrintsForCategory($categoryID) {
         $pictures = $this->printDAO->getPrintsByCategory($categoryID);
         $template = $this->templateEngine->loadTemplate('productListing.twig');
