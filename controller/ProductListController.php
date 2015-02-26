@@ -3,7 +3,7 @@
 /**
  * Class ProductListController
  */
-class ProductListController extends BaseController {
+final class ProductListController extends BaseController {
 
     private $printDAO;
     private $categoryDAO;
@@ -19,13 +19,13 @@ class ProductListController extends BaseController {
      */
     public function getAllPrints() {
         $pictures = $this->printDAO->getAllPrints();
-        $template = $this->templateEngine->loadTemplate('productListing.twig');
-        $template->display(array(
-            //'category' => $this->categoryDAO->getAllCategories()[0][1], <-- Har sönder brödsmulorna
-            'pictures' => $pictures
-        ));
+        //return json_encode($pictures);        
+        return json_encode("Eh");
     }
 
+    /**
+     * @param $categoryID
+     */
     public function getPrintsForCategory($categoryID) {
         $pictures = $this->printDAO->getPrintsByCategory($categoryID);
         $template = $this->templateEngine->loadTemplate('productListing.twig');
