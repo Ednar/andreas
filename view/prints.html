@@ -1,0 +1,25 @@
+<script>
+$(document).ready(function() {
+    $.ajax({ url: 'index.php?ProductList/getAllPrints' });  
+});
+      
+</script>
+
+<div class="main-content">
+        <h2></h2>
+        <p class="crumbs">
+            <a href="index.php?Index/showStart">Home</a>
+            >
+            <a href="index.php?ProductList/selectCategory">Buy Prints</a>
+            >
+        </p>
+            <a href="index.php?PrintInfo/getPrintInfo/">
+                <div class="listing-print" style="background-image: url('img/printImg/')">
+                </div>
+            </a>
+        
+        <script>
+            $.ajax.toString();
+        </script>
+        <div style="clear:both;"></div>
+    </div>
