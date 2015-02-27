@@ -19,8 +19,7 @@ final class ProductListController extends BaseController {
      */
     public function getAllPrints() {
         $pictures = $this->printDAO->getAllPrints();
-        //return json_encode($pictures);        
-        return json_encode("Eh");
+        return $pictures;
     }
 
     /**
