@@ -1,0 +1,51 @@
+<div class="main-content" style="min-height:0;">
+    <script>
+                var printID = $.cookie("printID");
+                $.removeCookie("printID");
+    </script>
+    <div id="cookie"></div>
+    <h2>{{ print.title }}</h2>
+    <p class="crumbs">
+        <a href="index.php?Index/showStart">Home</a>
+        >
+        <a href="index.php?ProductList/selectCategory">Buy Prints</a>
+        >
+        {% if print.category == "Landscape" %}
+        <a href="index.php?ProductList/getPrintsForCategory/1">{{ print.category }}</a>
+        {% elseif print.category == "Street" %}
+        <a href="index.php?ProductList/getPrintsForCategory/2">{{ print.category }}</a>    
+        {% endif %}
+        >
+        {{ print.title }}
+    </p>
+</div>
+<div id="infoWrapper">
+    <div class="printInfo">
+        <div class="printImage">
+            <img src="img/printImg/">
+        </div>
+
+        <div class="printSpecs">
+            <h3>{{ print.price[0]|number_format(0) }} SEK</h3>
+            <span class="printDesc">
+                {{ printInfo.description }}
+            </span>
+            <form action="index.php?ShoppingCart/addToCart" method="post">
+                <input name="printID" type="hidden" value="{{ print.printID }}">
+                <select name="printTypeID" class="select-style">
+                    {% for type in print.typeOptions %}
+                    <option value="{{ type.printTypeID }}">{{ type.type }}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                <select name="sizeID" class="select-style">
+                    {% for size in print.sizeOptions %}
+                    <option value="{{ size.format }}">{{ size.format }}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                <button class="btn">Add to cart</button>
+            </form>
+        </div>
+    </div>
+</div>
