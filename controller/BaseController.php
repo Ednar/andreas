@@ -1,6 +1,5 @@
 <?php
 
-require_once 'twig/lib/Twig/Autoloader.php';
 require_once 'model/dao/PrintDAO.php';
 
 /**
@@ -23,8 +22,6 @@ class BaseController {
     protected $templateEngine;
 
     public function __construct() {
-        Twig_Autoloader::register();
-        $this->loader = new Twig_Loader_Filesystem('view');
-        $this->templateEngine = new Twig_Environment($this->loader);
+
     }
 }
