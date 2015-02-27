@@ -23,117 +23,116 @@
 
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
         <script src="js/vendor/jquery-1.10.2.min.js"></script>
+        <script src="js/vendor/jquery.cookie.js"></script>
         <script src="js/jquery.superslides.js" type="text/javascript" charset="utf-8"></script>
 
 
     </head>
     <body>
-        
+
         <div id="main-wrapper">
-    <header id="topHeader">
-        <div id="menu-logo">
-            <a href="index.php?Index/showStart">
-                <img src="img/logo_kropp.png" alt="AK"/>
-                <h1>
-                    <small>
-                        <span class="thin">Photographer</span>
-                        <span class="mobile-break"><br></span>
-                    </small>
-                    <span class="bold">Andreas Karlsson</span>
-                </h1>
-            </a>
-        </div>
-        <nav id="nav-main">
-            <ul>
-                <li><a href="index.php?Index/showStart"><i class="fa fa-home fa-fw"></i>Home</a></li>
-                <li><a id="linkBuyPrints"><i class="fa fa-picture-o fa-fw"></i>Buy prints
-                        <i class="fa fa-caret-down"></i>
+            <header id="topHeader">
+                <div id="menu-logo">
+                    <a href="index.php?Index/showStart">
+                        <img src="img/logo_kropp.png" alt="AK"/>
+                        <h1>
+                            <small>
+                                <span class="thin">Photographer</span>
+                                <span class="mobile-break"><br></span>
+                            </small>
+                            <span class="bold">Andreas Karlsson</span>
+                        </h1>
                     </a>
-                </li>
+                </div>
+                <nav id="nav-main">
+                    <ul>
+                        <li><a href="index.php?Index/showStart"><i class="fa fa-home fa-fw"></i>Home</a></li>
+                        <li><a href="#" id="linkBuyPrints"><i class="fa fa-picture-o fa-fw"></i>Buy prints
+                                <i class="fa fa-caret-down"></i>
+                            </a>
+                        </li>
 
-                <li><a href=""><i class="fa fa-user fa-fw"></i>About</a></li>
-                <li><a href="http://www.andreas-karlsson.net"><i class="fa fa-external-link fa-fw"></i>Portfolio</a></li>
-                <li><a href=""><i class="fa fa-comments fa-fw"></i>Contact</a></li>
-                <li><a href="index.php?AdminProductList/getAllPrints"><i class="fa fa-external-link fa-fw"></i>Admin</a></li>
-                <li class="mobile-only"><a href=""><i class="fa fa-shopping-cart fa-fw"></i>View Cart</a></li>
-                <li class="mobile-only"><a href=""><i class="fa fa-angle-double-right fa-fw"></i>Checkout</a></li>
-            </ul>
-        </nav>
+                        <li><a href=""><i class="fa fa-user fa-fw"></i>About</a></li>
+                        <li><a href="http://www.andreas-karlsson.net"><i class="fa fa-external-link fa-fw"></i>Portfolio</a></li>
+                        <li><a href=""><i class="fa fa-comments fa-fw"></i>Contact</a></li>
+                        <li><a href="index.php?AdminProductList/getAllPrints"><i class="fa fa-external-link fa-fw"></i>Admin</a></li>
+                        <li class="mobile-only"><a href=""><i class="fa fa-shopping-cart fa-fw"></i>View Cart</a></li>
+                        <li class="mobile-only"><a href=""><i class="fa fa-angle-double-right fa-fw"></i>Checkout</a></li>
+                    </ul>
+                </nav>
 
-        <div id="nav-trigger">
-            <a id="nav-toggle" class="nav-toggle-a" href="#">
-                <div><span></span></div>
-            </a>
+                <div id="nav-trigger">
+                    <a id="nav-toggle" class="nav-toggle-a" href="#">
+                        <div><span></span></div>
+                    </a>
+                </div>
+
+                <nav id="nav-mobile"></nav>
+                <div id="logo-wrapper" class="mobile-only">
+                    <div id="logo">
+                        <img src="img/logo_kropp.png" alt="AK"/>
+
+                        <h1>
+                            <small>
+                                <span class="thin">Photographer</span>
+                                <span class="mobile-break"><br></span>
+                            </small>
+                            <span class="bold">Andreas Karlsson</span>
+                        </h1>
+                    </div>
+                </div>
+
+                <aside class="right-tray">
+                    <nav>
+                        <!-- Display the number of items in the cart  -->
+                        <span id="cartQty"></span>
+                        <a href="index.php?ShoppingCart/showCart"><img src="img/cart_small.png" alt="shopping cart"></a>
+                    </nav>
+                </aside>
+            </header>
+
+
+
+            <script> //Extend and retract mobile navigation
+                $(document).ready(function () {
+                    $("#nav-mobile").html($("#nav-main").html());
+                    $("#nav-toggle").click(function () {
+                        if ($("nav#nav-mobile ul").hasClass("expanded")) {
+                            $("nav#nav-mobile ul.expanded").removeClass("expanded").slideUp(250);
+                        } else {
+                            $("nav#nav-mobile ul").addClass("expanded").slideDown(250);
+                        }
+                    });
+                });
+            </script>
+            <script> // Animate hamburger on click / touch
+
+                $(function () {
+                    $("#nav-toggle").click(function () {
+                        $("#nav-toggle").toggleClass("active")
+                    });
+                });
+
+            </script>
+
         </div>
-
-        <nav id="nav-mobile"></nav>
-        <div id="logo-wrapper" class="mobile-only">
-            <div id="logo">
-                <img src="img/logo_kropp.png" alt="AK"/>
-
-                <h1>
-                    <small>
-                        <span class="thin">Photographer</span>
-                        <span class="mobile-break"><br></span>
-                    </small>
-                    <span class="bold">Andreas Karlsson</span>
-                </h1>
-            </div>
-        </div>
-
-        <aside class="right-tray">
-            <nav>
-                <!-- Display the number of items in the cart  -->
-                <span id="cartQty"></span>
-                <a href="index.php?ShoppingCart/showCart"><img src="img/cart_small.png" alt="shopping cart"></a>
-            </nav>
-        </aside>
-    </header>
-
-
-
-    <script> //Extend and retract mobile navigation
-        $(document).ready(function () {
-            $("#nav-mobile").html($("#nav-main").html());
-            $("#nav-toggle").click(function () {
-                if ($("nav#nav-mobile ul").hasClass("expanded")) {
-                    $("nav#nav-mobile ul.expanded").removeClass("expanded").slideUp(250);
-                    //$(this).removeClass("open");
-                } else {
-                    $("nav#nav-mobile ul").addClass("expanded").slideDown(250);
-                    //$(this).addClass("open");
-                }
-            });
-        });
-    </script>
-    <script> // Animate hamburger on click / touch
-
-        $(function () {
-            $("#nav-toggle").click(function () {
-                $("#nav-toggle").toggleClass("active")
-            });
-        });
-
-    </script>
-
-</div>
 
         <div id="main"></div>
 
         <div id="footer"></div>
         <script>
-            $(document).ready(function() {
-            $.ajaxSetup({cache: false});
-            $("#main").load("view/start.html")
-            $("#footer").load("view/footer.html");
-        
-            
-            $("#linkBuyPrints").click(function () {
-               $("#main").load("view/prints.html");
-               });
+            $(document).ready(function () {
+                $.ajaxSetup({cache: false});
+                $("#main").load("view/start.html")
+                $("#footer").load("view/footer.html");
+
+                $("#linkBuyPrints").click(function (e) {
+                    e.preventDefault();
+                    $("#main").load("view/prints.html");
+                });
             });
         </script>
-        
+
     </body>
 
 </html>
