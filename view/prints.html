@@ -1,25 +1,39 @@
 <script>
-$(document).ready(function() {
-    $.ajax({ url: 'index.php?ProductList/getAllPrints' });  
-});
-      
+    $(document).ready(function () {
+        $.ajax({url: 'index.php?ProductList/getAllPrints'});
+    });
+
 </script>
 
 <div class="main-content">
-        <h2></h2>
-        <p class="crumbs">
-            <a href="index.php?Index/showStart">Home</a>
-            >
-            <a href="index.php?ProductList/selectCategory">Buy Prints</a>
-            >
-        </p>
-            <a href="index.php?PrintInfo/getPrintInfo/">
-                <div class="listing-print" style="background-image: url('img/printImg/')">
-                </div>
-            </a>
-        
-        <script>
-            $.ajax.toString();
-        </script>
-        <div style="clear:both;"></div>
-    </div>
+    <h2 id="categoryName">All prints</h2>
+    <p class="crumbs">
+        <a href="index.php?Index/showStart">Home</a>
+        >
+        <a href="index.php?ProductList/selectCategory">Buy Prints</a>
+        >
+    </p>
+
+    <script>
+        $.getJSON("JavaScriptControllerAdapter.php/ProductList/getAllPrints", function (data) {
+            var i = 0;
+            for (i = 0; i < data.length; ++i) {
+                var style = "background-image:";
+                var open = 'url(\"img\/printImg\/';
+                var url = data[i][7];
+                var close = '\")';
+                $(".main-content").append("<a id=" + data[i][0] + " href='#' onclick='javascript:getID(this)'><div class='listing-print' style=' " + style + open + url + close + "'>  </div></a>")
+
+            }
+
+
+        });
+
+        function getID(element) {
+            $.cookie("printID", element.id);
+            alert(element.id);
+            $("#main").load("view/print.html");
+        }
+    </script>
+    <div style="clear:both;"></div>
+</div>
