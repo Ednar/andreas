@@ -3,13 +3,15 @@
 /**
  * Class ProductListController
  */
-final class ProductListController extends BaseController {
+require 'model/dao/PrintDAO.php';
+require 'model/dao/CategoriesDAO.php';
+
+final class ProductListController {
 
     private $printDAO;
     private $categoryDAO;
 
     public function __construct() {
-        parent::__construct();
         $this->printDAO = new PrintDAO();
         $this->categoryDAO = new CategoriesDAO();
     }
@@ -29,7 +31,7 @@ final class ProductListController extends BaseController {
         $pictures = $this->printDAO->getPrintsByCategory($categoryID);
         $template = $this->templateEngine->loadTemplate('productListing.twig');
         $template->display(array(
-            'category' => $this->categoryDAO->getAllCategories()[$categoryID-1][1],
+            'category' => $this->categoryDAO->getAllCategories()[$categoryID - 1][1],
             'pictures' => $pictures
         ));
     }
@@ -38,4 +40,5 @@ final class ProductListController extends BaseController {
         $template = $this->templateEngine->loadTemplate('select_category.twig');
         $template->display(array());
     }
+
 }
