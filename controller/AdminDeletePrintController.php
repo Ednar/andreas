@@ -1,12 +1,10 @@
 <?php
-require_once 'BaseController.php';
 
-class AdminDeletePrintController extends BaseController {
+class AdminDeletePrintController  {
 
 private $printDAO;
 
 final public function __construct() {
-    parent::__construct();
     $this->printDAO = new PrintDAO();
 }
 

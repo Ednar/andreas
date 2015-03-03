@@ -1,13 +1,10 @@
 <?php
 
-require_once 'controller/BaseController.php';
-
-final class AdminProductListController extends BaseController {
+final class AdminProductListController  {
 
     private $printDAO;
 
     public function __construct() {
-        parent::__construct();
         $this->printDAO = new PrintDAO();
     }
 

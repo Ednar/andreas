@@ -90,7 +90,7 @@ class Twig_Loader_Filesystem implements Twig_LoaderInterface, Twig_ExistsLoaderI
         $this->cache = array();
 
         if (!is_dir($path)) {
-            throw new Twig_Error_Loader(sprintf('The "%s" directory does not exist.', $path));
+            throw new Twig_Error_Loader(sprintf('The "%s" partials does not exist.', $path));
         }
 
         $this->paths[$namespace][] = rtrim($path, '/\\');
@@ -110,7 +110,7 @@ class Twig_Loader_Filesystem implements Twig_LoaderInterface, Twig_ExistsLoaderI
         $this->cache = array();
 
         if (!is_dir($path)) {
-            throw new Twig_Error_Loader(sprintf('The "%s" directory does not exist.', $path));
+            throw new Twig_Error_Loader(sprintf('The "%s" partials does not exist.', $path));
         }
 
         $path = rtrim($path, '/\\');

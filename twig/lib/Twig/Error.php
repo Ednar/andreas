@@ -16,7 +16,7 @@
  * an error occurs during the loading of a template, when a syntax error
  * is detected in a template, or when rendering a template. Other
  * errors must use regular PHP exception classes (like when the template
- * cache directory is not writable for instance).
+ * cache partials is not writable for instance).
  *
  * To help debugging template issues, this class tracks the original template
  * name and line where the error occurred.
@@ -217,7 +217,7 @@ class Twig_Error extends Exception
         $r = new ReflectionObject($template);
         $file = $r->getFileName();
 
-        // hhvm has a bug where eval'ed files comes out as the current directory
+        // hhvm has a bug where eval'ed files comes out as the current partials
         if (is_dir($file)) {
             $file = '';
         }

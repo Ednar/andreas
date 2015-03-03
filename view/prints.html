@@ -1,0 +1,16 @@
+
+<div class="main-content">
+    <h2>All Prints</h2>
+    <p class="crumbs">
+        <a href="index.php?Index/showStart">Home</a> >
+        <a href="index.php?ProductList/getAllPrints">Buy Prints</a> >
+        All Prints
+    </p>
+
+
+    <a ng-repeat="picture in data" href="#print/{{ picture.printID }}">
+        <div class="listing-print" style="background-image: url('img/printImg/{{ picture.fullSize }}')">
+        </div>
+    </a>
+
+</div>

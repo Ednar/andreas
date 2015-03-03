@@ -1,0 +1,87 @@
+<header id="topHeader">
+    <div id="menu-logo">
+        <a href="#main">
+            <img src="img/logo_kropp.png" alt="AK"/>
+            <h1>
+                <small>
+                    <span class="thin">Photographer</span>
+                    <span class="mobile-break"><br></span>
+                </small>
+                <span class="bold">Andreas Karlsson</span>
+            </h1>
+        </a>
+    </div>
+    <nav id="nav-main">
+        <ul>
+            <li><a href="#main"><i class="fa fa-home fa-fw"></i>Home</a></li>
+            <li><a href="#prints"><i class="fa fa-picture-o fa-fw"></i>Buy prints
+                <i class="fa fa-caret-down"></i>
+            </a>
+
+            </li>
+            <li><a href=""><i class="fa fa-user fa-fw"></i>About</a></li>
+            <li><a href="http://www.andreas-karlsson.net"><i class="fa fa-external-link fa-fw"></i>Portfolio</a></li>
+            <li><a href=""><i class="fa fa-comments fa-fw"></i>Contact</a></li>
+            <li class="mobile-only"><a href=""><i class="fa fa-shopping-cart fa-fw"></i>View Cart</a></li>
+            <li class="mobile-only"><a href=""><i class="fa fa-angle-double-right fa-fw"></i>Checkout</a></li>
+        </ul>
+    </nav>
+
+    <div id="nav-trigger">
+        <a id="nav-toggle" class="nav-toggle-a" href="#">
+            <div><span></span></div>
+        </a>
+    </div>
+
+    <nav id="nav-mobile"></nav>
+    <div id="logo-wrapper" class="mobile-only">
+        <div id="logo">
+            <img src="img/logo_kropp.png" alt="AK"/>
+
+            <h1>
+                <small>
+                    <span class="thin">Photographer</span>
+                    <span class="mobile-break"><br></span>
+                </small>
+                <span class="bold">Andreas Karlsson</span>
+            </h1>
+        </div>
+    </div>
+
+    <aside class="right-tray">
+        <nav>
+            <!-- Display the number of items in the cart  -->
+            <span id="cartQty">1</span>
+            <a href="index.php?ShoppingCart/showCart"><img src="img/cart_small.png" alt="shopping cart"></a>
+        </nav>
+    </aside>
+</header>
+
+
+
+<script> //Extend and retract mobile navigation
+$(document).ready(function () {
+    $("#nav-mobile").html($("#nav-main").html());
+    $("#nav-toggle").click(function () {
+        if ($("nav#nav-mobile ul").hasClass("expanded")) {
+            $("nav#nav-mobile ul.expanded").removeClass("expanded").slideUp(250);
+            //$(this).removeClass("open");
+        } else {
+            $("nav#nav-mobile ul").addClass("expanded").slideDown(250);
+            //$(this).addClass("open");
+        }
+    });
+});
+</script>
+<script> // Animate hamburger on click / touch
+
+$(function () {
+    $("#nav-toggle").click(function () {
+        $("#nav-toggle").toggleClass("active")
+    });
+});
+
+</script>
+
+
+</div>

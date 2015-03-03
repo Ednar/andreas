@@ -1,0 +1,54 @@
+<div class="main-content" style="min-height:0;">
+    <h2>{{ data.title }}</h2>
+    <p class="crumbs">
+        <a href="index.php?Index/showStart">Home</a>
+        >
+        <a href="index.php?ProductList/getAllPrints">Buy Prints</a>
+        >
+        <a href="index.php?ProductList/getAllPrints">Landscape</a>
+        >
+        {{ data.title }}
+    </p>
+</div>
+<div id="infoWrapper">
+    <div class="printInfo">
+        <div class="printImage">
+            <img src="img/printImg/{{ data.img }}">
+        </div>
+
+            <span class="printDesc">
+            </span>
+        <form ng-submit="submit(type, size)">
+            <input name="printID" type="hidden">
+            <select
+                    name="test"
+                    class="select-style"
+                    ng-model="type"
+                    ng-required=""
+                    ng-options="type.printTypeID as type.type for type in data.types"
+                    ng-change="setPrice(type, size)"
+                    >
+                <option disabled value="">Material</option>
+            </select>
+
+
+            <br>
+            <select
+                    name="sizeID"
+                    class="select-style"
+                    ng-model="size"
+                    ng-required=""
+                    ng-options="size.sizeID as size.format for size in data.sizes"
+                    ng-change="setPrice(type, size)"
+                    >
+                <option disabled value="">Size</option>
+            </select>
+            <br>
+            <br>
+            <h2>{{ price | currency:"SEK" : 2 }}</h2>
+            <br>
+            <button class="btn">Add to cart</button>
+        </form>
+    </div>
+</div>
+</div>

@@ -21,7 +21,7 @@ class BaseDAO {
      * @throws PDOException thrown for any connection error
      */
     public function __construct() {
-        $ini = parse_ini_file('dbsettings.ini');
+        $ini = parse_ini_file('../dbsettings.ini');
         try {
             if(is_null(self::$pdo)) {
                 self::$pdo = new PDO($ini['host'], $ini['username'], $ini['password']);

@@ -1,11 +1,9 @@
 <?php
 
-require_once 'BaseController.php';
-
 /**
  * Class IndexController
  */
-final class IndexController extends BaseController {
+final class IndexController  {
 
     /**
      * Renders the default template

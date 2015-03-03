@@ -1,15 +1,14 @@
 <?php
 
-require_once 'BaseController.php';
-require_once 'model/dao/CategoriesDAO.php';
-require_once 'helpers/GlobalConstants.php';
-require_once 'model/dao/ImageDAO.php';
-require_once 'model/dao/SizeDAO.php';
+require_once '../model/dao/CategoriesDAO.php';
+require_once '../helpers/GlobalConstants.php';
+require_once '../model/dao/ImageDAO.php';
+require_once '../model/dao/SizeDAO.php';
 
 /**
  * Class AdminAddPrintController
  */
-final class AdminAddPrintController extends BaseController {
+final class AdminAddPrintController {
 
     private $categoriesDAO;
     private $printDAO;
@@ -17,7 +16,6 @@ final class AdminAddPrintController extends BaseController {
     private $sizeDAO;
 
     public function __construct() {
-        parent::__construct();
         $this->categoriesDAO = new CategoriesDAO();
         $this->printDAO = new PrintDAO();
         $this->imageDAO = new ImageDAO();

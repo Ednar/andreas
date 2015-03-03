@@ -1,14 +1,11 @@
 <?php
 
-require_once 'BaseController.php';
-
-final class AdminEditPrintController extends BaseController{
+final class AdminEditPrintController {
 
     private $printDAO;
     private $categoriesDAO;
 
     public function __construct() {
-        parent::__construct();
         $this->printDAO = new PrintDAO();
         $this->categoriesDAO = new CategoriesDAO();
     }

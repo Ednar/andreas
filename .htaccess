@@ -60,7 +60,7 @@
 # | 404 error prevention for non-existing redirected folders                   |
 # ------------------------------------------------------------------------------
 
-# Prevent Apache from returning a 404 error for a rewrite if a directory
+# Prevent Apache from returning a 404 error for a rewrite if a partials
 # with the same name does not exist.
 # http://httpd.apache.org/docs/current/content-negotiation.html#multiviews
 # http://www.webmasterworld.com/apache/3808792.htm
@@ -292,7 +292,7 @@ RewriteRule ^(.*)$ /index.php [L,QSA]
 
 # Block access to directories without a default document.
 # Usually you should leave this uncommented because you shouldn't allow anyone
-# to surf through every directory on your server (which may includes rather
+# to surf through every partials on your server (which may includes rather
 # private places like the CMS's directories).
 
 <IfModule mod_autoindex.c>

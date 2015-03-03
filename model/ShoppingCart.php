@@ -1,8 +1,8 @@
 <?php
 
 require_once 'PrintProduct.php';
-require_once 'model/ShoppingCart.php';
-require_once 'helpers/GlobalConstants.php';
+require_once 'ShoppingCart.php';
+require_once '../helpers/GlobalConstants.php';
 
 /**
  * Class ShoppingCart

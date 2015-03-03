@@ -215,7 +215,7 @@ class Twig_Environment
     }
 
     /**
-     * Gets the cache directory or false if cache is disabled.
+     * Gets the cache partials or false if cache is disabled.
      *
      * @return string|false
      */
@@ -225,7 +225,7 @@ class Twig_Environment
     }
 
     /**
-     * Sets the cache directory or false if cache is disabled.
+     * Sets the cache partials or false if cache is disabled.
      *
      * @param string|false $cache The absolute path to the compiled templates,
      *                            or false to disable cache
@@ -1271,11 +1271,11 @@ class Twig_Environment
             if (false === @mkdir($dir, 0777, true)) {
                 clearstatcache(false, $dir);
                 if (!is_dir($dir)) {
-                    throw new RuntimeException(sprintf("Unable to create the cache directory (%s).", $dir));
+                    throw new RuntimeException(sprintf("Unable to create the cache partials (%s).", $dir));
                 }
             }
         } elseif (!is_writable($dir)) {
-            throw new RuntimeException(sprintf("Unable to write in the cache directory (%s).", $dir));
+            throw new RuntimeException(sprintf("Unable to write in the cache partials (%s).", $dir));
         }
 
         $tmpFile = tempnam($dir, basename($file));

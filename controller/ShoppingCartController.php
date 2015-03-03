@@ -1,12 +1,12 @@
 <?php
 
-require_once 'model/ShoppingCart.php';
-require_once 'helpers/GlobalConstants.php';
+require_once '../model/ShoppingCart.php';
+require_once '../helpers/GlobalConstants.php';
 
 /**
  * Class ShoppingCartController
  */
-final class ShoppingCartController extends BaseController {
+final class ShoppingCartController {
 
     const SHOPPING_CART_VIEW = 'shopping_cart.twig';
     const EMPTY_CART_VIEW = 'empty_cart.twig';
@@ -18,7 +18,6 @@ final class ShoppingCartController extends BaseController {
     private $printTypeDAO;
 
     public function __construct() {
-        parent::__construct();
         $this->printDAO = new PrintDAO();
         $this->sizeDAO = new SizeDAO();
         $this->printTypeDAO = new PrintTypeDAO();

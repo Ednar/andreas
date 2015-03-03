@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="Andreas">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Lek med angular</title>
+
+    <script type="text/javascript" src="script/vendor/angular.min.js"></script>
+    <script type="text/javascript" src="script/vendor/angular-route.js"></script>
+
+    <script type="text/javascript" src="script/app.js"></script>
+
+    <script type="text/javascript" src="controllers/MainController.js"></script>
+    <script type="text/javascript" src="controllers/ProductListController.js"></script>
+    <script type="text/javascript" src="controllers/PrintInfoController.js"></script>
+    <script type="text/javascript" src="controllers/CartController.js"></script>
+
+
+    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    <script src="js/vendor/jquery-1.10.2.min.js"></script>
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,300italic,400italic' rel='stylesheet'
+          type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/superslides.css">
+</head>
+
+<body>
+
+    <ng-include src="'view/partials/header.html'"></ng-include>
+
+    <div class="intro-text"><h2>
+        <span class="thin row-1">Fantastic</span><br>
+        <span class="bold row-2">Landscape</span>
+        <span class="italic thin row-2">&amp; </span>
+        <span class="light row-2">Street</span><br>
+        <span class="light row-3">Photography</span>
+    </h2>
+
+        <div class="btn">
+            Buy prints
+        </div>
+    </div>
+
+    <script src="js/jquery.superslides.js" type="text/javascript" charset="utf-8"></script>
+
+    <h1>{{ message }}</h1>
+    <ng-view>
+
+    </ng-view>
+
+    <ng-include src="'view/partials/footer.html'"></ng-include>
+
+</body>
+</html>
